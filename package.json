@@ -7,7 +7,7 @@
   "scripts": {
     "start": "python tools/serve.py 8114",
     "test": "node --test tests/*.test.mjs",
-    "import": "python -X utf8 tools/import_content.py",
+    "import": "python -X utf8 tools/import_content.py && python -X utf8 tools/audit_content.py && python -X utf8 tools/infer_objectives.py && python -X utf8 tools/coverage.py",
     "graph": "python -X utf8 tools/graph.py"
   }
 }

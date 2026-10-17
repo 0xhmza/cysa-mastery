@@ -28,11 +28,17 @@ def plain(html):
 
 
 def words(text):
-    return [w for w in re.findall(r"[a-z0-9][a-z0-9+./'-]*", text.lower()) if w not in STOP]
+    return [w for w in re.findall(r"[a-z0-9][a-z0-9+.'-]*", text.lower()) if w not in STOP]
 
 
 def stem(w):
-    return re.sub(r"(ing|ed|es|s|ion|al)$", '', w) if len(w) > 4 else w
+    """Crude suffix stripping so that decode, decoding and decoded share one stem."""
+    if len(w) <= 4:
+        return w
+    for suffix in ('ations', 'ation', 'ions', 'ion', 'ing', 'ers', 'er', 'ed', 'es', 'al', 's', 'e'):
+        if w.endswith(suffix) and len(w) - len(suffix) >= 3:
+            return w[:-len(suffix)]
+    return w
 
 
 def extract_topics(text):
@@ -53,7 +59,7 @@ def extract_topics(text):
         for line in lines:
             for frag in re.split(r'[•▪•■]|\s{3,}', line):
                 frag = frag.strip(' -–\t')
-                if len(frag) < 3 or NOISE.match(frag) or re.fullmatch(r'[\d\W]+', frag):
+                if len(frag) < 4 or NOISE.match(frag) or re.fullmatch(r'[\d\W]+', frag) or frag in ('Types', 'ain', 'Application/usage') or frag.startswith('Exam Objectives'):
                     continue
                 found.append(frag)
         topics[obj] = list(dict.fromkeys(found))
@@ -91,7 +97,7 @@ def hit(doc_stems, doc_text, compiled, topic):
         if kind == 'acronym':
             if re.search(r'(?<![a-z0-9])' + re.escape(value) + r'(?![a-z0-9])', doc_text):
                 return True
-        elif all(w in doc_stems for w in value):
+        elif sum(w in doc_stems for w in value) >= (len(value) if len(value) <= 2 else max(2, round(0.75 * len(value)))):
             return True
     return False
 
@@ -110,7 +116,8 @@ def main():
     corpus = {
         'lessons': [doc_index(l['html']) for l in load('lessons')],
         'guide': [doc_index(r['html']) for c in guide['chapters'] for r in c['readings']] + [doc_index(c['essentials']) for c in guide['chapters']],
-        'original': [doc_index(' '.join([g['core'], *g['know'], g['decide'], *g['traps']])) for g in original['guides']],
+        'original': [doc_index(' '.join([g['core'], *g['know'], g['decide'], *g['traps']])) for g in original['guides']]
+                    + [doc_index(d['title'] + ' ' + ' '.join(d['points'])) for g in original['guides'] for d in g.get('deep', [])],
         'cards': [doc_index(c['front'] + ' ' + c['back']) for c in load('cards')],
         'questions': [doc_index(q['prompt']['text'] + ' ' + ' '.join(o['text'] for o in q['options']) + ' ' + q['explanation'])
                       for q in load('questions') + original['questions'] + guide['questions']],

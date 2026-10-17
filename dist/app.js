@@ -2,18 +2,19 @@ import { dayKey, dueCards, streak, todayCount, validateProgress } from './core.m
 import { loadState, saveState, storage } from './store.mjs';
 import { esc, toast } from './ui.mjs';
 import { renderDashboard, renderLearn, renderObjective } from './view-learn.mjs';
+import { renderGuide } from './view-guide.mjs';
 import { renderPractice } from './view-practice.mjs';
 import { renderReview } from './view-review.mjs';
 import { renderCases } from './view-lab.mjs';
 import { renderTrainers, renderProgress, renderLibrary, renderSettings } from './view-misc.mjs';
 
 const TITLES = {
-  dashboard: 'Overview', learn: 'Learning path', practice: 'Practice', review: 'Spaced review', cases: 'Analyst lab',
+  dashboard: 'Overview', learn: 'Learning path', guide: 'Study guide', practice: 'Practice', review: 'Spaced review', cases: 'Analyst lab',
   trainers: 'Skill trainers', progress: 'Progress & notes', library: 'Resource library', settings: 'Settings',
 };
 const ROUTES = {
   dashboard: renderDashboard, learn: (c, r, p) => (p.arg ? renderObjective(c, r, p) : renderLearn(c, r, p)),
-  practice: renderPractice, review: renderReview, cases: renderCases, trainers: renderTrainers,
+  guide: renderGuide, practice: renderPractice, review: renderReview, cases: renderCases, trainers: renderTrainers,
   progress: renderProgress, library: renderLibrary, settings: renderSettings,
 };
 
@@ -31,12 +32,15 @@ async function loadData() {
   const [catalog, book, lessons, cards, original, pbqs, labs, guide] = await Promise.all(
     ['catalog', 'questions', 'lessons', 'cards', 'original', 'pbqs', 'labs', 'guide'].map(loadJson),
   );
-  const dupes = await loadJson('duplicates');
-  const questions = [...original.questions, ...book, ...guide.questions].filter((q) => !dupes.questions[q.id]);
+  const [dupes, inferred] = await Promise.all([loadJson('duplicates'), loadJson('inferred')]);
+  // Machine-inferred objectives are a separate, lower-trust tier and only apply to questions with a domain but no objective.
+  const withInference = (q) => (q.mapping === 'domain-only' && inferred[q.id] ? { ...q, mapping: 'inferred', objective: inferred[q.id].o } : q);
+  const questions = [...original.questions, ...book, ...guide.questions].filter((q) => !dupes.questions[q.id]).map(withInference);
   const liveCards = cards.filter((c) => !dupes.cards[c.id]);
   const objectives = catalog.domains.flatMap((d) => d.objectives.map((o) => ({ ...o, domain: d.id, weight: d.weight, domainTitle: d.title })));
   return {
     catalog, questions, lessons, cards: liveCards, objectives, studyGuide: guide.chapters, guides: original.guides, cases: original.cases, pbqs, labs,
+    audit: { removedQuestions: Object.keys(dupes.questions).length, removedCards: Object.keys(dupes.cards).length, inferred: Object.values(inferred).length },
     qById: new Map(questions.map((q) => [q.id, q])),
     cardById: new Map(liveCards.map((c) => [c.id, c])),
     guideByObjective: new Map(original.guides.map((g) => [g.objective, g])),

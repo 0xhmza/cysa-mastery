@@ -198,12 +198,17 @@ def original_content(domains):
         guides.append({'objective':g['o'],'domain':int(g['o'][0]),'title':titles[g['o']],'core':g['core'],'know':g['know'],'decide':g['decide'],'traps':g['traps']})
     assert [g['objective'] for g in guides]==sorted(titles),'one guide per objective, in order'
     qs=[]
-    for i,q in enumerate(src['questions'],1):
-        assert q['o'] in titles and len(q['opts'])==4 and 0<=q['a']<4,q['id']
+    gap=ROOT/'content/gapfill.json'
+    gapfill=read_json(gap) if gap.exists() else {'deep':[],'questions':[]}
+    for g in guides:
+        g['deep']=[{'title':d['title'],'points':d['points']} for d in gapfill['deep'] if d['o']==g['objective']]
+    for i,q in enumerate(src['questions']+gapfill['questions'],1):
+        assert q['o'] in titles and len(q['opts'])==4 and 0<=q['a']<4 and len(set(q['opts']))==4,q['id']
         qs.append({'id':q['id'],'domain':int(q['o'][0]),'objective':q['o'],'mapping':'original','source':'original','sourceLabel':'Original · CySA Mastery','number':i,
             'prompt':{'text':q['q'],'html':escape(q['q']),'images':[]},
             'options':[{'label':chr(65+k),'text':t,'html':escape(t),'images':[]} for k,t in enumerate(q['opts'])],
             'correct_answers':[chr(65+q['a'])],'explanation':q['e'],'explanationHtml':para(q['e']),'source_pages':[]})
+    assert len({q['id'] for q in qs})==len(qs),'duplicate original question ids'
     for c in src['cases']:
         assert all(0<=st['answer']<len(st['options']) for st in c['steps']),c['id']
         assert all(o in titles for o in c['objectives']),c['id']

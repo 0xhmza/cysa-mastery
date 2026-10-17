@@ -40,6 +40,7 @@ export function statusChip(status) {
 export function mappingChip(q) {
   if (q.mapping === 'original') return `<span class="chip strong" title="Written for this workspace and mapped by hand">Objective ${esc(q.objective)} · original</span>`;
   if (q.mapping === 'reviewed') return `<span class="chip strong" title="Source tag checked and corrected during the content review">Objective ${esc(q.objective)} · reviewed</span>`;
+  if (q.mapping === 'inferred') return `<span class="chip indicative" title="Objective inferred by text similarity to the readings, about 80% reliable; not verified">Objective ${esc(q.objective)} · inferred</span>`;
   if (q.mapping === 'source') return `<span class="chip indicative" title="Tag supplied by the source author; not independently verified">Objective ${esc(q.objective)} · indicative tag</span>`;
   if (q.source === 'sybex' && q.sourceChapter >= 5) return `<span class="chip" title="Mixed practice exam; questions are not tagged to objectives">Mixed exam · no objective tag</span>`;
   return `<span class="chip" title="Only a domain-level association is available">${q.domain ? `Domain ${q.domain}` : 'Untagged'} · domain only</span>`;

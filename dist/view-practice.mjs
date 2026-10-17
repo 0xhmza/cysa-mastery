@@ -1,4 +1,4 @@
-import { isCorrect, missedCount, pickQuestions, prepareQuestion, shuffle } from './core.mjs';
+import { isCorrect, missedCount, pickQuestions, prepareQuestion, shuffle, weakestObjectives } from './core.mjs';
 import { clearSession, loadSession, saveSession } from './store.mjs';
 import { esc, formatDuration, kbd, mappingChip, meter, on, pct } from './ui.mjs';
 
@@ -17,7 +17,7 @@ function buildSession(ctx, cfg) {
   } else if (cfg.weighted) {
     ids = pickQuestions(data.questions.filter((q) => q.domain), { count: cfg.count, mode: 'exam', domains: data.catalog.domains }).map((q) => q.id);
   } else {
-    ids = pickQuestions(data.questions, { count: cfg.count, mode: cfg.mode, state, domain: cfg.domain, objective: cfg.objective, source: cfg.source }).map((q) => q.id);
+    ids = pickQuestions(data.questions, { count: cfg.count, mode: cfg.mode, state, domain: cfg.domain, objective: cfg.objective, objectives: cfg.objectives, source: cfg.source, chapter: cfg.chapterFilter }).map((q) => q.id);
   }
   if (!ids.length) return null;
   const order = {};
@@ -30,7 +30,7 @@ function buildSession(ctx, cfg) {
 
 function recordAttempt(ctx, session, q, answer) {
   ctx.state.attempts.push({
-    id: q.id, domain: q.domain, objective: TRUSTED.has(q.mapping) ? q.objective : null, hint: q.mapping === 'source' ? q.objective : null,
+    id: q.id, domain: q.domain, objective: TRUSTED.has(q.mapping) ? q.objective : null, hint: q.mapping === 'source' || q.mapping === 'inferred' ? q.objective : null,
     correct: answer.correct, at: answer.at, confidence: answer.conf, mode: session.kind === 'exam' ? 'exam' : session.mode, sessionId: session.id,
   });
   ctx.activity('question');
@@ -77,6 +77,7 @@ function renderHome(ctx, root, query) {
   const bookTest = (n) => data.questions.filter((q) => q.source === 'sybex' && q.sourceChapter === n).length;
   const missed = missedCount(state), marked = state.bookmarks.length;
   const originals = data.questions.filter((q) => q.source === 'original').length;
+  const weak = weakestObjectives(data.objectives, state, 3);
   const quick = (key, title, detail, enabled = true) => `<button class="card quick" data-quick="${key}" ${enabled ? '' : 'disabled'}><b>${title}</b><small>${detail}</small></button>`;
   root.innerHTML = `
     <div class="page-head"><div class="eyebrow">Practice</div><h1>Practice with explanations</h1>
@@ -86,6 +87,7 @@ function renderHome(ctx, root, query) {
     ${session && session.finished ? `<div class="notice row between" style="margin-bottom:16px"><div>Results from “${esc(session.label)}” are ready.</div><button class="btn sm" data-act="resume">View results</button></div>` : ''}
     <h2>Quick start</h2>
     <div class="quick-row">
+      ${quick('weak', 'Fix my weak spots', weak.length ? `15 questions from ${weak.map((w) => w.id).join(', ')}, your least-developed objectives` : 'Every objective is mastered', weak.length > 0)}
       ${quick('adaptive', '10 adaptive questions', 'Weighted toward questions you missed or have not seen')}
       ${quick('missed', `Retry missed${missed ? ` (${missed})` : ''}`, missed ? 'Questions whose latest answer was wrong' : 'Nothing missed yet', missed > 0)}
       ${quick('bookmarks', `Bookmarked${marked ? ` (${marked})` : ''}`, marked ? 'Questions you starred while practicing' : 'Star questions while practicing to collect them here', marked > 0)}
@@ -101,7 +103,7 @@ function renderHome(ctx, root, query) {
     <h2 style="margin-top:28px">Build a custom set</h2>
     <form class="card" id="custom"><div class="form-grid">
       ${field('Mode', 'mode', [['mixed', 'Mixed (unseen first)'], ['adaptive', 'Adaptive (focus on weak spots)'], ['missed', 'Missed questions'], ['bookmarks', 'Bookmarked']], query.mode || 'mixed')}
-      ${field('Source', 'source', [['', 'All sources'], ['original', 'Original scenarios'], ['community', 'Community curriculum'], ['sybex', 'Practice book']], query.source || '')}
+      ${field('Source', 'source', [['', 'All sources'], ['original', 'Original scenarios'], ['community', 'Community curriculum'], ['guide', 'Study guide'], ['sybex', 'Practice book']], query.source || '')}
       ${field('Domain', 'domain', [['', 'All domains'], ...data.catalog.domains.map((d) => [d.id, `${d.id}. ${d.title}`])], query.domain || '')}
       ${field('Objective', 'objective', [['', 'Any (book questions have no tag)'], ...data.objectives.map((o) => [o.id, `${o.id} ${o.title.slice(0, 48)}`])], query.objective || '')}
       ${field('Questions', 'count', [5, 10, 20, 40, 85].map((n) => [n, n]), query.count || 10)}
@@ -135,6 +137,7 @@ function renderHome(ctx, root, query) {
   });
   on(root, 'click', '[data-quick]', (_, btn) => {
     const k = btn.dataset.quick;
+    if (k === 'weak') start({ label: `Weak spots · ${weak.map((w) => w.id).join(', ')}`, mode: 'adaptive', count: 15, objectives: weak.map((w) => w.id) });
     if (k === 'adaptive') start({ label: 'Adaptive set', mode: 'adaptive', count: 10 });
     if (k === 'missed') start({ label: 'Missed questions', mode: 'missed', count: 20 });
     if (k === 'bookmarks') start({ label: 'Bookmarked questions', mode: 'bookmarks', count: 40 });
@@ -142,9 +145,10 @@ function renderHome(ctx, root, query) {
   });
   on(root, 'click', '[data-act="resume"]', () => ctx.go('#practice/session'));
   on(root, 'click', '[data-act="discard"]', () => { clearSession(); ctx.toast('Session discarded.'); ctx.rerender(); });
-  if (query.go === '1' && query.mode) {
+  if (query.go === '1' && (query.mode || query.chapter)) {
+    query.mode = query.mode || 'mixed';
     const count = Number(query.count) || 10;
-    start({ label: query.mode === 'missed' ? 'Missed questions' : `Adaptive set${query.objective ? ` · ${query.objective}` : ''}`, mode: query.mode, count, domain: query.domain || null, objective: query.objective || null, source: query.source || null });
+    start({ label: query.chapter ? `Study guide · chapter ${query.chapter}` : query.mode === 'missed' ? 'Missed questions' : `Adaptive set${query.objective ? ` · ${query.objective}` : ''}`, mode: query.mode, count, domain: query.domain || null, objective: query.objective || null, source: query.source || null, chapterFilter: query.chapter || null });
   }
 }
 
@@ -205,7 +209,7 @@ function renderSession(ctx, root) {
       <div class="session-head">
         <div class="row between"><div><div class="eyebrow">${esc(session.label)}</div><b>Question ${session.idx + 1} of ${session.ids.length}</b>
           <span class="muted">· ${exam ? `${answeredCount} answered` : checkedAnswers.length ? `${rightSoFar} of ${checkedAnswers.length} correct` : 'first question'}</span></div>
-          <div class="row">${session.limitSec ? `<span class="timer" id="timer" role="timer" aria-label="Time remaining">${formatDuration(session.limitSec - session.elapsedMs / 1000)}</span>` : ''}
+          <div class="row">${session.limitSec && answeredCount ? `<span class="muted pace" title="Average time per answered question against the exam average">avg ${formatDuration(session.elapsedMs / 1000 / answeredCount)}/q · target ${formatDuration(session.limitSec / session.ids.length)}/q</span>` : ''}${session.limitSec ? `<span class="timer" id="timer" role="timer" aria-label="Time remaining">${formatDuration(session.limitSec - session.elapsedMs / 1000)}</span>` : ''}
           <button class="btn sm ghost" data-act="end">${exam ? 'Submit exam…' : 'End session'}</button></div></div>
         ${meter(progress, 'Session progress', 'thin')}
       </div>

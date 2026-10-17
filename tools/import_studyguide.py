@@ -14,6 +14,23 @@ from bs4 import BeautifulSoup
 import import_content as ic
 
 DOMAIN_OF_CHAPTER = {**{c: 1 for c in range(1, 6)}, **{c: 2 for c in range(6, 9)}, **{c: 3 for c in range(9, 12)}, 12: 4}
+# Section id -> official objective(s), decided from each section title against the CS0-004 objective titles.
+# Sections left out (general background such as CIA basics or SAMM) stay at domain level.
+SECTION_OBJECTIVES = {
+    'sg-01-07': ['1.5'], 'sg-01-08': ['1.6'],
+    **{f'sg-02-{i:02}': ['1.1'] for i in range(1, 9)},
+    'sg-03-01': ['1.2'], 'sg-03-02': ['1.2'], 'sg-03-03': ['1.2'], 'sg-03-04': ['1.3'],
+    **{f'sg-04-{i:02}': ['1.4'] for i in range(1, 4)},
+    'sg-05-01': ['2.1'], 'sg-05-02': ['2.1'],
+    'sg-06-01': ['2.1'], 'sg-06-02': ['2.1'], 'sg-06-03': ['2.3'], 'sg-06-04': ['2.1'], 'sg-06-05': ['2.2'],
+    'sg-07-01': ['2.2'], 'sg-07-02': ['2.2'], 'sg-07-03': ['2.3'], 'sg-07-04': ['2.3'],
+    'sg-08-01': ['2.4'], 'sg-08-02': ['2.4'], 'sg-08-04': ['2.4'], 'sg-08-06': ['2.4'],
+    'sg-08-05': ['2.3'], 'sg-08-07': ['2.3'], 'sg-08-08': ['2.3'], 'sg-08-09': ['2.1'],
+    'sg-09-01': ['3.2'], 'sg-09-02': ['3.2'], 'sg-09-03': ['3.2'], 'sg-09-04': ['3.2'], 'sg-09-05': ['3.2'], 'sg-09-06': ['3.1'],
+    'sg-10-01': ['3.3'], 'sg-10-02': ['3.3'],
+    **{f'sg-11-{i:02}': ['3.3'] for i in range(1, 5)},
+    'sg-12-01': ['4.1'], 'sg-12-02': ['4.2'],
+}
 SKIP_SECTIONS = ('Exam Essentials', 'Lab Exercises', 'Review Questions', 'Answers to Review Questions', 'Answers to Lab Exercises')
 LETTERS = r'([A-F](?:\s*(?:,|and|&)\s*[A-F])*)'
 # Strict form is 'B. text'. The only observed typo is an en space instead of the period ('A Hashing…').
@@ -127,7 +144,8 @@ def import_studyguide(input_dir: Path, dist: Path):
         for t, els in secs[1:]:
             if t in SKIP_SECTIONS:
                 continue
-            readings.append({'id': f'sg-{n:02}-{len(readings) + 1:02}', 'title': t, 'html': ic.safe_html(''.join(str(e) for e in els), 'guide')})
+            rid = f'sg-{n:02}-{len(readings) + 1:02}'
+            readings.append({'id': rid, 'title': t, 'objectives': SECTION_OBJECTIVES.get(rid, []), 'html': ic.safe_html(''.join(str(e) for e in els), 'guide')})
         essentials = ic.safe_html(''.join(str(e) for e in by_title.get('Exam Essentials', [])), 'guide')
         hint = objectives[0] if len(objectives) == 1 else None
         qs = parse_questions(by_title.get('Review Questions', []))
