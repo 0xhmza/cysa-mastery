@@ -42,7 +42,18 @@ export function objectiveEvidence(state,id) {
   const recent=attempts.slice(-10),accuracy=recent.length?recent.filter(a=>a.correct).length/recent.length:null;
   const read=!!state.objectives[id]?.read;
   const strong=read&&unique.size>=8&&recent.length>=8&&accuracy>=.8;
-  return {attempts:attempts.length,unique:unique.size,trusted:trusted.size,indicative:unique.size-trusted.size,accuracy,read,strong,status:strong?'Strong':attempts.length?'Practicing':read?'Learning':'New'};
+  return {attempts:attempts.length,unique:unique.size,trusted:trusted.size,indicative:unique.size-trusted.size,recent:recent.length,accuracy,read,strong,status:strong?'Strong':attempts.length?'Practicing':read?'Learning':'New'};
+}
+export const STRONG_RULE={unique:8,recent:8,accuracy:.8};
+// How far an objective is along each of the three "Strong" criteria, for progress displays (0..1 each).
+export function strongProgress(ev) {
+  const guide=ev.read?1:0,volume=Math.min(1,ev.unique/STRONG_RULE.unique);
+  const accuracy=ev.accuracy==null?0:Math.min(1,ev.accuracy/STRONG_RULE.accuracy)*Math.min(1,ev.recent/STRONG_RULE.recent);
+  return {guide,volume,accuracy,overall:ev.strong?1:Math.min(.99,(guide+volume+accuracy)/3)};
+}
+export function missedCount(state) {
+  const latest=new Map();for(const a of state.attempts)latest.set(a.id,a.correct);
+  return [...latest.values()].filter(c=>!c).length;
 }
 export function dueCards(cards,state,now=Date.now()) {
   return cards.filter(c=>state.reviews[c.id]&&state.reviews[c.id].due<=now).sort((a,b)=>state.reviews[a.id].due-state.reviews[b.id].due);

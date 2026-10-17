@@ -1,4 +1,4 @@
-import { dayKey, dueCards, streak, validateProgress } from './core.mjs';
+import { dayKey, dueCards, streak, todayCount, validateProgress } from './core.mjs';
 import { loadState, saveState, storage } from './store.mjs';
 import { esc, toast } from './ui.mjs';
 import { renderDashboard, renderLearn, renderObjective } from './view-learn.mjs';
@@ -53,6 +53,10 @@ function updateChrome(route) {
   document.getElementById('dueBadge').textContent = due;
   const days = streak(ctx.state);
   document.getElementById('streakLabel').textContent = `${days} day streak`;
+  const today = todayCount(ctx.state), goal = ctx.state.profile.dailyGoal;
+  document.getElementById('goalText').textContent = `${today} / ${goal} today`;
+  document.getElementById('goalRing').style.setProperty('--p', Math.min(1, today / goal));
+  document.getElementById('dailyChip').classList.toggle('met', today >= goal);
   document.getElementById('profileName').firstChild.textContent = ctx.state.profile.name;
   document.getElementById('pageTitle').textContent = TITLES[route];
   document.title = `${TITLES[route]} · CySA Mastery`;
@@ -87,8 +91,11 @@ function createContext(data) {
       if (!context.warned) { context.warned = true; toast('Progress cannot be saved in this browser. Export a backup from Settings.'); }
     },
     activity(type) {
+      const before = todayCount(context.state);
       context.state.activities.push({ day: dayKey(), type, at: Date.now() });
       if (context.state.activities.length > 50000) context.state.activities.splice(0, 10000);
+      if (before + 1 === context.state.profile.dailyGoal) toast('Daily goal reached. Nice work.');
+      queueMicrotask(() => updateChrome(parseHash().route));
     },
     onLeave(fn) { cleanups.push(fn); },
     refreshChrome() { updateChrome(parseHash().route); },
@@ -99,9 +106,20 @@ function createContext(data) {
   return context;
 }
 
+function openShortcuts() {
+  const dialog = document.getElementById('shortcuts');
+  if (!dialog.open) dialog.showModal();
+}
+
 function bindShell() {
   document.getElementById('menuToggle').addEventListener('click', () => document.body.classList.toggle('nav-open'));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') document.body.classList.remove('nav-open'); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') document.body.classList.remove('nav-open');
+    if (e.key === '?' && !e.target.closest?.('input,textarea,select') && !e.ctrlKey && !e.metaKey) { e.preventDefault(); openShortcuts(); }
+  });
+  const dialog = document.getElementById('shortcuts');
+  document.getElementById('helpButton').addEventListener('click', openShortcuts);
+  dialog.addEventListener('click', (e) => { if (e.target === dialog || e.target.closest('[data-close]')) dialog.close(); });
   document.getElementById('progressImport').addEventListener('change', async (event) => {
     const file = event.target.files[0];
     event.target.value = '';

@@ -10,7 +10,7 @@ Requires Python 3 (for the local server) and Node 20+ (for tests). There are no 
 
 ```bash
 npm start      # serves dist/ at http://localhost:8114
-npm test       # 40 tests: core logic, UI helpers, dataset integrity
+npm test       # 42 tests: core logic, UI helpers, dataset integrity
 ```
 
 Open `http://localhost:8114`. Opening `index.html` directly from disk will not work because the app loads JSON with `fetch`. `tools/serve.py` is used instead of `python -m http.server` because Python on Windows can serve JavaScript as `text/plain`, which blocks ES modules.
@@ -19,15 +19,17 @@ Open `http://localhost:8114`. Opening `index.html` directly from disk will not w
 
 | Area | Behaviour |
 | --- | --- |
-| Overview | Daily goal, streak, due cards, and suggested next steps (resume, due cards, high-confidence misses, unread objectives, weak objectives) |
-| Learning path | The 15 official objectives. Each has a short original guide (what to know, how to decide, common traps), imported deeper readings with read tracking, and notes |
-| Practice | Filtered sets (mixed, adaptive, missed, bookmarked), confidence recording, explanations, option shuffling that tracks the answer by identity, resumable sessions |
+| Overview | One “Up next” action (resume, due cards, high-confidence misses, weak or unstarted objectives), today’s goal, streak, and a clickable 15-objective map showing progress toward Strong |
+| Learning path | The 15 official objectives. Each has a “Path to Strong” checklist saying exactly what is missing, a short original guide (what to know, how to decide, common traps), imported readings with read tracking, and autosaved notes |
+| Practice | One-click quick starts (adaptive, missed, bookmarked, original scenarios) and custom filtered sets. Pick an answer, then check it by saying how sure you are (one click or keys 1–3). Explanations, ✓/✗ marks, a link back to the objective guide after a miss, a running score, resumable sessions |
 | Full-length sets | Book Practice Test 1 and 2 (85 questions each), and a weighted mixed mock (85 questions, 29/22/20/14 across domains). 165 minutes, no feedback until the end, question navigator, flagging. The clock pauses when you leave the page and auto-submits at zero |
-| Spaced review | Again/Hard/Good/Easy scheduling with interval previews, a daily new-card limit, keyboard shortcuts, long answers collapsed until you ask |
+| Spaced review | Again/Hard/Good/Easy scheduling with interval previews, a daily new-card limit, session progress, filters that apply instantly, long answers collapsed until you ask |
 | Analyst lab | 3 original multi-step cases, 30 performance-based exercises, and 20 scripted lab simulations (clearly labelled as simulations) |
 | Skill trainers | The 13 standalone HTML trainers from the CySA-004 repo, plus 11 reference graphics |
 | Progress | Per-objective evidence, domain accuracy, misconceptions (sure and wrong), full-length history, notes, JSON backup and restore |
 | Library | Official objectives PDF, course notes, sources and licences, and a list of the corrections applied |
+
+Press `?` anywhere for the keyboard shortcuts.
 
 ### How progress is judged
 

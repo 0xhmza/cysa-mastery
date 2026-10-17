@@ -13,5 +13,5 @@ Rules:
 
 - Never Read `dist/data/*.json` (multi-MB), `dist/media`, `dist/trainers` or PDFs. Inspect them with a short `node -e` / `python -c` script that prints counts or one record.
 - Content is generated: edit `content/enrichment.json` or `tools/import_content.py`, then run `npm run import`. Do not hand-edit `dist/data`.
-- Rebuild the graph with `python -X utf8 -m graphify update .` after code changes (AST only, no API cost). If `graphify` is not on PATH use `python -X utf8 -m graphify ...`.
+- Rebuild the graph with `npm run graph` after code changes (AST only, no API cost). If `graphify` is not on PATH use `python -X utf8 -m graphify ...`.
 - Tests: `npm test` (node:test, no dependencies).

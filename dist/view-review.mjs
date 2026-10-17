@@ -1,5 +1,5 @@
 import { dayKey, dueCards, newCards, scheduleReview } from './core.mjs';
-import { esc, on } from './ui.mjs';
+import { esc, kbd, meter, on } from './ui.mjs';
 
 const GRADES = [['again', 'Again', '1'], ['hard', 'Hard', '2'], ['good', 'Good', '3'], ['easy', 'Easy', '4']];
 const LONG_ANSWER_CHARS = 700;
@@ -26,12 +26,14 @@ export function renderReview(ctx, root, { query }) {
   let revealed = false;
   let againSeen = new Set();
   let extraNew = 0;
+  let reviewed = 0;
 
   const startQueue = (includeExtra = 0) => {
     const due = dueCards(pool, state).map((c) => c.id);
     const fresh = newCards(pool, state, allowance() + includeExtra).map((c) => c.id);
     queue = [...due, ...fresh];
     revealed = false;
+    reviewed = 0;
   };
 
   const header = () => `<div class="page-head"><div class="eyebrow">Spaced review</div><h1>Flashcards on a schedule</h1>
@@ -41,12 +43,12 @@ export function renderReview(ctx, root, { query }) {
     <label class="field">Domain<select name="domain"><option value="">All</option>${data.catalog.domains.map((d) => `<option value="${d.id}"${String(d.id) === filter.domain ? ' selected' : ''}>${d.id}. ${esc(d.title)}</option>`).join('')}</select></label>
     <label class="field">Objective<select name="objective"><option value="">All</option>${data.objectives.map((o) => `<option value="${o.id}"${o.id === filter.objective ? ' selected' : ''}>${o.id}</option>`).join('')}</select></label>
     <label class="field">Deck<select name="source"><option value="">All</option><option value="community"${filter.source === 'community' ? ' selected' : ''}>Community flashcards</option><option value="anki"${filter.source === 'anki' ? ' selected' : ''}>Anki deck</option></select></label>
-    <button class="btn" type="submit" style="align-self:flex-end">Apply filters</button></form>`;
+    <span class="muted" style="align-self:flex-end;font-size:.82rem">Filters apply immediately</span></form>`;
 
   const bindFilters = () => {
-    root.querySelector('#filters')?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const f = Object.fromEntries(new FormData(e.target));
+    const form = root.querySelector('#filters');
+    form?.addEventListener('change', () => {
+      const f = Object.fromEntries(new FormData(form));
       const q = new URLSearchParams(Object.entries(f).filter(([, v]) => v)).toString();
       ctx.go(`#review${q ? `?${q}` : ''}`);
     });
@@ -72,21 +74,22 @@ export function renderReview(ctx, root, { query }) {
     const prev = state.reviews[card.id];
     const now = Date.now();
     const long = plain(card.back).length > LONG_ANSWER_CHARS;
-    root.innerHTML = `${header()}
-      <div class="row between" style="margin-bottom:10px"><span class="muted">${queue.length} remaining · ${prev ? 'review' : 'new'} card</span><button class="btn sm ghost" data-act="stop">End session</button></div>
+    root.innerHTML = `<div class="session-head"><div class="row between"><div><div class="eyebrow">Spaced review</div><b>${reviewed} reviewed · ${queue.length} to go</b> <span class="muted">· ${prev ? 'review' : 'new'} card</span></div><button class="btn sm ghost" data-act="stop">End session</button></div>
+      ${meter(reviewed / (reviewed + queue.length), 'Review session progress', 'thin')}</div>
       <article class="card flash" aria-live="polite">
         <div class="q-meta">${card.objective ? `<span class="chip ${card.mapping === 'source' ? 'indicative' : ''}">Objective ${esc(card.objective)}</span>` : card.domain ? `<span class="chip">Domain ${card.domain}</span>` : '<span class="chip">Untagged</span>'}<span class="chip">${card.source === 'anki' ? 'Anki deck' : 'Community'}</span></div>
         <div class="face rich">${card.front}</div>
         ${revealed ? `<hr style="border:0;border-top:1px solid var(--line);width:100%"><div class="rich ${long ? 'clamp' : ''}" id="back">${card.back}</div>${long ? '<button class="btn sm" data-act="expand">Show full answer</button>' : ''}` : ''}
       </article>
       <div class="row" style="margin-top:14px;justify-content:center">${revealed
-        ? `<div class="grade-row" style="width:100%;max-width:560px" role="group" aria-label="Rate your recall">${GRADES.map(([g, label, key]) => `<button class="btn" data-grade="${g}"><b>${label}</b><small>${formatInterval(scheduleReview(prev, g, now), now)} · key ${key}</small></button>`).join('')}</div>`
-        : '<button class="btn primary" data-act="reveal">Show answer <small>(Space)</small></button>'}</div>`;
+        ? `<div class="grade-row" style="width:100%;max-width:560px" role="group" aria-label="Rate your recall">${GRADES.map(([g, label, key]) => `<button class="btn grade-${g}" data-grade="${g}"><b>${label} ${kbd(key)}</b><small>next in ${formatInterval(scheduleReview(prev, g, now), now)}</small></button>`).join('')}</div>`
+        : `<button class="btn primary lg" data-act="reveal">Show answer ${kbd('Space')}</button>`}</div>
+      <p class="keys">${revealed ? `${kbd('1')}–${kbd('4')} rate your recall` : 'Try to recall the answer before revealing it.'} · ${kbd('?')} all shortcuts</p>`;
     root.querySelector('[data-act="reveal"]')?.focus();
   };
 
   const drawDone = () => {
-    root.innerHTML = `${header()}<div class="empty"><h3>Session complete</h3>Your next reviews are scheduled. ${againSeen.size ? `${againSeen.size} card${againSeen.size === 1 ? '' : 's'} will return soon.` : ''}<div class="row" style="justify-content:center;margin-top:14px"><a class="btn primary" href="#dashboard">Back to overview</a><button class="btn" data-act="summary">Review options</button></div></div>`;
+    root.innerHTML = `${header()}<div class="empty"><h3>Session complete</h3>You reviewed ${reviewed} card${reviewed === 1 ? '' : 's'}. Your next reviews are scheduled. ${againSeen.size ? `${againSeen.size} card${againSeen.size === 1 ? '' : 's'} will return soon.` : ''}<div class="row" style="justify-content:center;margin-top:14px"><a class="btn primary" href="#dashboard">Back to overview</a><button class="btn" data-act="summary">Review options</button></div></div>`;
     ctx.refreshChrome();
   };
 
@@ -98,6 +101,7 @@ export function renderReview(ctx, root, { query }) {
     state.reviews[id] = { ...next, first: prev?.first || dayKey() };
     ctx.activity('card');
     ctx.save();
+    reviewed++;
     queue.shift();
     if (g === 'again') { queue.splice(Math.min(queue.length, 4), 0, id); againSeen.add(id); }
     revealed = false;
@@ -115,7 +119,7 @@ export function renderReview(ctx, root, { query }) {
   });
   on(root, 'click', '[data-grade]', (_, b) => grade(b.dataset.grade));
   const keys = (e) => {
-    if (!queue || e.target.closest?.('input,textarea,select') || e.ctrlKey || e.metaKey || e.altKey) return;
+    if (!queue || e.target.closest?.('input,textarea,select,dialog') || e.ctrlKey || e.metaKey || e.altKey) return;
     if (!revealed && (e.key === ' ' || e.key === 'Enter') && !e.target.closest?.('button')) { e.preventDefault(); revealed = true; drawCard(); }
     else if (revealed) { const hit = GRADES.find(([, , k]) => k === e.key); if (hit) grade(hit[0]); }
   };

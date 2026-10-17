@@ -23,9 +23,15 @@
   <nav aria-label="Study tools"><a href="#progress" data-nav="progress"><span class="nav-icon">▥</span>Progress & notes</a><a href="#library" data-nav="library"><span class="nav-icon">▧</span>Resource library</a></nav>
   <div class="sidebar-bottom"><div class="exam-badge"><span class="status-dot"></span>CS0-004 · V4<span>v2.0 objectives</span></div><a href="#settings" data-nav="settings" class="profile-link"><span class="avatar">H</span><span id="profileName">Hamza<small>Personal learning space</small></span><span class="settings-icon">⚙</span></a></div>
 </aside>
-<div class="workspace"><header class="topbar"><button class="icon-button menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button><div class="breadcrumb">WORKSPACE <span>/</span> <b id="pageTitle">Overview</b></div><div class="topbar-right"><span id="streakLabel">0 day streak</span><a href="#review" class="daily-chip"><span class="status-dot"></span>Keep showing up</a></div></header>
+<div class="workspace"><header class="topbar"><button class="icon-button menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button><div class="breadcrumb">WORKSPACE <span>/</span> <b id="pageTitle">Overview</b></div><div class="topbar-right"><span id="streakLabel" class="streak">0 day streak</span><a href="#dashboard" class="daily-chip" id="dailyChip" title="Learning actions today against your daily goal"><span class="goal-ring" id="goalRing" aria-hidden="true"></span><span id="goalText">0 / 20 today</span></a><button class="icon-button help-button" id="helpButton" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (?)">?</button></div></header>
 <main id="main" tabindex="-1"><div class="loading"><span class="loader"></span>Preparing your learning workspace…</div></main>
 <footer class="site-footer"><span>Learn the why. Practice the decision.</span><span>Progress stays in this browser · <a href="#settings">Back up progress</a></span></footer>
-</div><div class="toast" id="toast" role="status" aria-live="polite"></div><input type="file" id="progressImport" accept="application/json,.json" hidden>
+</div><dialog id="shortcuts" aria-labelledby="shortcutsTitle"><div class="row between"><h2 id="shortcutsTitle" style="margin:0">Keyboard shortcuts</h2><button class="icon-button" data-close aria-label="Close">✕</button></div>
+<div class="shortcut-grid">
+<section><h3>Practice</h3><dl><dt><kbd>A</kbd>–<kbd>D</kbd></dt><dd>Choose an answer</dd><dt><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></dt><dd>Check as Guessing, Fairly sure or Certain</dd><dt><kbd>Enter</kbd></dt><dd>Check as Fairly sure, or go to the next question</dd><dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>Previous or next question in exams</dd></dl></section>
+<section><h3>Spaced review</h3><dl><dt><kbd>Space</kbd></dt><dd>Show the answer</dd><dt><kbd>1</kbd>–<kbd>4</kbd></dt><dd>Rate Again, Hard, Good or Easy</dd></dl></section>
+<section><h3>Anywhere</h3><dl><dt><kbd>?</kbd></dt><dd>Show this list</dd><dt><kbd>Esc</kbd></dt><dd>Close dialogs and the menu</dd></dl></section>
+</div></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div><input type="file" id="progressImport" accept="application/json,.json" hidden>
 <script type="module" src="app.js"></script>
 </body></html>

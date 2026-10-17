@@ -55,3 +55,11 @@ export function download(filename, text, type = 'application/json') {
 }
 
 export const domainName = (catalog, id) => catalog.domains.find((d) => d.id === id)?.title ?? 'Unassigned';
+
+export const fmt = (n) => Number(n).toLocaleString('en-US');
+export const kbd = (key) => `<kbd>${esc(key)}</kbd>`;
+
+export function meter(fraction, label, cls = '') {
+  const p = Math.round(Math.max(0, Math.min(1, fraction || 0)) * 100);
+  return `<div class="bar ${cls}" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${p}" aria-label="${esc(label)}"><i style="width:${p}%"></i></div>`;
+}

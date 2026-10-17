@@ -21,7 +21,11 @@ def graphify(*args):
 
 
 def main():
-    graphify('extract', '.', '--code-only')
+    # Each run starts clean: an incremental extract would merge into the previous *merged* graph and fail.
+    for stale in [ROOT / 'graphify-out' / 'graph.json', ROOT / 'graphify-out' / 'manifest.json']:
+        stale.unlink(missing_ok=True)
+    shutil.rmtree(ROOT / 'graphify-web', ignore_errors=True)
+    graphify('extract', '.', '--code-only', '--force')
     main_graph = ROOT / 'graphify-out' / 'graph.json'
     kept = ROOT / 'graphify-out' / 'project-graph.json'
     shutil.copy2(main_graph, kept)

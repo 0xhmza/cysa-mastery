@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  canShuffleOptions, dayKey, domainStats, dueCards, freshState, isCorrect, misconceptions, newCards, objectiveEvidence,
-  pickQuestions, prepareQuestion, scheduleReview, shuffle, streak, validateProgress, weightedCounts,
+  canShuffleOptions, dayKey, domainStats, dueCards, freshState, isCorrect, misconceptions, missedCount, newCards, objectiveEvidence,
+  pickQuestions, prepareQuestion, scheduleReview, shuffle, streak, strongProgress, validateProgress, weightedCounts,
 } from '../dist/core.mjs';
 
 const DOMAINS = [{ id: 1, weight: 34 }, { id: 2, weight: 26 }, { id: 3, weight: 24 }, { id: 4, weight: 16 }];
@@ -250,4 +250,27 @@ test('shuffle is a permutation and does not mutate its input', () => {
   const out = shuffle(input, seeded(9));
   assert.deepEqual(input, copy);
   assert.deepEqual([...out].sort(), copy);
+});
+
+test('progress toward Strong tracks each criterion and only reaches 1 when Strong', () => {
+  const state = freshState();
+  assert.deepEqual(strongProgress(objectiveEvidence(state, '1.1')), { guide: 0, volume: 0, accuracy: 0, overall: 0 });
+  state.objectives['1.1'] = { read: true };
+  state.attempts = Array.from({ length: 4 }, (_, i) => attempt(`q${i}`, true));
+  const half = strongProgress(objectiveEvidence(state, '1.1'));
+  assert.equal(half.guide, 1);
+  assert.equal(half.volume, 0.5);
+  assert.equal(half.accuracy, 0.5, 'perfect accuracy but only 4 of the 8 required recent answers');
+  assert.ok(half.overall > 0.6 && half.overall < 0.7);
+  state.attempts.push(...Array.from({ length: 4 }, (_, i) => attempt(`r${i}`, true)));
+  assert.equal(strongProgress(objectiveEvidence(state, '1.1')).overall, 1);
+  state.objectives['1.1'].read = false;
+  assert.ok(strongProgress(objectiveEvidence(state, '1.1')).overall < 1, 'never full without the guide');
+});
+
+test('missed count uses the latest answer per question', () => {
+  const state = freshState();
+  state.attempts = [attempt('a', false), attempt('a', true), attempt('b', false), attempt('c', true), attempt('c', false)];
+  assert.equal(missedCount(state), 2);
+  assert.equal(missedCount(freshState()), 0);
 });
