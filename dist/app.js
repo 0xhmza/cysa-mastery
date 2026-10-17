@@ -28,15 +28,17 @@ async function loadJson(name) {
 }
 
 async function loadData() {
-  const [catalog, book, lessons, cards, original, pbqs, labs] = await Promise.all(
-    ['catalog', 'questions', 'lessons', 'cards', 'original', 'pbqs', 'labs'].map(loadJson),
+  const [catalog, book, lessons, cards, original, pbqs, labs, guide] = await Promise.all(
+    ['catalog', 'questions', 'lessons', 'cards', 'original', 'pbqs', 'labs', 'guide'].map(loadJson),
   );
-  const questions = [...original.questions, ...book];
+  const dupes = await loadJson('duplicates');
+  const questions = [...original.questions, ...book, ...guide.questions].filter((q) => !dupes.questions[q.id]);
+  const liveCards = cards.filter((c) => !dupes.cards[c.id]);
   const objectives = catalog.domains.flatMap((d) => d.objectives.map((o) => ({ ...o, domain: d.id, weight: d.weight, domainTitle: d.title })));
   return {
-    catalog, questions, lessons, cards, objectives, guides: original.guides, cases: original.cases, pbqs, labs,
+    catalog, questions, lessons, cards: liveCards, objectives, studyGuide: guide.chapters, guides: original.guides, cases: original.cases, pbqs, labs,
     qById: new Map(questions.map((q) => [q.id, q])),
-    cardById: new Map(cards.map((c) => [c.id, c])),
+    cardById: new Map(liveCards.map((c) => [c.id, c])),
     guideByObjective: new Map(original.guides.map((g) => [g.objective, g])),
   };
 }

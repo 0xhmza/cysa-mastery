@@ -1,0 +1,279 @@
+{
+ "summary": {
+  "questions_total": 1711,
+  "question_duplicate_groups": 13,
+  "question_duplicates_removed": 13,
+  "question_duplicates_by_source_mix": {
+   "sybex": 8,
+   "guide+sybex": 3,
+   "guide": 2
+  },
+  "question_variant_groups_kept": 3,
+  "cards_total": 2339,
+  "card_duplicate_groups": 10,
+  "card_duplicates_removed": 11,
+  "card_duplicates_by_source_mix": {
+   "anki+community": 1,
+   "anki": 8,
+   "community": 1
+  },
+  "thresholds": {
+   "stem": 0.82,
+   "answer": 0.6,
+   "card": 0.88
+  }
+ },
+ "questions": [
+  {
+   "keep": "ch1_q043",
+   "drop": [
+    "ch1_q012"
+   ],
+   "sources": [
+    "sybex"
+   ],
+   "stem": "The company that Amanda works for is making significant investments in infrastructure-as-a-service hosting to replace their traditional data"
+  },
+  {
+   "keep": "ch1_q131",
+   "drop": [
+    "ch1_q015"
+   ],
+   "sources": [
+    "sybex"
+   ],
+   "stem": "Lucas believes that an attacker has successfully compromised his web server. Using the following output of ps , identify the process ID he s"
+  },
+  {
+   "keep": "ch1_q019",
+   "drop": [
+    "ch1_q113"
+   ],
+   "sources": [
+    "sybex"
+   ],
+   "stem": "While reviewing Apache logs, Janet sees the following entries as well as hundreds of others from the same source IP address. What should Jan"
+  },
+  {
+   "keep": "ch1_q034",
+   "drop": [
+    "ch6_q047"
+   ],
+   "sources": [
+    "sybex"
+   ],
+   "stem": "Susan needs to test thousands of submitted binaries. She needs to ensure that the applications do not contain malicious code. What technique"
+  },
+  {
+   "keep": "ch3_q005",
+   "drop": [
+    "ch1_q231"
+   ],
+   "sources": [
+    "sybex"
+   ],
+   "stem": "The ATT&CK framework defines which of the following as “the specifics behind how the adversary would attack the target?”"
+  },
+  {
+   "keep": "ch1_q243",
+   "drop": [
+    "ch5_q082"
+   ],
+   "sources": [
+    "sybex"
+   ],
+   "stem": "Gabby’s organization captures sensitive customer information, and salespeople and others often work with that data on local workstations and"
+  },
+  {
+   "keep": "ch2_q244",
+   "drop": [
+    "ch2_q041"
+   ],
+   "sources": [
+    "sybex"
+   ],
+   "stem": "Chris operates the point-of-sale (POS) network for a company that accepts credit cards and is thus required to be compliant with PCI DSS. Du"
+  },
+  {
+   "keep": "ch2_q057",
+   "drop": [
+    "ch2_q064"
+   ],
+   "sources": [
+    "sybex"
+   ],
+   "stem": "What operating system is most likely running on the server in this vulnerability scan report?"
+  },
+  {
+   "keep": "ch3_q144",
+   "drop": [
+    "sg09_q002"
+   ],
+   "sources": [
+    "guide",
+    "sybex"
+   ],
+   "stem": "During what phase of the incident response process would an organization implement defenses designed to reduce the likelihood of a security "
+  },
+  {
+   "keep": "sg11_q007",
+   "drop": [
+    "ch3_q147"
+   ],
+   "sources": [
+    "guide",
+    "sybex"
+   ],
+   "stem": "Tamara is a cybersecurity analyst for a private business that is suffering a security breach. She believes the attackers have compromised a "
+  },
+  {
+   "keep": "ch3_q148",
+   "drop": [
+    "sg09_q012"
+   ],
+   "sources": [
+    "guide",
+    "sybex"
+   ],
+   "stem": "Robert is finishing a draft of a proposed incident response policy for his organization. Who would be the most appropriate person to sign th"
+  },
+  {
+   "keep": "sgat_q020",
+   "drop": [
+    "sg08_q015"
+   ],
+   "sources": [
+    "guide"
+   ],
+   "stem": "A security architect is concerned that developers are unknowingly pulling vulnerable third-party and open source libraries into a new micros"
+  },
+  {
+   "keep": "sgat_q013",
+   "drop": [
+    "sg09_q006"
+   ],
+   "sources": [
+    "guide"
+   ],
+   "stem": "During an intrusion investigation, the CSIRT identifies that the compromised host repeatedly connected to an attacker-controlled domain evil"
+  }
+ ],
+ "question_variants": [
+  [
+   "ch1_q032",
+   "ch5_q017"
+  ],
+  [
+   "ch1_q115",
+   "ch2_q022"
+  ],
+  [
+   "ch2_q054",
+   "ch6_q011"
+  ]
+ ],
+ "cards": [
+  {
+   "keep": "anki-1784452180128",
+   "drop": [
+    "anki-1784397552033",
+    "F1-065"
+   ],
+   "sources": [
+    "anki",
+    "community"
+   ],
+   "front": "🔍 What is an Indicator of Compromise (IoC)?"
+  },
+  {
+   "keep": "anki-1787659521977",
+   "drop": [
+    "anki-1786577753381"
+   ],
+   "sources": [
+    "anki"
+   ],
+   "front": "A security analyst is asked to quickly check a large list of web applications for common misconfigurations and exposed l"
+  },
+  {
+   "keep": "anki-1787396391377",
+   "drop": [
+    "anki-1786577753392"
+   ],
+   "sources": [
+    "anki"
+   ],
+   "front": "How does Shibboleth use SAML to enable federated identity between an identity provider and a service provider? A) Shibbo"
+  },
+  {
+   "keep": "anki-1787659521981",
+   "drop": [
+    "anki-1786577753395"
+   ],
+   "sources": [
+    "anki"
+   ],
+   "front": "A network administrator is preparing for a maintenance window and wants to quickly confirm which workstations and server"
+  },
+  {
+   "keep": "anki-1787659493015",
+   "drop": [
+    "anki-1786577776484"
+   ],
+   "sources": [
+    "anki"
+   ],
+   "front": "A software company hosts its main customer portal, email gateway, and API endpoints in a screened subnet that is reachab"
+  },
+  {
+   "keep": "anki-1788121955008",
+   "drop": [
+    "anki-1786577776488"
+   ],
+   "sources": [
+    "anki"
+   ],
+   "front": "How can AI-enabled plug-ins for command-line interfaces (CLI) most effectively support security professionals during day"
+  },
+  {
+   "keep": "anki-1787952166058",
+   "drop": [
+    "anki-1786577776490"
+   ],
+   "sources": [
+    "anki"
+   ],
+   "front": "A financial services company with offices only in Illinois and Texas detects multiple successful VPN logins to employee "
+  },
+  {
+   "keep": "anki-1786577794551",
+   "drop": [
+    "anki-1788188496693"
+   ],
+   "sources": [
+    "anki"
+   ],
+   "front": "Which situation BEST illustrates how a Software Bill of Materials (SBoM) supports incident response after a new vulnerab"
+  },
+  {
+   "keep": "anki-1787758970329",
+   "drop": [
+    "anki-1787771995296"
+   ],
+   "sources": [
+    "anki"
+   ],
+   "front": "A financial institution has just experienced a data breach. The incident response team believes that criminal acts have "
+  },
+  {
+   "keep": "F3-001",
+   "drop": [
+    "F1-072"
+   ],
+   "sources": [
+    "community"
+   ],
+   "front": "Cyber Kill Chain"
+  }
+ ]
+}

@@ -1,0 +1,3780 @@
+{
+ "objectives": {
+  "1.1": [
+   {
+    "topic": "operations.",
+    "lessons": 3,
+    "guide": 18,
+    "original": 1,
+    "cards": 46,
+    "questions": 17,
+    "teach": 22
+   },
+   {
+    "topic": "Logging concepts",
+    "lessons": 2,
+    "guide": 10,
+    "original": 0,
+    "cards": 5,
+    "questions": 1,
+    "teach": 12
+   },
+   {
+    "topic": "Network architecture concepts",
+    "lessons": 1,
+    "guide": 5,
+    "original": 0,
+    "cards": 4,
+    "questions": 1,
+    "teach": 6
+   },
+   {
+    "topic": "Ingestion",
+    "lessons": 2,
+    "guide": 3,
+    "original": 1,
+    "cards": 48,
+    "questions": 9,
+    "teach": 6
+   },
+   {
+    "topic": "Zero Trust Network Architecture",
+    "lessons": 1,
+    "guide": 2,
+    "original": 1,
+    "cards": 5,
+    "questions": 1,
+    "teach": 4
+   },
+   {
+    "topic": "Configuration",
+    "lessons": 14,
+    "guide": 30,
+    "original": 3,
+    "cards": 190,
+    "questions": 79,
+    "teach": 47
+   },
+   {
+    "topic": "(ZTNA)",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 12,
+    "questions": 3,
+    "teach": 3
+   },
+   {
+    "topic": "Integrity and security",
+    "lessons": 6,
+    "guide": 24,
+    "original": 0,
+    "cards": 45,
+    "questions": 10,
+    "teach": 30
+   },
+   {
+    "topic": "Secure access service edge",
+    "lessons": 1,
+    "guide": 3,
+    "original": 0,
+    "cards": 4,
+    "questions": 3,
+    "teach": 4
+   },
+   {
+    "topic": "Time synchronization",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 14,
+    "questions": 8,
+    "teach": 3
+   },
+   {
+    "topic": "(SASE)",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 6,
+    "questions": 4,
+    "teach": 3
+   },
+   {
+    "topic": "Retention",
+    "lessons": 5,
+    "guide": 8,
+    "original": 0,
+    "cards": 50,
+    "questions": 26,
+    "teach": 13
+   },
+   {
+    "topic": "Hybrid cloud",
+    "lessons": 1,
+    "guide": 3,
+    "original": 0,
+    "cards": 10,
+    "questions": 5,
+    "teach": 4
+   },
+   {
+    "topic": "Operating system concepts",
+    "lessons": 1,
+    "guide": 15,
+    "original": 0,
+    "cards": 5,
+    "questions": 0,
+    "teach": 16
+   },
+   {
+    "topic": "Identity and access management",
+    "lessons": 4,
+    "guide": 10,
+    "original": 1,
+    "cards": 20,
+    "questions": 7,
+    "teach": 15
+   },
+   {
+    "topic": "System hardening",
+    "lessons": 10,
+    "guide": 9,
+    "original": 0,
+    "cards": 40,
+    "questions": 7,
+    "teach": 19
+   },
+   {
+    "topic": "(IAM)",
+    "lessons": 3,
+    "guide": 3,
+    "original": 0,
+    "cards": 45,
+    "questions": 7,
+    "teach": 6
+   },
+   {
+    "topic": "File structure",
+    "lessons": 3,
+    "guide": 5,
+    "original": 0,
+    "cards": 7,
+    "questions": 2,
+    "teach": 8
+   },
+   {
+    "topic": "Privileged access management",
+    "lessons": 2,
+    "guide": 9,
+    "original": 1,
+    "cards": 17,
+    "questions": 4,
+    "teach": 12
+   },
+   {
+    "topic": "Critical files",
+    "lessons": 7,
+    "guide": 13,
+    "original": 0,
+    "cards": 18,
+    "questions": 6,
+    "teach": 20
+   },
+   {
+    "topic": "(PAM)",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 14,
+    "questions": 7,
+    "teach": 3
+   },
+   {
+    "topic": "System processes",
+    "lessons": 7,
+    "guide": 40,
+    "original": 0,
+    "cards": 103,
+    "questions": 33,
+    "teach": 47
+   },
+   {
+    "topic": "Authentication and authorization",
+    "lessons": 2,
+    "guide": 4,
+    "original": 0,
+    "cards": 41,
+    "questions": 5,
+    "teach": 6
+   },
+   {
+    "topic": "Infrastructure/system architecture",
+    "lessons": 0,
+    "guide": 0,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 0
+   },
+   {
+    "topic": "methods",
+    "lessons": 12,
+    "guide": 24,
+    "original": 3,
+    "cards": 99,
+    "questions": 49,
+    "teach": 39
+   },
+   {
+    "topic": "concepts",
+    "lessons": 5,
+    "guide": 22,
+    "original": 0,
+    "cards": 65,
+    "questions": 10,
+    "teach": 27
+   },
+   {
+    "topic": "Secrets management",
+    "lessons": 2,
+    "guide": 3,
+    "original": 0,
+    "cards": 11,
+    "questions": 3,
+    "teach": 5
+   },
+   {
+    "topic": "Cloud",
+    "lessons": 17,
+    "guide": 26,
+    "original": 0,
+    "cards": 190,
+    "questions": 50,
+    "teach": 43
+   },
+   {
+    "topic": "native",
+    "lessons": 0,
+    "guide": 5,
+    "original": 0,
+    "cards": 13,
+    "questions": 12,
+    "teach": 5
+   },
+   {
+    "topic": "Encryption techniques",
+    "lessons": 2,
+    "guide": 15,
+    "original": 1,
+    "cards": 11,
+    "questions": 6,
+    "teach": 18
+   },
+   {
+    "topic": "Virtualization",
+    "lessons": 1,
+    "guide": 5,
+    "original": 1,
+    "cards": 6,
+    "questions": 10,
+    "teach": 7
+   },
+   {
+    "topic": "Data protection concepts",
+    "lessons": 0,
+    "guide": 14,
+    "original": 0,
+    "cards": 7,
+    "questions": 0,
+    "teach": 14
+   },
+   {
+    "topic": "Containerization",
+    "lessons": 2,
+    "guide": 2,
+    "original": 0,
+    "cards": 3,
+    "questions": 5,
+    "teach": 4
+   },
+   {
+    "topic": "Critical infrastructure concepts",
+    "lessons": 0,
+    "guide": 11,
+    "original": 0,
+    "cards": 3,
+    "questions": 0,
+    "teach": 11
+   },
+   {
+    "topic": "Application programming",
+    "lessons": 0,
+    "guide": 5,
+    "original": 0,
+    "cards": 6,
+    "questions": 1,
+    "teach": 5
+   },
+   {
+    "topic": "Operational technology (OT)",
+    "lessons": 5,
+    "guide": 15,
+    "original": 1,
+    "cards": 37,
+    "questions": 10,
+    "teach": 21
+   },
+   {
+    "topic": "interfaces (APIs)",
+    "lessons": 6,
+    "guide": 9,
+    "original": 1,
+    "cards": 66,
+    "questions": 17,
+    "teach": 16
+   },
+   {
+    "topic": "Industrial control system (ICS)",
+    "lessons": 3,
+    "guide": 8,
+    "original": 1,
+    "cards": 48,
+    "questions": 12,
+    "teach": 12
+   },
+   {
+    "topic": "Device management concepts",
+    "lessons": 0,
+    "guide": 9,
+    "original": 0,
+    "cards": 4,
+    "questions": 0,
+    "teach": 9
+   },
+   {
+    "topic": "Supervisory control and data",
+    "lessons": 1,
+    "guide": 3,
+    "original": 0,
+    "cards": 10,
+    "questions": 4,
+    "teach": 4
+   },
+   {
+    "topic": "Mobile",
+    "lessons": 3,
+    "guide": 12,
+    "original": 0,
+    "cards": 38,
+    "questions": 13,
+    "teach": 15
+   },
+   {
+    "topic": "acquisition (SCADA)",
+    "lessons": 7,
+    "guide": 10,
+    "original": 0,
+    "cards": 33,
+    "questions": 21,
+    "teach": 17
+   },
+   {
+    "topic": "Endpoint",
+    "lessons": 13,
+    "guide": 19,
+    "original": 1,
+    "cards": 187,
+    "questions": 39,
+    "teach": 33
+   }
+  ],
+  "1.2": [
+   {
+    "topic": "Network-related indicators",
+    "lessons": 0,
+    "guide": 2,
+    "original": 0,
+    "cards": 0,
+    "questions": 1,
+    "teach": 2
+   },
+   {
+    "topic": "Application-related indicators",
+    "lessons": 0,
+    "guide": 2,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 2
+   },
+   {
+    "topic": "Rogue devices",
+    "lessons": 1,
+    "guide": 5,
+    "original": 0,
+    "cards": 11,
+    "questions": 7,
+    "teach": 6
+   },
+   {
+    "topic": "Service disruption",
+    "lessons": 5,
+    "guide": 8,
+    "original": 0,
+    "cards": 24,
+    "questions": 14,
+    "teach": 13
+   },
+   {
+    "topic": "Enumeration",
+    "lessons": 5,
+    "guide": 5,
+    "original": 0,
+    "cards": 51,
+    "questions": 12,
+    "teach": 10
+   },
+   {
+    "topic": "Anomalous activity",
+    "lessons": 6,
+    "guide": 4,
+    "original": 0,
+    "cards": 14,
+    "questions": 4,
+    "teach": 10
+   },
+   {
+    "topic": "Cloud-related indicators",
+    "lessons": 0,
+    "guide": 2,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 2
+   },
+   {
+    "topic": "Activity on unexpected ports",
+    "lessons": 1,
+    "guide": 5,
+    "original": 1,
+    "cards": 7,
+    "questions": 1,
+    "teach": 7
+   },
+   {
+    "topic": "Host-related indicators",
+    "lessons": 0,
+    "guide": 2,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 2
+   },
+   {
+    "topic": "Resource compromise",
+    "lessons": 2,
+    "guide": 9,
+    "original": 0,
+    "cards": 8,
+    "questions": 1,
+    "teach": 11
+   },
+   {
+    "topic": "Resource consumption",
+    "lessons": 1,
+    "guide": 3,
+    "original": 0,
+    "cards": 11,
+    "questions": 2,
+    "teach": 4
+   },
+   {
+    "topic": "Social engineering attacks",
+    "lessons": 1,
+    "guide": 4,
+    "original": 0,
+    "cards": 5,
+    "questions": 3,
+    "teach": 5
+   },
+   {
+    "topic": "Unauthorized software",
+    "lessons": 2,
+    "guide": 11,
+    "original": 0,
+    "cards": 21,
+    "questions": 1,
+    "teach": 13
+   },
+   {
+    "topic": "Typosquatting",
+    "lessons": 2,
+    "guide": 1,
+    "original": 0,
+    "cards": 8,
+    "questions": 10,
+    "teach": 3
+   },
+   {
+    "topic": "URL shorteners",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 5,
+    "questions": 2,
+    "teach": 3
+   },
+   {
+    "topic": "Suspicious or rogue",
+    "lessons": 3,
+    "guide": 3,
+    "original": 0,
+    "cards": 5,
+    "questions": 0,
+    "teach": 6
+   },
+   {
+    "topic": "Identity-based indicators",
+    "lessons": 0,
+    "guide": 2,
+    "original": 0,
+    "cards": 7,
+    "questions": 0,
+    "teach": 2
+   },
+   {
+    "topic": "processes",
+    "lessons": 9,
+    "guide": 42,
+    "original": 1,
+    "cards": 201,
+    "questions": 71,
+    "teach": 52
+   },
+   {
+    "topic": "IAM account compromise",
+    "lessons": 2,
+    "guide": 2,
+    "original": 0,
+    "cards": 7,
+    "questions": 4,
+    "teach": 4
+   },
+   {
+    "topic": "Living Off the Land Binaries",
+    "lessons": 1,
+    "guide": 1,
+    "original": 0,
+    "cards": 3,
+    "questions": 0,
+    "teach": 2
+   },
+   {
+    "topic": "Unauthorized access",
+    "lessons": 3,
+    "guide": 14,
+    "original": 0,
+    "cards": 57,
+    "questions": 6,
+    "teach": 17
+   },
+   {
+    "topic": "(LOLBins) and Scripts",
+    "lessons": 6,
+    "guide": 15,
+    "original": 3,
+    "cards": 194,
+    "questions": 69,
+    "teach": 24
+   },
+   {
+    "topic": "Impossible travel",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 15,
+    "questions": 7,
+    "teach": 3
+   },
+   {
+    "topic": "File system changes",
+    "lessons": 8,
+    "guide": 12,
+    "original": 0,
+    "cards": 24,
+    "questions": 6,
+    "teach": 20
+   },
+   {
+    "topic": "Email-related attacks",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 1,
+    "teach": 1
+   },
+   {
+    "topic": "Data exfiltration",
+    "lessons": 6,
+    "guide": 6,
+    "original": 0,
+    "cards": 61,
+    "questions": 24,
+    "teach": 12
+   },
+   {
+    "topic": "Business email compromise",
+    "lessons": 3,
+    "guide": 7,
+    "original": 0,
+    "cards": 12,
+    "questions": 5,
+    "teach": 10
+   },
+   {
+    "topic": "Unauthorized configuration",
+    "lessons": 0,
+    "guide": 5,
+    "original": 0,
+    "cards": 16,
+    "questions": 4,
+    "teach": 5
+   },
+   {
+    "topic": "(BEC)",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 15,
+    "questions": 5,
+    "teach": 3
+   },
+   {
+    "topic": "Exam Objectives Document Version 2.0",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   }
+  ],
+  "1.3": [
+   {
+    "topic": "Tools",
+    "lessons": 27,
+    "guide": 51,
+    "original": 4,
+    "cards": 468,
+    "questions": 264,
+    "teach": 82
+   },
+   {
+    "topic": "Decoding/parsing",
+    "lessons": 0,
+    "guide": 0,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 0
+   },
+   {
+    "topic": "CyberChef",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 5,
+    "questions": 6,
+    "teach": 1
+   },
+   {
+    "topic": "Packet analysis",
+    "lessons": 2,
+    "guide": 6,
+    "original": 1,
+    "cards": 27,
+    "questions": 13,
+    "teach": 9
+   },
+   {
+    "topic": "Wireshark",
+    "lessons": 1,
+    "guide": 3,
+    "original": 1,
+    "cards": 30,
+    "questions": 21,
+    "teach": 5
+   },
+   {
+    "topic": "tcpdump",
+    "lessons": 1,
+    "guide": 2,
+    "original": 1,
+    "cards": 13,
+    "questions": 7,
+    "teach": 4
+   },
+   {
+    "topic": "Snort",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 25,
+    "questions": 9,
+    "teach": 3
+   },
+   {
+    "topic": "Suricata",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 18,
+    "questions": 6,
+    "teach": 3
+   },
+   {
+    "topic": "Zeek",
+    "lessons": 2,
+    "guide": 1,
+    "original": 0,
+    "cards": 19,
+    "questions": 3,
+    "teach": 3
+   },
+   {
+    "topic": "Log analysis",
+    "lessons": 5,
+    "guide": 16,
+    "original": 1,
+    "cards": 52,
+    "questions": 13,
+    "teach": 22
+   },
+   {
+    "topic": "Security information and event management (SIEM)",
+    "lessons": 10,
+    "guide": 23,
+    "original": 1,
+    "cards": 203,
+    "questions": 69,
+    "teach": 34
+   },
+   {
+    "topic": "Threat-intelligence platforms",
+    "lessons": 2,
+    "guide": 0,
+    "original": 0,
+    "cards": 2,
+    "questions": 1,
+    "teach": 2
+   },
+   {
+    "topic": "Open Threat Exchange (OTX)",
+    "lessons": 1,
+    "guide": 4,
+    "original": 0,
+    "cards": 7,
+    "questions": 6,
+    "teach": 5
+   },
+   {
+    "topic": "Malware Information Sharing Platform (MISP)",
+    "lessons": 1,
+    "guide": 5,
+    "original": 0,
+    "cards": 19,
+    "questions": 4,
+    "teach": 6
+   },
+   {
+    "topic": "Open Cyber Threat Intelligence (OpenCTI)",
+    "lessons": 2,
+    "guide": 7,
+    "original": 0,
+    "cards": 4,
+    "questions": 2,
+    "teach": 9
+   },
+   {
+    "topic": "Endpoint security",
+    "lessons": 8,
+    "guide": 19,
+    "original": 0,
+    "cards": 101,
+    "questions": 10,
+    "teach": 27
+   },
+   {
+    "topic": "Endpoint detection and response (EDR) and extended",
+    "lessons": 13,
+    "guide": 9,
+    "original": 1,
+    "cards": 127,
+    "questions": 30,
+    "teach": 23
+   },
+   {
+    "topic": "detection and response (XDR)",
+    "lessons": 17,
+    "guide": 26,
+    "original": 1,
+    "cards": 181,
+    "questions": 57,
+    "teach": 44
+   },
+   {
+    "topic": "Mobile device management (MDM)",
+    "lessons": 2,
+    "guide": 3,
+    "original": 0,
+    "cards": 21,
+    "questions": 2,
+    "teach": 5
+   },
+   {
+    "topic": "WHOIS",
+    "lessons": 2,
+    "guide": 3,
+    "original": 1,
+    "cards": 28,
+    "questions": 16,
+    "teach": 6
+   },
+   {
+    "topic": "AbuseIPDB",
+    "lessons": 1,
+    "guide": 1,
+    "original": 0,
+    "cards": 4,
+    "questions": 2,
+    "teach": 2
+   },
+   {
+    "topic": "Geolocation by IP Address (GEO-IP)",
+    "lessons": 0,
+    "guide": 2,
+    "original": 0,
+    "cards": 6,
+    "questions": 3,
+    "teach": 2
+   },
+   {
+    "topic": "File analysis",
+    "lessons": 12,
+    "guide": 19,
+    "original": 1,
+    "cards": 50,
+    "questions": 20,
+    "teach": 32
+   },
+   {
+    "topic": "Strings",
+    "lessons": 1,
+    "guide": 3,
+    "original": 1,
+    "cards": 45,
+    "questions": 19,
+    "teach": 5
+   },
+   {
+    "topic": "VirusTotal",
+    "lessons": 1,
+    "guide": 3,
+    "original": 0,
+    "cards": 19,
+    "questions": 8,
+    "teach": 4
+   },
+   {
+    "topic": "Yet another recursive acronym (YARA)",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 20,
+    "questions": 4,
+    "teach": 3
+   },
+   {
+    "topic": "Sandboxing",
+    "lessons": 5,
+    "guide": 4,
+    "original": 1,
+    "cards": 29,
+    "questions": 18,
+    "teach": 10
+   },
+   {
+    "topic": "Joe Sandbox",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 7,
+    "questions": 2,
+    "teach": 3
+   },
+   {
+    "topic": "Cuckoo Sandbox",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 9,
+    "questions": 5,
+    "teach": 3
+   },
+   {
+    "topic": "Pattern recognition",
+    "lessons": 0,
+    "guide": 2,
+    "original": 0,
+    "cards": 10,
+    "questions": 0,
+    "teach": 2
+   },
+   {
+    "topic": "Regular expressions",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 3,
+    "questions": 1,
+    "teach": 3
+   },
+   {
+    "topic": "Interpreting suspicious commands",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 3
+   },
+   {
+    "topic": "Email analysis",
+    "lessons": 10,
+    "guide": 13,
+    "original": 1,
+    "cards": 46,
+    "questions": 2,
+    "teach": 24
+   },
+   {
+    "topic": "MXToolbox",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 7,
+    "questions": 4,
+    "teach": 3
+   },
+   {
+    "topic": "User and entity behavior analysis (UEBA)",
+    "lessons": 4,
+    "guide": 2,
+    "original": 0,
+    "cards": 29,
+    "questions": 7,
+    "teach": 6
+   },
+   {
+    "topic": "Open User and Entity Behavior Analytics ( OpenUBA)",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 2,
+    "questions": 3,
+    "teach": 1
+   },
+   {
+    "topic": "File formats",
+    "lessons": 4,
+    "guide": 5,
+    "original": 0,
+    "cards": 17,
+    "questions": 9,
+    "teach": 9
+   },
+   {
+    "topic": "JSON",
+    "lessons": 2,
+    "guide": 4,
+    "original": 1,
+    "cards": 31,
+    "questions": 7,
+    "teach": 7
+   },
+   {
+    "topic": "XML",
+    "lessons": 2,
+    "guide": 7,
+    "original": 0,
+    "cards": 24,
+    "questions": 9,
+    "teach": 9
+   },
+   {
+    "topic": "YAML",
+    "lessons": 2,
+    "guide": 2,
+    "original": 0,
+    "cards": 14,
+    "questions": 4,
+    "teach": 4
+   },
+   {
+    "topic": "EVTX",
+    "lessons": 2,
+    "guide": 2,
+    "original": 0,
+    "cards": 8,
+    "questions": 4,
+    "teach": 4
+   },
+   {
+    "topic": "Programming/scripting languages",
+    "lessons": 0,
+    "guide": 0,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 0
+   },
+   {
+    "topic": "Python",
+    "lessons": 1,
+    "guide": 4,
+    "original": 1,
+    "cards": 73,
+    "questions": 2,
+    "teach": 6
+   },
+   {
+    "topic": "PowerShell",
+    "lessons": 2,
+    "guide": 4,
+    "original": 1,
+    "cards": 92,
+    "questions": 14,
+    "teach": 7
+   },
+   {
+    "topic": "Shell script",
+    "lessons": 2,
+    "guide": 5,
+    "original": 0,
+    "cards": 25,
+    "questions": 2,
+    "teach": 7
+   },
+   {
+    "topic": "Exam Objectives Document Version 2.0",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   }
+  ],
+  "1.4": [
+   {
+    "topic": "Threat actors",
+    "lessons": 4,
+    "guide": 13,
+    "original": 1,
+    "cards": 61,
+    "questions": 31,
+    "teach": 18
+   },
+   {
+    "topic": "Advanced persistent threat (APT)",
+    "lessons": 2,
+    "guide": 7,
+    "original": 0,
+    "cards": 18,
+    "questions": 25,
+    "teach": 9
+   },
+   {
+    "topic": "Insider threat",
+    "lessons": 6,
+    "guide": 6,
+    "original": 1,
+    "cards": 27,
+    "questions": 11,
+    "teach": 13
+   },
+   {
+    "topic": "Tactics, techniques,",
+    "lessons": 3,
+    "guide": 8,
+    "original": 1,
+    "cards": 40,
+    "questions": 15,
+    "teach": 12
+   },
+   {
+    "topic": "and procedures (TTPs)",
+    "lessons": 8,
+    "guide": 22,
+    "original": 1,
+    "cards": 155,
+    "questions": 41,
+    "teach": 31
+   },
+   {
+    "topic": "Heat maps",
+    "lessons": 2,
+    "guide": 2,
+    "original": 0,
+    "cards": 3,
+    "questions": 2,
+    "teach": 4
+   },
+   {
+    "topic": "Pyramid of P",
+    "lessons": 0,
+    "guide": 0,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 0
+   },
+   {
+    "topic": "ain",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   },
+   {
+    "topic": "MITRE ATT&CK",
+    "lessons": 5,
+    "guide": 6,
+    "original": 1,
+    "cards": 74,
+    "questions": 27,
+    "teach": 12
+   },
+   {
+    "topic": "Attribution",
+    "lessons": 5,
+    "guide": 5,
+    "original": 0,
+    "cards": 64,
+    "questions": 11,
+    "teach": 10
+   },
+   {
+    "topic": "Confidence-level impacts",
+    "lessons": 0,
+    "guide": 2,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 2
+   },
+   {
+    "topic": "Timeliness",
+    "lessons": 1,
+    "guide": 3,
+    "original": 0,
+    "cards": 7,
+    "questions": 6,
+    "teach": 4
+   },
+   {
+    "topic": "Relevance",
+    "lessons": 2,
+    "guide": 0,
+    "original": 0,
+    "cards": 13,
+    "questions": 5,
+    "teach": 2
+   },
+   {
+    "topic": "Accuracy",
+    "lessons": 4,
+    "guide": 3,
+    "original": 1,
+    "cards": 51,
+    "questions": 20,
+    "teach": 8
+   },
+   {
+    "topic": "Collection methods and sources",
+    "lessons": 2,
+    "guide": 4,
+    "original": 0,
+    "cards": 2,
+    "questions": 0,
+    "teach": 6
+   },
+   {
+    "topic": "Open-source intelligence (OSINT)",
+    "lessons": 4,
+    "guide": 4,
+    "original": 1,
+    "cards": 39,
+    "questions": 18,
+    "teach": 9
+   },
+   {
+    "topic": "Closed-source intelligence",
+    "lessons": 0,
+    "guide": 2,
+    "original": 0,
+    "cards": 2,
+    "questions": 1,
+    "teach": 2
+   },
+   {
+    "topic": "Threat intelligence sharing",
+    "lessons": 4,
+    "guide": 11,
+    "original": 1,
+    "cards": 23,
+    "questions": 4,
+    "teach": 16
+   },
+   {
+    "topic": "Indicator of compromise (IoC)",
+    "lessons": 9,
+    "guide": 18,
+    "original": 1,
+    "cards": 93,
+    "questions": 52,
+    "teach": 28
+   },
+   {
+    "topic": "Collection",
+    "lessons": 6,
+    "guide": 21,
+    "original": 2,
+    "cards": 150,
+    "questions": 48,
+    "teach": 29
+   },
+   {
+    "topic": "Analysis",
+    "lessons": 26,
+    "guide": 34,
+    "original": 2,
+    "cards": 319,
+    "questions": 176,
+    "teach": 62
+   },
+   {
+    "topic": "Application/usage",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   },
+   {
+    "topic": "Types",
+    "lessons": 0,
+    "guide": 0,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 0
+   },
+   {
+    "topic": "Atomic",
+    "lessons": 2,
+    "guide": 5,
+    "original": 0,
+    "cards": 21,
+    "questions": 7,
+    "teach": 7
+   },
+   {
+    "topic": "Behavioral",
+    "lessons": 18,
+    "guide": 19,
+    "original": 3,
+    "cards": 271,
+    "questions": 89,
+    "teach": 40
+   },
+   {
+    "topic": "Threat modeling",
+    "lessons": 10,
+    "guide": 17,
+    "original": 0,
+    "cards": 62,
+    "questions": 33,
+    "teach": 27
+   },
+   {
+    "topic": "Spoofing, tampering, repudiation, information disclosure, denial of s",
+    "lessons": 0,
+    "guide": 2,
+    "original": 0,
+    "cards": 5,
+    "questions": 0,
+    "teach": 2
+   },
+   {
+    "topic": "ervice, elevation of",
+    "lessons": 0,
+    "guide": 0,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 0
+   },
+   {
+    "topic": "privilege (STRIDE)",
+    "lessons": 12,
+    "guide": 11,
+    "original": 1,
+    "cards": 107,
+    "questions": 43,
+    "teach": 24
+   },
+   {
+    "topic": "Threat mapping",
+    "lessons": 6,
+    "guide": 4,
+    "original": 0,
+    "cards": 38,
+    "questions": 4,
+    "teach": 10
+   },
+   {
+    "topic": "Cyber deception",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 6,
+    "questions": 4,
+    "teach": 3
+   }
+  ],
+  "1.5": [
+   {
+    "topic": "operations.",
+    "lessons": 3,
+    "guide": 18,
+    "original": 1,
+    "cards": 46,
+    "questions": 17,
+    "teach": 22
+   },
+   {
+    "topic": "Standardize processes",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 2,
+    "questions": 0,
+    "teach": 1
+   },
+   {
+    "topic": "Manage and facilitate team coordination",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   },
+   {
+    "topic": "Playbook/runbook creation",
+    "lessons": 0,
+    "guide": 0,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 0
+   },
+   {
+    "topic": "Streamline operations",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 4,
+    "questions": 2,
+    "teach": 1
+   },
+   {
+    "topic": "Automation and orchestration",
+    "lessons": 1,
+    "guide": 4,
+    "original": 0,
+    "cards": 18,
+    "questions": 13,
+    "teach": 5
+   },
+   {
+    "topic": "Security orchestration, automation,",
+    "lessons": 1,
+    "guide": 4,
+    "original": 0,
+    "cards": 11,
+    "questions": 9,
+    "teach": 5
+   },
+   {
+    "topic": "and Response (SOAR)",
+    "lessons": 22,
+    "guide": 37,
+    "original": 3,
+    "cards": 419,
+    "questions": 205,
+    "teach": 62
+   },
+   {
+    "topic": "Infrastructure as c",
+    "lessons": 0,
+    "guide": 6,
+    "original": 0,
+    "cards": 70,
+    "questions": 0,
+    "teach": 6
+   },
+   {
+    "topic": "ode (IaC)",
+    "lessons": 3,
+    "guide": 3,
+    "original": 0,
+    "cards": 29,
+    "questions": 8,
+    "teach": 6
+   },
+   {
+    "topic": "Data enrichment",
+    "lessons": 6,
+    "guide": 4,
+    "original": 1,
+    "cards": 23,
+    "questions": 11,
+    "teach": 11
+   },
+   {
+    "topic": "Rule/alert tuning",
+    "lessons": 0,
+    "guide": 0,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 0
+   },
+   {
+    "topic": "Dashboard creation",
+    "lessons": 3,
+    "guide": 3,
+    "original": 0,
+    "cards": 3,
+    "questions": 2,
+    "teach": 6
+   },
+   {
+    "topic": "Technology and tool integration",
+    "lessons": 0,
+    "guide": 3,
+    "original": 0,
+    "cards": 1,
+    "questions": 0,
+    "teach": 3
+   },
+   {
+    "topic": "APIs",
+    "lessons": 4,
+    "guide": 9,
+    "original": 1,
+    "cards": 48,
+    "questions": 14,
+    "teach": 14
+   },
+   {
+    "topic": "Webhooks",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 10,
+    "questions": 6,
+    "teach": 3
+   },
+   {
+    "topic": "Plug-ins",
+    "lessons": 1,
+    "guide": 7,
+    "original": 0,
+    "cards": 9,
+    "questions": 8,
+    "teach": 8
+   },
+   {
+    "topic": "Exam Objectives Document Version 2.0",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   }
+  ],
+  "1.6": [
+   {
+    "topic": "AI risks",
+    "lessons": 1,
+    "guide": 3,
+    "original": 1,
+    "cards": 42,
+    "questions": 11,
+    "teach": 5
+   },
+   {
+    "topic": "Hallucinations",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 8,
+    "questions": 7,
+    "teach": 3
+   },
+   {
+    "topic": "Data exposure",
+    "lessons": 14,
+    "guide": 10,
+    "original": 0,
+    "cards": 65,
+    "questions": 20,
+    "teach": 24
+   },
+   {
+    "topic": "Model poisoning",
+    "lessons": 2,
+    "guide": 3,
+    "original": 0,
+    "cards": 11,
+    "questions": 10,
+    "teach": 5
+   },
+   {
+    "topic": "Malicious prompts",
+    "lessons": 2,
+    "guide": 4,
+    "original": 0,
+    "cards": 2,
+    "questions": 8,
+    "teach": 6
+   },
+   {
+    "topic": "Governance",
+    "lessons": 6,
+    "guide": 11,
+    "original": 0,
+    "cards": 70,
+    "questions": 30,
+    "teach": 17
+   },
+   {
+    "topic": "Legal or regulatory compliance",
+    "lessons": 1,
+    "guide": 9,
+    "original": 0,
+    "cards": 21,
+    "questions": 1,
+    "teach": 10
+   },
+   {
+    "topic": "AI usage policies",
+    "lessons": 1,
+    "guide": 3,
+    "original": 0,
+    "cards": 1,
+    "questions": 1,
+    "teach": 4
+   },
+   {
+    "topic": "Use cases",
+    "lessons": 5,
+    "guide": 29,
+    "original": 0,
+    "cards": 50,
+    "questions": 27,
+    "teach": 34
+   },
+   {
+    "topic": "Comparing artifacts",
+    "lessons": 3,
+    "guide": 3,
+    "original": 0,
+    "cards": 2,
+    "questions": 1,
+    "teach": 6
+   },
+   {
+    "topic": "Analyzing log files",
+    "lessons": 0,
+    "guide": 5,
+    "original": 0,
+    "cards": 4,
+    "questions": 1,
+    "teach": 5
+   },
+   {
+    "topic": "Document creation",
+    "lessons": 4,
+    "guide": 16,
+    "original": 0,
+    "cards": 25,
+    "questions": 9,
+    "teach": 20
+   },
+   {
+    "topic": "Incident investigation",
+    "lessons": 8,
+    "guide": 14,
+    "original": 0,
+    "cards": 91,
+    "questions": 24,
+    "teach": 22
+   },
+   {
+    "topic": "Event correlation",
+    "lessons": 5,
+    "guide": 7,
+    "original": 0,
+    "cards": 52,
+    "questions": 16,
+    "teach": 12
+   },
+   {
+    "topic": "Automation and orchestration",
+    "lessons": 1,
+    "guide": 4,
+    "original": 0,
+    "cards": 18,
+    "questions": 13,
+    "teach": 5
+   },
+   {
+    "topic": "Exam Objectives Document Version 2.0",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   }
+  ],
+  "2.1": [
+   {
+    "topic": "Asset inventory",
+    "lessons": 8,
+    "guide": 10,
+    "original": 0,
+    "cards": 47,
+    "questions": 15,
+    "teach": 18
+   },
+   {
+    "topic": "Planning considerations",
+    "lessons": 0,
+    "guide": 2,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 2
+   },
+   {
+    "topic": "Scheduling",
+    "lessons": 15,
+    "guide": 8,
+    "original": 2,
+    "cards": 85,
+    "questions": 44,
+    "teach": 25
+   },
+   {
+    "topic": "Operations",
+    "lessons": 17,
+    "guide": 43,
+    "original": 4,
+    "cards": 296,
+    "questions": 82,
+    "teach": 64
+   },
+   {
+    "topic": "Performance",
+    "lessons": 2,
+    "guide": 17,
+    "original": 1,
+    "cards": 93,
+    "questions": 41,
+    "teach": 20
+   },
+   {
+    "topic": "Sensitivity levels",
+    "lessons": 1,
+    "guide": 2,
+    "original": 1,
+    "cards": 1,
+    "questions": 7,
+    "teach": 4
+   },
+   {
+    "topic": "Segmentation",
+    "lessons": 8,
+    "guide": 10,
+    "original": 4,
+    "cards": 62,
+    "questions": 18,
+    "teach": 22
+   },
+   {
+    "topic": "Regulatory requirements",
+    "lessons": 2,
+    "guide": 14,
+    "original": 0,
+    "cards": 31,
+    "questions": 11,
+    "teach": 16
+   },
+   {
+    "topic": "Scan types",
+    "lessons": 16,
+    "guide": 29,
+    "original": 2,
+    "cards": 249,
+    "questions": 323,
+    "teach": 47
+   },
+   {
+    "topic": "Internal vs. external",
+    "lessons": 1,
+    "guide": 1,
+    "original": 0,
+    "cards": 11,
+    "questions": 0,
+    "teach": 2
+   },
+   {
+    "topic": "Agent vs. agentless",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 1,
+    "questions": 0,
+    "teach": 1
+   },
+   {
+    "topic": "Credentialed vs. non-credentialed",
+    "lessons": 0,
+    "guide": 0,
+    "original": 0,
+    "cards": 1,
+    "questions": 0,
+    "teach": 0
+   },
+   {
+    "topic": "Passive vs. active",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 4,
+    "questions": 0,
+    "teach": 1
+   },
+   {
+    "topic": "Discovery",
+    "lessons": 8,
+    "guide": 12,
+    "original": 0,
+    "cards": 74,
+    "questions": 31,
+    "teach": 20
+   },
+   {
+    "topic": "Mapping scans",
+    "lessons": 6,
+    "guide": 3,
+    "original": 0,
+    "cards": 16,
+    "questions": 3,
+    "teach": 9
+   },
+   {
+    "topic": "Device fingerprinting",
+    "lessons": 2,
+    "guide": 2,
+    "original": 0,
+    "cards": 8,
+    "questions": 6,
+    "teach": 4
+   },
+   {
+    "topic": "Security baseline scanning",
+    "lessons": 3,
+    "guide": 5,
+    "original": 0,
+    "cards": 5,
+    "questions": 1,
+    "teach": 8
+   },
+   {
+    "topic": "Payment Card Industry Data Security Standard  (PCI DSS)",
+    "lessons": 4,
+    "guide": 5,
+    "original": 0,
+    "cards": 32,
+    "questions": 30,
+    "teach": 9
+   },
+   {
+    "topic": "Center for Internet Security (CIS) benchmarks",
+    "lessons": 4,
+    "guide": 2,
+    "original": 0,
+    "cards": 18,
+    "questions": 6,
+    "teach": 6
+   },
+   {
+    "topic": "International Organization for Standardization (",
+    "lessons": 0,
+    "guide": 2,
+    "original": 0,
+    "cards": 1,
+    "questions": 1,
+    "teach": 2
+   },
+   {
+    "topic": "ISO) 27000 series",
+    "lessons": 1,
+    "guide": 1,
+    "original": 0,
+    "cards": 3,
+    "questions": 1,
+    "teach": 2
+   }
+  ],
+  "2.2": [
+   {
+    "topic": "Network scanning and mapping",
+    "lessons": 4,
+    "guide": 3,
+    "original": 0,
+    "cards": 7,
+    "questions": 2,
+    "teach": 7
+   },
+   {
+    "topic": "Angry IP Scanner",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 14,
+    "questions": 12,
+    "teach": 3
+   },
+   {
+    "topic": "Masscan",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 14,
+    "questions": 5,
+    "teach": 3
+   },
+   {
+    "topic": "Multipurpose tools",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   },
+   {
+    "topic": "Nmap",
+    "lessons": 2,
+    "guide": 3,
+    "original": 1,
+    "cards": 55,
+    "questions": 55,
+    "teach": 6
+   },
+   {
+    "topic": "Metasploit Framework (MSF)",
+    "lessons": 1,
+    "guide": 1,
+    "original": 0,
+    "cards": 10,
+    "questions": 6,
+    "teach": 2
+   },
+   {
+    "topic": "Maltego",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 11,
+    "questions": 10,
+    "teach": 3
+   },
+   {
+    "topic": "Recon-ng",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 11,
+    "questions": 7,
+    "teach": 3
+   },
+   {
+    "topic": "Web application scanners",
+    "lessons": 2,
+    "guide": 11,
+    "original": 0,
+    "cards": 19,
+    "questions": 12,
+    "teach": 13
+   },
+   {
+    "topic": "Burp Suite",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 21,
+    "questions": 7,
+    "teach": 3
+   },
+   {
+    "topic": "Zed Attack Proxy (ZAP)",
+    "lessons": 2,
+    "guide": 2,
+    "original": 1,
+    "cards": 17,
+    "questions": 6,
+    "teach": 5
+   },
+   {
+    "topic": "Nikto",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 13,
+    "questions": 8,
+    "teach": 3
+   },
+   {
+    "topic": "Vulnerability scanners",
+    "lessons": 9,
+    "guide": 14,
+    "original": 0,
+    "cards": 88,
+    "questions": 80,
+    "teach": 23
+   },
+   {
+    "topic": "Nessus",
+    "lessons": 1,
+    "guide": 9,
+    "original": 1,
+    "cards": 33,
+    "questions": 9,
+    "teach": 11
+   },
+   {
+    "topic": "Nuclei",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 7,
+    "questions": 3,
+    "teach": 3
+   },
+   {
+    "topic": "Open Vulnerability Assessment Scanner (OpenVAS)",
+    "lessons": 3,
+    "guide": 7,
+    "original": 1,
+    "cards": 29,
+    "questions": 7,
+    "teach": 11
+   },
+   {
+    "topic": "Cloud infrastructure assessment tools",
+    "lessons": 1,
+    "guide": 8,
+    "original": 0,
+    "cards": 2,
+    "questions": 2,
+    "teach": 9
+   },
+   {
+    "topic": "ScoutSuite",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 7,
+    "questions": 4,
+    "teach": 3
+   },
+   {
+    "topic": "Prowler",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 4,
+    "questions": 4,
+    "teach": 3
+   },
+   {
+    "topic": "Trivy",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 6,
+    "questions": 6,
+    "teach": 3
+   },
+   {
+    "topic": "Checkov",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 8,
+    "questions": 5,
+    "teach": 3
+   },
+   {
+    "topic": "Breach attack simulation (BAS) tools",
+    "lessons": 1,
+    "guide": 3,
+    "original": 0,
+    "cards": 3,
+    "questions": 2,
+    "teach": 4
+   },
+   {
+    "topic": "Atomic Red Team",
+    "lessons": 2,
+    "guide": 2,
+    "original": 0,
+    "cards": 9,
+    "questions": 3,
+    "teach": 4
+   },
+   {
+    "topic": "Caldera",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 9,
+    "questions": 4,
+    "teach": 3
+   },
+   {
+    "topic": "Exam Objectives Document Version 2.0",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   }
+  ],
+  "2.3": [
+   {
+    "topic": "Criteria",
+    "lessons": 5,
+    "guide": 9,
+    "original": 0,
+    "cards": 30,
+    "questions": 8,
+    "teach": 14
+   },
+   {
+    "topic": "Exploitability",
+    "lessons": 6,
+    "guide": 2,
+    "original": 0,
+    "cards": 31,
+    "questions": 16,
+    "teach": 8
+   },
+   {
+    "topic": "Active exploitation/threat intelligence",
+    "lessons": 0,
+    "guide": 0,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 0
+   },
+   {
+    "topic": "Asset value",
+    "lessons": 6,
+    "guide": 4,
+    "original": 0,
+    "cards": 28,
+    "questions": 14,
+    "teach": 10
+   },
+   {
+    "topic": "Impact",
+    "lessons": 15,
+    "guide": 35,
+    "original": 4,
+    "cards": 248,
+    "questions": 160,
+    "teach": 54
+   },
+   {
+    "topic": "Patch/remediation availability",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   },
+   {
+    "topic": "True/false positives",
+    "lessons": 1,
+    "guide": 0,
+    "original": 0,
+    "cards": 1,
+    "questions": 0,
+    "teach": 1
+   },
+   {
+    "topic": "True/false negatives",
+    "lessons": 1,
+    "guide": 0,
+    "original": 0,
+    "cards": 2,
+    "questions": 0,
+    "teach": 1
+   },
+   {
+    "topic": "Scoring methods",
+    "lessons": 0,
+    "guide": 5,
+    "original": 0,
+    "cards": 0,
+    "questions": 3,
+    "teach": 5
+   },
+   {
+    "topic": "Common Vulnerability Scoring System (CVSS) metrics",
+    "lessons": 9,
+    "guide": 10,
+    "original": 2,
+    "cards": 88,
+    "questions": 59,
+    "teach": 21
+   },
+   {
+    "topic": "First Exploitability Prediction Scoring System (EPSS)",
+    "lessons": 4,
+    "guide": 1,
+    "original": 1,
+    "cards": 26,
+    "questions": 15,
+    "teach": 6
+   },
+   {
+    "topic": "Context awareness",
+    "lessons": 2,
+    "guide": 5,
+    "original": 0,
+    "cards": 16,
+    "questions": 1,
+    "teach": 7
+   },
+   {
+    "topic": "Internal",
+    "lessons": 15,
+    "guide": 28,
+    "original": 1,
+    "cards": 257,
+    "questions": 108,
+    "teach": 44
+   },
+   {
+    "topic": "External",
+    "lessons": 14,
+    "guide": 19,
+    "original": 1,
+    "cards": 234,
+    "questions": 90,
+    "teach": 34
+   },
+   {
+    "topic": "Isolated",
+    "lessons": 21,
+    "guide": 17,
+    "original": 2,
+    "cards": 107,
+    "questions": 58,
+    "teach": 40
+   },
+   {
+    "topic": "Mitigation strategies",
+    "lessons": 2,
+    "guide": 3,
+    "original": 0,
+    "cards": 3,
+    "questions": 1,
+    "teach": 5
+   },
+   {
+    "topic": "Attack surface management",
+    "lessons": 4,
+    "guide": 7,
+    "original": 0,
+    "cards": 31,
+    "questions": 2,
+    "teach": 11
+   },
+   {
+    "topic": "Secure coding best practices",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 3,
+    "questions": 0,
+    "teach": 3
+   },
+   {
+    "topic": "Patching and configuration management",
+    "lessons": 6,
+    "guide": 19,
+    "original": 0,
+    "cards": 20,
+    "questions": 7,
+    "teach": 25
+   },
+   {
+    "topic": "Exceptions",
+    "lessons": 2,
+    "guide": 4,
+    "original": 1,
+    "cards": 16,
+    "questions": 1,
+    "teach": 7
+   },
+   {
+    "topic": "Compensating controls",
+    "lessons": 9,
+    "guide": 9,
+    "original": 2,
+    "cards": 54,
+    "questions": 49,
+    "teach": 20
+   },
+   {
+    "topic": "Validation of remediation",
+    "lessons": 6,
+    "guide": 10,
+    "original": 0,
+    "cards": 14,
+    "questions": 13,
+    "teach": 16
+   }
+  ],
+  "2.4": [
+   {
+    "topic": "management.",
+    "lessons": 1,
+    "guide": 11,
+    "original": 0,
+    "cards": 25,
+    "questions": 10,
+    "teach": 12
+   },
+   {
+    "topic": "Control types",
+    "lessons": 30,
+    "guide": 54,
+    "original": 3,
+    "cards": 496,
+    "questions": 216,
+    "teach": 87
+   },
+   {
+    "topic": "Administrative",
+    "lessons": 2,
+    "guide": 16,
+    "original": 0,
+    "cards": 44,
+    "questions": 37,
+    "teach": 18
+   },
+   {
+    "topic": "Technical",
+    "lessons": 10,
+    "guide": 30,
+    "original": 1,
+    "cards": 163,
+    "questions": 58,
+    "teach": 41
+   },
+   {
+    "topic": "Physical",
+    "lessons": 8,
+    "guide": 20,
+    "original": 0,
+    "cards": 86,
+    "questions": 49,
+    "teach": 28
+   },
+   {
+    "topic": "Control functions",
+    "lessons": 4,
+    "guide": 15,
+    "original": 1,
+    "cards": 21,
+    "questions": 8,
+    "teach": 20
+   },
+   {
+    "topic": "Preventative",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 2,
+    "questions": 5,
+    "teach": 3
+   },
+   {
+    "topic": "Detective",
+    "lessons": 1,
+    "guide": 4,
+    "original": 1,
+    "cards": 21,
+    "questions": 12,
+    "teach": 6
+   },
+   {
+    "topic": "Responsive",
+    "lessons": 2,
+    "guide": 2,
+    "original": 0,
+    "cards": 9,
+    "questions": 4,
+    "teach": 4
+   },
+   {
+    "topic": "Corrective",
+    "lessons": 3,
+    "guide": 6,
+    "original": 1,
+    "cards": 18,
+    "questions": 15,
+    "teach": 10
+   },
+   {
+    "topic": "Risk concepts",
+    "lessons": 2,
+    "guide": 11,
+    "original": 0,
+    "cards": 11,
+    "questions": 1,
+    "teach": 13
+   },
+   {
+    "topic": "Risk appetite",
+    "lessons": 1,
+    "guide": 4,
+    "original": 0,
+    "cards": 14,
+    "questions": 9,
+    "teach": 5
+   },
+   {
+    "topic": "Residual risk",
+    "lessons": 2,
+    "guide": 3,
+    "original": 0,
+    "cards": 22,
+    "questions": 7,
+    "teach": 5
+   },
+   {
+    "topic": "Inherent risk",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 9,
+    "questions": 2,
+    "teach": 3
+   },
+   {
+    "topic": "Risk management strategies",
+    "lessons": 2,
+    "guide": 5,
+    "original": 0,
+    "cards": 2,
+    "questions": 2,
+    "teach": 7
+   },
+   {
+    "topic": "Accept",
+    "lessons": 12,
+    "guide": 8,
+    "original": 2,
+    "cards": 66,
+    "questions": 29,
+    "teach": 22
+   },
+   {
+    "topic": "Transfer",
+    "lessons": 8,
+    "guide": 5,
+    "original": 1,
+    "cards": 49,
+    "questions": 34,
+    "teach": 14
+   },
+   {
+    "topic": "Avoid",
+    "lessons": 6,
+    "guide": 17,
+    "original": 1,
+    "cards": 101,
+    "questions": 49,
+    "teach": 24
+   },
+   {
+    "topic": "Mitigate",
+    "lessons": 2,
+    "guide": 10,
+    "original": 1,
+    "cards": 34,
+    "questions": 12,
+    "teach": 13
+   },
+   {
+    "topic": "Policies, governance, and service -level objectives (SLOs)",
+    "lessons": 1,
+    "guide": 3,
+    "original": 0,
+    "cards": 5,
+    "questions": 3,
+    "teach": 4
+   },
+   {
+    "topic": "Application security",
+    "lessons": 8,
+    "guide": 42,
+    "original": 0,
+    "cards": 131,
+    "questions": 51,
+    "teach": 50
+   },
+   {
+    "topic": "Static application security testing (SAST)",
+    "lessons": 2,
+    "guide": 3,
+    "original": 0,
+    "cards": 28,
+    "questions": 15,
+    "teach": 5
+   },
+   {
+    "topic": "Dynamic application security testing (DAST)",
+    "lessons": 1,
+    "guide": 3,
+    "original": 0,
+    "cards": 27,
+    "questions": 12,
+    "teach": 4
+   },
+   {
+    "topic": "Software Assurance Maturity Model (SAMM)",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 7,
+    "questions": 4,
+    "teach": 3
+   },
+   {
+    "topic": "Third-party risk",
+    "lessons": 2,
+    "guide": 7,
+    "original": 0,
+    "cards": 44,
+    "questions": 6,
+    "teach": 9
+   },
+   {
+    "topic": "Supply chain",
+    "lessons": 0,
+    "guide": 6,
+    "original": 0,
+    "cards": 24,
+    "questions": 0,
+    "teach": 6
+   },
+   {
+    "topic": "Software composition analysis (SCA)",
+    "lessons": 1,
+    "guide": 4,
+    "original": 0,
+    "cards": 22,
+    "questions": 5,
+    "teach": 5
+   },
+   {
+    "topic": "Software bill of materials (SB OM)",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 8,
+    "questions": 6,
+    "teach": 3
+   },
+   {
+    "topic": "Exam Objectives Document Version 2.0",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   }
+  ],
+  "3.1": [
+   {
+    "topic": "Cyber Kill Chain",
+    "lessons": 3,
+    "guide": 2,
+    "original": 1,
+    "cards": 44,
+    "questions": 20,
+    "teach": 6
+   },
+   {
+    "topic": "Diamond Model of Intrusion Analysis",
+    "lessons": 3,
+    "guide": 2,
+    "original": 0,
+    "cards": 12,
+    "questions": 7,
+    "teach": 5
+   },
+   {
+    "topic": "MITRE ATT&CK",
+    "lessons": 5,
+    "guide": 6,
+    "original": 1,
+    "cards": 74,
+    "questions": 27,
+    "teach": 12
+   }
+  ],
+  "3.2": [
+   {
+    "topic": "Preparation",
+    "lessons": 3,
+    "guide": 5,
+    "original": 1,
+    "cards": 34,
+    "questions": 31,
+    "teach": 9
+   },
+   {
+    "topic": "Detection",
+    "lessons": 34,
+    "guide": 37,
+    "original": 5,
+    "cards": 579,
+    "questions": 234,
+    "teach": 76
+   },
+   {
+    "topic": "Analysis",
+    "lessons": 26,
+    "guide": 34,
+    "original": 2,
+    "cards": 319,
+    "questions": 176,
+    "teach": 62
+   },
+   {
+    "topic": "Containment",
+    "lessons": 12,
+    "guide": 10,
+    "original": 3,
+    "cards": 127,
+    "questions": 64,
+    "teach": 25
+   },
+   {
+    "topic": "Eradication",
+    "lessons": 6,
+    "guide": 8,
+    "original": 1,
+    "cards": 60,
+    "questions": 44,
+    "teach": 15
+   },
+   {
+    "topic": "Recovery",
+    "lessons": 8,
+    "guide": 13,
+    "original": 1,
+    "cards": 88,
+    "questions": 67,
+    "teach": 22
+   },
+   {
+    "topic": "Post-incident",
+    "lessons": 3,
+    "guide": 6,
+    "original": 1,
+    "cards": 77,
+    "questions": 33,
+    "teach": 10
+   }
+  ],
+  "3.3": [
+   {
+    "topic": "Developing plans",
+    "lessons": 0,
+    "guide": 12,
+    "original": 0,
+    "cards": 3,
+    "questions": 2,
+    "teach": 12
+   },
+   {
+    "topic": "Incident response plan",
+    "lessons": 5,
+    "guide": 17,
+    "original": 1,
+    "cards": 40,
+    "questions": 25,
+    "teach": 23
+   },
+   {
+    "topic": "Communication plan",
+    "lessons": 5,
+    "guide": 12,
+    "original": 0,
+    "cards": 32,
+    "questions": 5,
+    "teach": 17
+   },
+   {
+    "topic": "Creating playbooks",
+    "lessons": 1,
+    "guide": 6,
+    "original": 0,
+    "cards": 15,
+    "questions": 4,
+    "teach": 7
+   },
+   {
+    "topic": "Defining roles",
+    "lessons": 2,
+    "guide": 2,
+    "original": 0,
+    "cards": 13,
+    "questions": 4,
+    "teach": 4
+   },
+   {
+    "topic": "Performing training",
+    "lessons": 1,
+    "guide": 10,
+    "original": 0,
+    "cards": 11,
+    "questions": 0,
+    "teach": 11
+   },
+   {
+    "topic": "Tabletop",
+    "lessons": 2,
+    "guide": 2,
+    "original": 0,
+    "cards": 11,
+    "questions": 6,
+    "teach": 4
+   },
+   {
+    "topic": "Simulation",
+    "lessons": 3,
+    "guide": 11,
+    "original": 0,
+    "cards": 27,
+    "questions": 8,
+    "teach": 14
+   },
+   {
+    "topic": "Log collection",
+    "lessons": 2,
+    "guide": 12,
+    "original": 2,
+    "cards": 30,
+    "questions": 6,
+    "teach": 16
+   },
+   {
+    "topic": "Log correlation",
+    "lessons": 5,
+    "guide": 7,
+    "original": 1,
+    "cards": 51,
+    "questions": 14,
+    "teach": 13
+   },
+   {
+    "topic": "Log augmentation and enrichment",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   },
+   {
+    "topic": "Alerts and notifications",
+    "lessons": 0,
+    "guide": 3,
+    "original": 0,
+    "cards": 13,
+    "questions": 0,
+    "teach": 3
+   },
+   {
+    "topic": "Triage",
+    "lessons": 13,
+    "guide": 4,
+    "original": 3,
+    "cards": 75,
+    "questions": 22,
+    "teach": 20
+   },
+   {
+    "topic": "Establishment of a timeline",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 1,
+    "teach": 1
+   },
+   {
+    "topic": "Determining severity and impact",
+    "lessons": 2,
+    "guide": 3,
+    "original": 0,
+    "cards": 2,
+    "questions": 2,
+    "teach": 5
+   },
+   {
+    "topic": "Prioritization",
+    "lessons": 7,
+    "guide": 9,
+    "original": 1,
+    "cards": 77,
+    "questions": 22,
+    "teach": 17
+   },
+   {
+    "topic": "Evidence gathering",
+    "lessons": 1,
+    "guide": 7,
+    "original": 0,
+    "cards": 16,
+    "questions": 8,
+    "teach": 8
+   },
+   {
+    "topic": "Chain of custody",
+    "lessons": 3,
+    "guide": 6,
+    "original": 0,
+    "cards": 19,
+    "questions": 22,
+    "teach": 9
+   },
+   {
+    "topic": "Data integrity validation",
+    "lessons": 2,
+    "guide": 12,
+    "original": 0,
+    "cards": 7,
+    "questions": 7,
+    "teach": 14
+   },
+   {
+    "topic": "Preservation",
+    "lessons": 1,
+    "guide": 4,
+    "original": 0,
+    "cards": 18,
+    "questions": 17,
+    "teach": 5
+   },
+   {
+    "topic": "Legal hold",
+    "lessons": 4,
+    "guide": 5,
+    "original": 1,
+    "cards": 17,
+    "questions": 10,
+    "teach": 10
+   },
+   {
+    "topic": "Isolating affected targets",
+    "lessons": 1,
+    "guide": 4,
+    "original": 0,
+    "cards": 2,
+    "questions": 0,
+    "teach": 5
+   },
+   {
+    "topic": "Escalation",
+    "lessons": 12,
+    "guide": 11,
+    "original": 0,
+    "cards": 119,
+    "questions": 47,
+    "teach": 23
+   },
+   {
+    "topic": "Remediation and verification",
+    "lessons": 2,
+    "guide": 3,
+    "original": 0,
+    "cards": 10,
+    "questions": 6,
+    "teach": 5
+   },
+   {
+    "topic": "Release from isolation",
+    "lessons": 1,
+    "guide": 1,
+    "original": 0,
+    "cards": 2,
+    "questions": 0,
+    "teach": 2
+   },
+   {
+    "topic": "Performing restoration",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 2,
+    "questions": 2,
+    "teach": 1
+   },
+   {
+    "topic": "Root cause analysis (RCA)",
+    "lessons": 4,
+    "guide": 5,
+    "original": 0,
+    "cards": 41,
+    "questions": 16,
+    "teach": 9
+   },
+   {
+    "topic": "Corrective action development",
+    "lessons": 0,
+    "guide": 2,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 2
+   },
+   {
+    "topic": "Exam Objectives Document Version 2.0",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   }
+  ],
+  "4.1": [
+   {
+    "topic": "communication.",
+    "lessons": 0,
+    "guide": 3,
+    "original": 0,
+    "cards": 10,
+    "questions": 2,
+    "teach": 3
+   },
+   {
+    "topic": "Vulnerability scan reports",
+    "lessons": 9,
+    "guide": 18,
+    "original": 0,
+    "cards": 43,
+    "questions": 83,
+    "teach": 27
+   },
+   {
+    "topic": "Compliance findings",
+    "lessons": 6,
+    "guide": 5,
+    "original": 1,
+    "cards": 23,
+    "questions": 4,
+    "teach": 12
+   },
+   {
+    "topic": "Risk scorecards",
+    "lessons": 3,
+    "guide": 1,
+    "original": 0,
+    "cards": 9,
+    "questions": 5,
+    "teach": 4
+   },
+   {
+    "topic": "Action plans",
+    "lessons": 11,
+    "guide": 10,
+    "original": 0,
+    "cards": 32,
+    "questions": 10,
+    "teach": 21
+   },
+   {
+    "topic": "Escalation",
+    "lessons": 12,
+    "guide": 11,
+    "original": 0,
+    "cards": 119,
+    "questions": 47,
+    "teach": 23
+   },
+   {
+    "topic": "Dependencies",
+    "lessons": 5,
+    "guide": 6,
+    "original": 0,
+    "cards": 36,
+    "questions": 8,
+    "teach": 11
+   },
+   {
+    "topic": "Inhibitors to remediation",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 28,
+    "questions": 15,
+    "teach": 3
+   },
+   {
+    "topic": "Contractual agreements",
+    "lessons": 2,
+    "guide": 4,
+    "original": 0,
+    "cards": 13,
+    "questions": 6,
+    "teach": 6
+   },
+   {
+    "topic": "Organizational governance",
+    "lessons": 3,
+    "guide": 11,
+    "original": 0,
+    "cards": 20,
+    "questions": 16,
+    "teach": 14
+   },
+   {
+    "topic": "Business process interruption",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 12,
+    "questions": 10,
+    "teach": 3
+   },
+   {
+    "topic": "Degrading functionality",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 13,
+    "questions": 13,
+    "teach": 3
+   },
+   {
+    "topic": "Legacy systems",
+    "lessons": 5,
+    "guide": 4,
+    "original": 1,
+    "cards": 40,
+    "questions": 24,
+    "teach": 10
+   },
+   {
+    "topic": "Proprietary systems",
+    "lessons": 1,
+    "guide": 6,
+    "original": 0,
+    "cards": 15,
+    "questions": 21,
+    "teach": 7
+   },
+   {
+    "topic": "Patch availability",
+    "lessons": 5,
+    "guide": 9,
+    "original": 0,
+    "cards": 31,
+    "questions": 10,
+    "teach": 14
+   },
+   {
+    "topic": "Stakeholder identification and communication",
+    "lessons": 1,
+    "guide": 3,
+    "original": 0,
+    "cards": 5,
+    "questions": 1,
+    "teach": 4
+   },
+   {
+    "topic": "Metrics and key performance indicators (KPIs)",
+    "lessons": 4,
+    "guide": 4,
+    "original": 0,
+    "cards": 28,
+    "questions": 5,
+    "teach": 8
+   },
+   {
+    "topic": "Trends",
+    "lessons": 8,
+    "guide": 8,
+    "original": 0,
+    "cards": 46,
+    "questions": 15,
+    "teach": 16
+   },
+   {
+    "topic": "Top risks",
+    "lessons": 10,
+    "guide": 7,
+    "original": 0,
+    "cards": 32,
+    "questions": 9,
+    "teach": 17
+   },
+   {
+    "topic": "Service-level agreement (SLA",
+    "lessons": 1,
+    "guide": 0,
+    "original": 0,
+    "cards": 3,
+    "questions": 2,
+    "teach": 1
+   }
+  ],
+  "4.2": [
+   {
+    "topic": "and communication.",
+    "lessons": 0,
+    "guide": 3,
+    "original": 0,
+    "cards": 10,
+    "questions": 2,
+    "teach": 3
+   },
+   {
+    "topic": "Incident declaration and escalation",
+    "lessons": 1,
+    "guide": 2,
+    "original": 0,
+    "cards": 7,
+    "questions": 0,
+    "teach": 3
+   },
+   {
+    "topic": "Shift/incident handover",
+    "lessons": 1,
+    "guide": 0,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   },
+   {
+    "topic": "Executive summary",
+    "lessons": 3,
+    "guide": 3,
+    "original": 0,
+    "cards": 19,
+    "questions": 16,
+    "teach": 6
+   },
+   {
+    "topic": "Internal threat intelligence report",
+    "lessons": 3,
+    "guide": 5,
+    "original": 0,
+    "cards": 22,
+    "questions": 3,
+    "teach": 8
+   },
+   {
+    "topic": "Communication plan",
+    "lessons": 5,
+    "guide": 12,
+    "original": 0,
+    "cards": 32,
+    "questions": 5,
+    "teach": 17
+   },
+   {
+    "topic": "Tailored to",
+    "lessons": 3,
+    "guide": 2,
+    "original": 0,
+    "cards": 18,
+    "questions": 7,
+    "teach": 5
+   },
+   {
+    "topic": "Stakeholder identification",
+    "lessons": 1,
+    "guide": 3,
+    "original": 0,
+    "cards": 9,
+    "questions": 3,
+    "teach": 4
+   },
+   {
+    "topic": "organization/environment",
+    "lessons": 0,
+    "guide": 0,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 0
+   },
+   {
+    "topic": "Legal team",
+    "lessons": 8,
+    "guide": 13,
+    "original": 0,
+    "cards": 49,
+    "questions": 11,
+    "teach": 21
+   },
+   {
+    "topic": "Metrics and KPIs",
+    "lessons": 4,
+    "guide": 4,
+    "original": 0,
+    "cards": 12,
+    "questions": 2,
+    "teach": 8
+   },
+   {
+    "topic": "Public relations",
+    "lessons": 1,
+    "guide": 6,
+    "original": 0,
+    "cards": 10,
+    "questions": 4,
+    "teach": 7
+   },
+   {
+    "topic": "Alert volume",
+    "lessons": 6,
+    "guide": 6,
+    "original": 0,
+    "cards": 26,
+    "questions": 25,
+    "teach": 12
+   },
+   {
+    "topic": "Regulatory reporting agencies",
+    "lessons": 1,
+    "guide": 6,
+    "original": 0,
+    "cards": 5,
+    "questions": 0,
+    "teach": 7
+   },
+   {
+    "topic": "False-positive rate",
+    "lessons": 2,
+    "guide": 1,
+    "original": 2,
+    "cards": 7,
+    "questions": 13,
+    "teach": 5
+   },
+   {
+    "topic": "Law enforcement",
+    "lessons": 3,
+    "guide": 10,
+    "original": 0,
+    "cards": 22,
+    "questions": 14,
+    "teach": 13
+   },
+   {
+    "topic": "True-positive rate",
+    "lessons": 1,
+    "guide": 1,
+    "original": 1,
+    "cards": 2,
+    "questions": 8,
+    "teach": 3
+   },
+   {
+    "topic": "Customers",
+    "lessons": 9,
+    "guide": 17,
+    "original": 0,
+    "cards": 153,
+    "questions": 46,
+    "teach": 26
+   },
+   {
+    "topic": "Mean time to close",
+    "lessons": 3,
+    "guide": 5,
+    "original": 0,
+    "cards": 22,
+    "questions": 9,
+    "teach": 8
+   },
+   {
+    "topic": "Operational security awareness",
+    "lessons": 3,
+    "guide": 7,
+    "original": 0,
+    "cards": 13,
+    "questions": 2,
+    "teach": 10
+   },
+   {
+    "topic": "Mean time to detect",
+    "lessons": 8,
+    "guide": 23,
+    "original": 2,
+    "cards": 45,
+    "questions": 28,
+    "teach": 33
+   },
+   {
+    "topic": "Communication channels",
+    "lessons": 5,
+    "guide": 2,
+    "original": 0,
+    "cards": 20,
+    "questions": 4,
+    "teach": 7
+   },
+   {
+    "topic": "Mean time to respond",
+    "lessons": 3,
+    "guide": 17,
+    "original": 1,
+    "cards": 33,
+    "questions": 23,
+    "teach": 21
+   },
+   {
+    "topic": "Post-incident reporting",
+    "lessons": 2,
+    "guide": 6,
+    "original": 0,
+    "cards": 29,
+    "questions": 8,
+    "teach": 8
+   },
+   {
+    "topic": "Mean time to remediate",
+    "lessons": 3,
+    "guide": 6,
+    "original": 0,
+    "cards": 31,
+    "questions": 16,
+    "teach": 9
+   },
+   {
+    "topic": "After action report",
+    "lessons": 9,
+    "guide": 11,
+    "original": 0,
+    "cards": 20,
+    "questions": 9,
+    "teach": 20
+   },
+   {
+    "topic": "Phishing campaign click rate",
+    "lessons": 1,
+    "guide": 1,
+    "original": 0,
+    "cards": 1,
+    "questions": 5,
+    "teach": 2
+   },
+   {
+    "topic": "Lessons learned",
+    "lessons": 3,
+    "guide": 6,
+    "original": 1,
+    "cards": 52,
+    "questions": 28,
+    "teach": 10
+   },
+   {
+    "topic": "Root cause analysis",
+    "lessons": 4,
+    "guide": 5,
+    "original": 0,
+    "cards": 34,
+    "questions": 15,
+    "teach": 9
+   },
+   {
+    "topic": "Exam Objectives Document Version 2.0",
+    "lessons": 0,
+    "guide": 1,
+    "original": 0,
+    "cards": 0,
+    "questions": 0,
+    "teach": 1
+   }
+  ]
+ },
+ "weak": [
+  {
+   "objective": "1.1",
+   "topic": "Infrastructure/system architecture",
+   "lessons": 0,
+   "guide": 0,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.2",
+   "topic": "Network-related indicators",
+   "lessons": 0,
+   "guide": 2,
+   "original": 0,
+   "cards": 0,
+   "questions": 1
+  },
+  {
+   "objective": "1.2",
+   "topic": "Application-related indicators",
+   "lessons": 0,
+   "guide": 2,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.2",
+   "topic": "Cloud-related indicators",
+   "lessons": 0,
+   "guide": 2,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.2",
+   "topic": "Host-related indicators",
+   "lessons": 0,
+   "guide": 2,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.2",
+   "topic": "Email-related attacks",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 1
+  },
+  {
+   "objective": "1.2",
+   "topic": "Exam Objectives Document Version 2.0",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.3",
+   "topic": "Decoding/parsing",
+   "lessons": 0,
+   "guide": 0,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.3",
+   "topic": "Interpreting suspicious commands",
+   "lessons": 1,
+   "guide": 2,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.3",
+   "topic": "Programming/scripting languages",
+   "lessons": 0,
+   "guide": 0,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.3",
+   "topic": "Exam Objectives Document Version 2.0",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.4",
+   "topic": "Pyramid of P",
+   "lessons": 0,
+   "guide": 0,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.4",
+   "topic": "ain",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.4",
+   "topic": "Confidence-level impacts",
+   "lessons": 0,
+   "guide": 2,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.4",
+   "topic": "Collection methods and sources",
+   "lessons": 2,
+   "guide": 4,
+   "original": 0,
+   "cards": 2,
+   "questions": 0
+  },
+  {
+   "objective": "1.4",
+   "topic": "Application/usage",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.4",
+   "topic": "Types",
+   "lessons": 0,
+   "guide": 0,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.4",
+   "topic": "ervice, elevation of",
+   "lessons": 0,
+   "guide": 0,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.5",
+   "topic": "Standardize processes",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 2,
+   "questions": 0
+  },
+  {
+   "objective": "1.5",
+   "topic": "Manage and facilitate team coordination",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.5",
+   "topic": "Playbook/runbook creation",
+   "lessons": 0,
+   "guide": 0,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.5",
+   "topic": "Rule/alert tuning",
+   "lessons": 0,
+   "guide": 0,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.5",
+   "topic": "Technology and tool integration",
+   "lessons": 0,
+   "guide": 3,
+   "original": 0,
+   "cards": 1,
+   "questions": 0
+  },
+  {
+   "objective": "1.5",
+   "topic": "Exam Objectives Document Version 2.0",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "1.6",
+   "topic": "AI usage policies",
+   "lessons": 1,
+   "guide": 3,
+   "original": 0,
+   "cards": 1,
+   "questions": 1
+  },
+  {
+   "objective": "1.6",
+   "topic": "Exam Objectives Document Version 2.0",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "2.1",
+   "topic": "Planning considerations",
+   "lessons": 0,
+   "guide": 2,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "2.1",
+   "topic": "Agent vs. agentless",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 1,
+   "questions": 0
+  },
+  {
+   "objective": "2.1",
+   "topic": "Credentialed vs. non-credentialed",
+   "lessons": 0,
+   "guide": 0,
+   "original": 0,
+   "cards": 1,
+   "questions": 0
+  },
+  {
+   "objective": "2.1",
+   "topic": "International Organization for Standardization (",
+   "lessons": 0,
+   "guide": 2,
+   "original": 0,
+   "cards": 1,
+   "questions": 1
+  },
+  {
+   "objective": "2.2",
+   "topic": "Multipurpose tools",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "2.2",
+   "topic": "Exam Objectives Document Version 2.0",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "2.3",
+   "topic": "Active exploitation/threat intelligence",
+   "lessons": 0,
+   "guide": 0,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "2.3",
+   "topic": "Patch/remediation availability",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "2.3",
+   "topic": "True/false positives",
+   "lessons": 1,
+   "guide": 0,
+   "original": 0,
+   "cards": 1,
+   "questions": 0
+  },
+  {
+   "objective": "2.3",
+   "topic": "True/false negatives",
+   "lessons": 1,
+   "guide": 0,
+   "original": 0,
+   "cards": 2,
+   "questions": 0
+  },
+  {
+   "objective": "2.4",
+   "topic": "Exam Objectives Document Version 2.0",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "3.3",
+   "topic": "Log augmentation and enrichment",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "3.3",
+   "topic": "Establishment of a timeline",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 1
+  },
+  {
+   "objective": "3.3",
+   "topic": "Isolating affected targets",
+   "lessons": 1,
+   "guide": 4,
+   "original": 0,
+   "cards": 2,
+   "questions": 0
+  },
+  {
+   "objective": "3.3",
+   "topic": "Release from isolation",
+   "lessons": 1,
+   "guide": 1,
+   "original": 0,
+   "cards": 2,
+   "questions": 0
+  },
+  {
+   "objective": "3.3",
+   "topic": "Corrective action development",
+   "lessons": 0,
+   "guide": 2,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "3.3",
+   "topic": "Exam Objectives Document Version 2.0",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "4.2",
+   "topic": "Shift/incident handover",
+   "lessons": 1,
+   "guide": 0,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "4.2",
+   "topic": "organization/environment",
+   "lessons": 0,
+   "guide": 0,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  },
+  {
+   "objective": "4.2",
+   "topic": "Exam Objectives Document Version 2.0",
+   "lessons": 0,
+   "guide": 1,
+   "original": 0,
+   "cards": 0,
+   "questions": 0
+  }
+ ]
+}
