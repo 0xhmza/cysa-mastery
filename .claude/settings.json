@@ -1,0 +1,35 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -X utf8 -m graphify hook-guard search",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Read|Glob",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -X utf8 -m graphify hook-guard read",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "deny": [
+      "Read(./dist/data/**)",
+      "Read(./dist/media/**)",
+      "Read(./dist/trainers/**)",
+      "Read(./dist/library/**)",
+      "Read(./graphify-out/cache/**)"
+    ]
+  }
+}

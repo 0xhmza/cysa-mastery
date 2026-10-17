@@ -1,0 +1,17 @@
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.tar.gz
+*.zip
+.openai/local.json
+test-results/
+graphify-out/cache/
+graphify-out/graph.html
+graphify-out/project-graph.json
+graphify-out/manifest.json
+graphify-web/
+.claude/settings.local.json
+graphify-out/.graphify_root
+graphify-out/.graphify_analysis.json

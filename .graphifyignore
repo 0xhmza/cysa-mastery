@@ -1,0 +1,12 @@
+# Generated data, media and third-party trainers are not part of the code graph
+dist/
+content/
+*.pdf
+*.png
+*.webp
+*.jpg
+*.svg
+package-lock.json
+graphify-out/
+graphify-web/
+node_modules/

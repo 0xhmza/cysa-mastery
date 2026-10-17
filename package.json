@@ -1,0 +1,13 @@
+{
+  "name": "cysa-mastery",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A personal CS0-004 learning workspace",
+  "scripts": {
+    "start": "python tools/serve.py 8114",
+    "test": "node --test tests/*.test.mjs",
+    "import": "python -X utf8 tools/import_content.py",
+    "graph": "python -X utf8 tools/graph.py"
+  }
+}
