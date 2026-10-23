@@ -1,0 +1,381 @@
+{
+  "communities": {
+    "0": [
+      "cysa-mastery::tests_core_test",
+      "cysa-mastery::tests_core_test_attempt",
+      "cysa-mastery::tests_core_test_bank",
+      "cysa-mastery::tests_core_test_domains",
+      "cysa-mastery::tests_core_test_q",
+      "cysa-mastery::tests_core_test_seeded",
+      "dist_core",
+      "dist_core_canshuffleoptions",
+      "dist_core_daykey",
+      "dist_core_domainstats",
+      "dist_core_duecards",
+      "dist_core_freshstate",
+      "dist_core_iscorrect",
+      "dist_core_misconceptions",
+      "dist_core_missedcount",
+      "dist_core_newcards",
+      "dist_core_objectiveevidence",
+      "dist_core_pickquestions",
+      "dist_core_preparequestion",
+      "dist_core_schedulereview",
+      "dist_core_shuffle",
+      "dist_core_streak",
+      "dist_core_strongprogress",
+      "dist_core_validateprogress",
+      "dist_core_weightedcounts"
+    ],
+    "1": [
+      "cysa-mastery::tools_graph",
+      "cysa-mastery::tools_graph_graphify",
+      "cysa-mastery::tools_graph_main",
+      "cysa-mastery::tools_graph_rationale_1",
+      "cysa-mastery::tools_serve",
+      "cysa-mastery::tools_serve_handler",
+      "cysa-mastery::tools_serve_handler_end_headers",
+      "cysa-mastery::tools_serve_handler_init",
+      "cysa-mastery::tools_serve_rationale_1",
+      "http_server",
+      "pathlib",
+      "shutil",
+      "socketserver",
+      "subprocess",
+      "sys"
+    ],
+    "2": [
+      "cysa-mastery::tests_data_test",
+      "cysa-mastery::tests_data_test_cards",
+      "cysa-mastery::tests_data_test_catalog",
+      "cysa-mastery::tests_data_test_dist",
+      "cysa-mastery::tests_data_test_imagerefs",
+      "cysa-mastery::tests_data_test_lessons",
+      "cysa-mastery::tests_data_test_load",
+      "cysa-mastery::tests_data_test_objectives",
+      "cysa-mastery::tests_data_test_original",
+      "cysa-mastery::tests_data_test_questions",
+      "cysa-mastery::tests_data_test_strings",
+      "cysa-mastery::tests_ui_test",
+      "dist_ui",
+      "dist_ui_esc",
+      "dist_ui_formatduration",
+      "dist_ui_mappingchip",
+      "dist_ui_pct",
+      "dist_ui_safeexhibit",
+      "ref_node_assert",
+      "ref_node_fs",
+      "ref_node_path",
+      "ref_node_test",
+      "ref_node_url"
+    ],
+    "3": [
+      "argparse",
+      "bs4",
+      "collections",
+      "cysa-mastery::tools_import_content",
+      "cysa-mastery::tools_import_content_book_questions",
+      "cysa-mastery::tools_import_content_cards",
+      "cysa-mastery::tools_import_content_community_questions",
+      "cysa-mastery::tools_import_content_import_media",
+      "cysa-mastery::tools_import_content_import_media_decompress",
+      "cysa-mastery::tools_import_content_lessons",
+      "cysa-mastery::tools_import_content_main",
+      "cysa-mastery::tools_import_content_original_content",
+      "cysa-mastery::tools_import_content_original_content_para",
+      "cysa-mastery::tools_import_content_protobuf",
+      "cysa-mastery::tools_import_content_rationale_1",
+      "cysa-mastery::tools_import_content_rationale_122",
+      "cysa-mastery::tools_import_content_rationale_190",
+      "cysa-mastery::tools_import_content_rationale_34",
+      "cysa-mastery::tools_import_content_read_json",
+      "cysa-mastery::tools_import_content_reviewed_objective",
+      "cysa-mastery::tools_import_content_rich",
+      "cysa-mastery::tools_import_content_safe_html",
+      "cysa-mastery::tools_import_content_text",
+      "cysa-mastery::tools_import_content_varint",
+      "cysa-mastery::tools_import_content_write_json",
+      "hashlib",
+      "io",
+      "json",
+      "re",
+      "urllib_parse",
+      "zipfile"
+    ],
+    "4": [
+      "cysa-mastery::package",
+      "cysa-mastery::package_description",
+      "cysa-mastery::package_name",
+      "cysa-mastery::package_private",
+      "cysa-mastery::package_scripts",
+      "cysa-mastery::package_scripts_graph",
+      "cysa-mastery::package_scripts_import",
+      "cysa-mastery::package_scripts_start",
+      "cysa-mastery::package_scripts_test",
+      "cysa-mastery::package_type",
+      "cysa-mastery::package_version"
+    ],
+    "10": [
+      "graphify-web::app_updatechrome",
+      "graphify-web::core",
+      "graphify-web::core_canshuffleoptions",
+      "graphify-web::core_cardsduetoday",
+      "graphify-web::core_daykey",
+      "graphify-web::core_domainstats",
+      "graphify-web::core_duecards",
+      "graphify-web::core_misconceptions",
+      "graphify-web::core_objectiveevidence",
+      "graphify-web::core_streak",
+      "graphify-web::core_strong_rule",
+      "graphify-web::core_strongprogress",
+      "graphify-web::core_todaycount",
+      "graphify-web::core_weightedcounts",
+      "graphify-web::ui_fmt",
+      "graphify-web::ui_meter",
+      "graphify-web::ui_pct",
+      "graphify-web::ui_statuschip",
+      "graphify-web::view_learn",
+      "graphify-web::view_learn_evidenceline",
+      "graphify-web::view_learn_newallowance",
+      "graphify-web::view_learn_nextsteps",
+      "graphify-web::view_learn_objectivemap",
+      "graphify-web::view_learn_pathtostrong",
+      "graphify-web::view_learn_renderdashboard",
+      "graphify-web::view_learn_renderlearn",
+      "graphify-web::view_learn_renderobjective",
+      "graphify-web::view_learn_shorttitle",
+      "graphify-web::view_misc_renderprogress"
+    ],
+    "11": [
+      "graphify-web::core_iscorrect",
+      "graphify-web::core_missedcount",
+      "graphify-web::core_pickquestions",
+      "graphify-web::core_preparequestion",
+      "graphify-web::core_shuffle",
+      "graphify-web::store_clearsession",
+      "graphify-web::store_loadsession",
+      "graphify-web::store_savesession",
+      "graphify-web::ui_formatduration",
+      "graphify-web::ui_mappingchip",
+      "graphify-web::view_practice",
+      "graphify-web::view_practice_buildsession",
+      "graphify-web::view_practice_conf",
+      "graphify-web::view_practice_field",
+      "graphify-web::view_practice_finishsession",
+      "graphify-web::view_practice_newid",
+      "graphify-web::view_practice_recordattempt",
+      "graphify-web::view_practice_renderhome",
+      "graphify-web::view_practice_renderpractice",
+      "graphify-web::view_practice_renderresults",
+      "graphify-web::view_practice_rendersession",
+      "graphify-web::view_practice_trusted"
+    ],
+    "13": [
+      "graphify-web::app",
+      "graphify-web::app_bindshell",
+      "graphify-web::app_boot",
+      "graphify-web::app_cleanups",
+      "graphify-web::app_createcontext",
+      "graphify-web::app_loaddata",
+      "graphify-web::app_loadjson",
+      "graphify-web::app_main",
+      "graphify-web::app_openshortcuts",
+      "graphify-web::app_parsehash",
+      "graphify-web::app_render",
+      "graphify-web::app_routes",
+      "graphify-web::app_titles",
+      "graphify-web::core_freshstate",
+      "graphify-web::core_storage_key",
+      "graphify-web::core_validateprogress",
+      "graphify-web::store",
+      "graphify-web::store_clearall",
+      "graphify-web::store_guard",
+      "graphify-web::store_loadstate",
+      "graphify-web::store_savestate",
+      "graphify-web::store_storage",
+      "graphify-web::ui_download",
+      "graphify-web::ui_toast",
+      "graphify-web::view_misc",
+      "graphify-web::view_misc_corrections",
+      "graphify-web::view_misc_renderlibrary",
+      "graphify-web::view_misc_rendersettings",
+      "graphify-web::view_misc_rendertrainers",
+      "graphify-web::view_misc_wirebackup"
+    ],
+    "14": [
+      "graphify-web::core_newcards",
+      "graphify-web::core_schedulereview",
+      "graphify-web::ui",
+      "graphify-web::ui_domainname",
+      "graphify-web::ui_esc",
+      "graphify-web::ui_kbd",
+      "graphify-web::ui_on",
+      "graphify-web::ui_safeexhibit",
+      "graphify-web::view_lab",
+      "graphify-web::view_lab_mark",
+      "graphify-web::view_lab_rendercase",
+      "graphify-web::view_lab_rendercases",
+      "graphify-web::view_lab_renderlab",
+      "graphify-web::view_lab_renderlist",
+      "graphify-web::view_lab_renderpbq",
+      "graphify-web::view_lab_withidentity",
+      "graphify-web::view_review",
+      "graphify-web::view_review_formatinterval",
+      "graphify-web::view_review_grades",
+      "graphify-web::view_review_plain",
+      "graphify-web::view_review_renderreview"
+    ]
+  },
+  "cohesion": {
+    "0": 0.08333333333333333,
+    "1": 0.18095238095238095,
+    "2": 0.09486166007905138,
+    "3": 0.10967741935483871,
+    "4": 0.18181818181818182,
+    "10": 0.19950738916256158,
+    "11": 0.23376623376623376,
+    "13": 0.15172413793103448,
+    "14": 0.24761904761904763
+  },
+  "gods": [
+    {
+      "id": "graphify-web::ui_esc",
+      "label": "esc()",
+      "degree": 32
+    },
+    {
+      "id": "graphify-web::ui_on",
+      "label": "on()",
+      "degree": 15
+    },
+    {
+      "id": "graphify-web::view_practice_rendersession",
+      "label": "renderSession()",
+      "degree": 14
+    },
+    {
+      "id": "graphify-web::view_learn_renderdashboard",
+      "label": "renderDashboard()",
+      "degree": 13
+    },
+    {
+      "id": "graphify-web::view_practice_renderresults",
+      "label": "renderResults()",
+      "degree": 13
+    },
+    {
+      "id": "graphify-web::ui_pct",
+      "label": "pct()",
+      "degree": 12
+    },
+    {
+      "id": "graphify-web::view_practice_renderhome",
+      "label": "renderHome()",
+      "degree": 12
+    },
+    {
+      "id": "graphify-web::view_review_renderreview",
+      "label": "renderReview()",
+      "degree": 12
+    },
+    {
+      "id": "graphify-web::ui_meter",
+      "label": "meter()",
+      "degree": 11
+    },
+    {
+      "id": "graphify-web::core_daykey",
+      "label": "dayKey()",
+      "degree": 11
+    }
+  ],
+  "surprises": [
+    {
+      "source": "renderReview()",
+      "target": "dueCards()",
+      "source_files": [
+        "view-review.mjs",
+        "core.mjs"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "createContext()",
+      "target": "todayCount()",
+      "source_files": [
+        "app.js",
+        "core.mjs"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "renderSession()",
+      "target": "meter()",
+      "source_files": [
+        "view-practice.mjs",
+        "ui.mjs"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "renderReview()",
+      "target": "meter()",
+      "source_files": [
+        "view-review.mjs",
+        "ui.mjs"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "renderHome()",
+      "target": "pct()",
+      "source_files": [
+        "view-practice.mjs",
+        "ui.mjs"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `esc()` connect `Community 14` to `Community 10`, `Community 11`, `Community 13`?",
+      "why": "High betweenness centrality (0.035) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.08333333333333333 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `on()` connect `Community 14` to `Community 10`, `Community 11`, `Community 13`?",
+      "why": "High betweenness centrality (0.008) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 2` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.09486166007905138 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `renderReview()` connect `Community 14` to `Community 10`, `Community 13`?",
+      "why": "High betweenness centrality (0.005) - this node is a cross-community bridge."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 3` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.10967741935483871 - nodes in this community are weakly interconnected."
+    }
+  ]
+}
